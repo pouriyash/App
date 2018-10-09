@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\App.Data.Sql\App.Data.Sql.csproj" />
     <ProjectReference Include="..\App.DomainModels\App.DomainModels.csproj" />
+    <ProjectReference Include="..\App.DomainServices\App.DomainServices.csproj" />
   </ItemGroup>
 
 </Project>

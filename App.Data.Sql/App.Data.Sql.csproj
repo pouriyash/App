@@ -11,12 +11,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0-preview2-35157" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.2.0-preview2-35157" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0-preview2-35157" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0-preview2-35157" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0-preview2-35157" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\App.Bootstraper\App.Bootstraper.csproj" />
     <ProjectReference Include="..\App.Common\App.Common.csproj" />
     <ProjectReference Include="..\App.DomainModels\App.DomainModels.csproj" />
   </ItemGroup>

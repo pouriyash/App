@@ -2,7 +2,7 @@
 using App.DomainModels.ViewModels.Settings;
 using Microsoft.EntityFrameworkCore; 
 
-namespace App.Bootstraper.Mapping
+namespace App.Data.Sql.Mapping
 {
     public static class IdentityMappings
     {

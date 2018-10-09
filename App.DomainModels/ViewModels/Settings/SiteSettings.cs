@@ -10,7 +10,7 @@ namespace App.DomainModels.ViewModels.Settings
         //public AdminUserSeed AdminUserSeed { get; set; }
         //public Logging Logging { get; set; }
         //public SmtpConfig Smtp { get; set; }
-        //public Connectionstrings ConnectionStrings { get; set; }
+        public Connectionstrings ConnectionStrings { get; set; }
         public bool EnableEmailConfirmation { get; set; }
         public TimeSpan EmailConfirmationTokenProviderLifespan { get; set; }
         public int NotAllowedPreviouslyUsedPasswords { get; set; }

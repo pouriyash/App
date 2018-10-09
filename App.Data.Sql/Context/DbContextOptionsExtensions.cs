@@ -5,10 +5,12 @@ using System;
 using System.IO;
 using App.Common.GuardToolkit;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace App.Data.Sql.Context
 {
-    public class DbContextOptionsExtensions
+    public static class DbContextOptionsExtensions
     {
 
         /// <summary>

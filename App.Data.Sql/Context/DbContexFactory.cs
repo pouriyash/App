@@ -14,7 +14,7 @@ namespace App.Data.Sql.Context
 {
     public class DbContexFactoryIDesignTimeDbContextFactory<ApplicationDbContext>
     {
-        public ApplicationDbContext CreateDbContext(string[] args)
+        public AppDbContext CreateDbContext(string[] args)
         {
             var services = new ServiceCollection();
             services.AddOptions();
@@ -33,11 +33,11 @@ namespace App.Data.Sql.Context
             var siteSettings = services.BuildServiceProvider().GetRequiredService<IOptionsSnapshot<SiteSettings>>();
 
             services.AddRequiredEfInternalServices(siteSettings.Value); // It's added to access services from the dbcontext, remove it if you are using the normal `AddDbContext` and normal constructor dependency injection.
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
             optionsBuilder.SetDbContextOptions(siteSettings.Value);
             optionsBuilder.UseInternalServiceProvider(services.BuildServiceProvider()); // It's added to access services from the dbcontext, remove it if you are using the normal `AddDbContext` and normal constructor dependency injection.
 
-            return new ApplicationDbContext(optionsBuilder.Options);
+            return new AppDbContext(optionsBuilder.Options);
         }
     }
 }
