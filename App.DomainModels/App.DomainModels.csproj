@@ -6,7 +6,10 @@
 
   <ItemGroup>
     <Folder Include="Dto\" />
+    <Folder Include="Entities\AuditableEntity\" />
+    <Folder Include="Entities\Identity\" />
     <Folder Include="SSOT\" />
+    <Folder Include="ViewModels\Settings\" />
   </ItemGroup>
 
   <ItemGroup>
