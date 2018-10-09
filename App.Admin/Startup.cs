@@ -27,8 +27,9 @@ namespace App.Admin
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IMessagesService, MessagesService>();
-             
+
+            ///Dependency Injection
+            Bootstraper.Startup.ConfigureServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

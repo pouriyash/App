@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\App.Bootstraper\App.Bootstraper.csproj" />
     <ProjectReference Include="..\App.DomainServices\App.DomainServices.csproj" />
   </ItemGroup>
 
