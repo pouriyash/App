@@ -17,9 +17,13 @@ namespace App.Admin
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json");
+            configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -33,8 +37,9 @@ namespace App.Admin
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMessagesService messagesService)
-        { 
+        public void Configure(IApplicationBuilder app, IConfiguration configuration, IHostingEnvironment env, IMessagesService messagesService)
+        {
+           
 
             if (env.IsDevelopment())
             {
@@ -44,7 +49,7 @@ namespace App.Admin
             {
                 app.UseExceptionHandler("/images/error.svg");
             }
-
+            
             app.UseStaticFiles();
 
             app.Run(async context =>
