@@ -6,12 +6,19 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.2.0-preview2-35157" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="2.2.0-preview2-35157" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0-preview2-35157" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="ViewComponents\" />
     <Folder Include="Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\App.DomainServices\App.DomainServices.csproj" />
   </ItemGroup>
 
 </Project>

@@ -7,7 +7,6 @@
   <ItemGroup>
     <Folder Include="Identity\" />
     <Folder Include="Interfaces\Identity\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
   <ItemGroup>
