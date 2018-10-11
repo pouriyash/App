@@ -53,11 +53,11 @@ namespace App.Admin
             app.UseFileServer();
             app.UseMvcWithDefaultRoute();
 
-            app.Run(async context =>
-            {
-                var siteName = messagesService.GetSiteName();
-                await context.Response.WriteAsync($"Hello {siteName}");
-            });
+            //app.Run(async context =>
+            //{
+            //    var siteName = messagesService.GetSiteName();
+            //    await context.Response.WriteAsync($"Hello {siteName}");
+            //});
 
 
         }
