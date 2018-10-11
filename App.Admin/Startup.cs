@@ -30,9 +30,9 @@ namespace App.Admin
         {
 
             ///Dependency Injection
-            Bootstraper.Startup.ConfigureServices(services);
-            
+            Bootstraper.Startup.ConfigureServices(services);            
             services.Configure<ConnectionString>(options => Configuration.GetSection("ConnectionStrings").Bind(options));
+            services.AddMvc();
 
         }
 
@@ -50,7 +50,8 @@ namespace App.Admin
                 app.UseExceptionHandler("/images/error.svg");
             }
 
-            app.UseStaticFiles();
+            app.UseFileServer();
+            app.UseMvcWithDefaultRoute();
 
             app.Run(async context =>
             {
