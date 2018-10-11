@@ -18,16 +18,12 @@ namespace App.Admin
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json");
-            configuration = builder.Build();
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -35,7 +31,7 @@ namespace App.Admin
 
             ///Dependency Injection
             Bootstraper.Startup.ConfigureServices(services);
-
+            
             services.Configure<ConnectionString>(options => Configuration.GetSection("ConnectionStrings").Bind(options));
 
         }
@@ -43,7 +39,7 @@ namespace App.Admin
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IConfiguration configuration, IHostingEnvironment env, IMessagesService messagesService)
         {
-           
+
 
             if (env.IsDevelopment())
             {
@@ -53,7 +49,7 @@ namespace App.Admin
             {
                 app.UseExceptionHandler("/images/error.svg");
             }
-            
+
             app.UseStaticFiles();
 
             app.Run(async context =>
