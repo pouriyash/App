@@ -1,9 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.0" />
+  </ItemGroup>
+  
   <ItemGroup>
     <ProjectReference Include="..\App.Data.Sql\App.Data.Sql.csproj" />
     <ProjectReference Include="..\App.DomainModels\App.DomainModels.csproj" />
