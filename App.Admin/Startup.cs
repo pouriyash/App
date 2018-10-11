@@ -36,7 +36,7 @@ namespace App.Admin
             ///Dependency Injection
             Bootstraper.Startup.ConfigureServices(services);
 
-            services.Configure<SiteSettings>(options => Configuration.GetSection("connectionstrings").Bind(options));
+            services.Configure<ConnectionString>(options => Configuration.GetSection("ConnectionStrings").Bind(options));
 
         }
 

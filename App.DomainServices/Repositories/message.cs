@@ -15,14 +15,14 @@ namespace App.DomainServices.Repositories
 
         public class MessagesService : IMessagesService
         {
-            IOptions<SiteSettings> _settings;
-        public MessagesService(IOptions<SiteSettings> settings)
+            IOptions<ConnectionString> _settings;
+        public MessagesService(IOptions<ConnectionString> settings)
             {
                 _settings = settings;
             }
             public string GetSiteName()
             {
-                var cs=_settings.Value.ConnectionStrings;
+                var cs=_settings.Value.AppDbConnection;
                 return "DNT";
             }
         }
