@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using App.DomainModels.ViewModels.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -34,6 +35,9 @@ namespace App.Admin
 
             ///Dependency Injection
             Bootstraper.Startup.ConfigureServices(services);
+
+            services.Configure<SiteSettings>(options => Configuration.GetSection("connectionstrings").Bind(options));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
