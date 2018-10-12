@@ -14,7 +14,7 @@ namespace App.Data.Sql.Context
         public AppDbContext CreateDbContext(string[] args)
         {
             var builder = new DbContextOptionsBuilder<AppDbContext>();
-            builder.UseSqlServer("Data Source=.;Initial Catalog=NewAppTest;Persist Security Info=True;User ID=sa; Password=123; MultipleActiveResultSets=True");
+            builder.UseSqlServer(@"Data Source=DESKTOP-80FGNLP\POURIYA;Initial Catalog=NewAppTest;Persist Security Info=True;User ID=sa; Password=123; MultipleActiveResultSets=True");
             return new AppDbContext(builder.Options);
         }
     }

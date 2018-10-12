@@ -1,7 +1,8 @@
 ﻿using App.Data.Sql.Context;
 using App.DomainModels.ViewModels.Settings;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting; 
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection; 
 using static App.DomainServices.Repositories.message;
@@ -10,22 +11,21 @@ namespace App.Admin
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; }
+        public IConfiguration _Configuration { get; }
         public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
-            Configuration = configuration;
+            _Configuration = configuration;
         }
 
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>();
+           
 
-            ///Dependency Injection
-            Bootstraper.Startup.ConfigureServices(services);            
-            services.Configure<ConnectionString>(options => Configuration.GetSection("ConnectionStrings").Bind(options));
+            ///Dependency Injection          
             services.AddMvc();
+            Bootstraper.StartUp.ConfigureServices(services, _Configuration);
 
         }
 
