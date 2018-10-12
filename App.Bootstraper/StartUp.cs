@@ -16,10 +16,12 @@ namespace App.Bootstraper
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
 
+            services.AddScoped<IUnitOfWork, AppDbContext>();
             services.AddTransient<IMessagesService, MessagesService>();
 
             //بایند کردن موجودیت ConnectionStrings از appsetting به Model  مورد نظر
             services.Configure<ConnectionString>(options => configuration.GetSection("ConnectionStrings").Bind(options));
+
 
             //اتصال connectionStrings به AppDbContext
             services.AddDbContextPool<AppDbContext>(

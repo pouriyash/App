@@ -6,16 +6,19 @@ using App.Data.Sql.Context;
 using App.DomainModels.Entities.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace App.Admin.Controllers
 {
     [Route("Home")]
     public class HomeController
     {
-        private readonly AppDbContext _ctx;
-        public HomeController(AppDbContext ctx)
+        private readonly IUnitOfWork _uow;
+        private readonly DbSet<Person> _person;
+        public HomeController(AppDbContext uow)
         {
-            _ctx = ctx;
+            _uow = uow;
+            _person = _uow.Set<Person>();
         }
         //[ActionContext]
         //public ActionContext ActionContext { get; set; }
@@ -24,7 +27,7 @@ namespace App.Admin.Controllers
         public string hello()
         {
 
-           var model= _ctx.Person.ToList();
+           var model= _person.ToList();
             return "Running a POCO controller!";
         }
     }
