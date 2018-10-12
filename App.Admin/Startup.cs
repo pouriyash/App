@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using App.Data.Sql.Context;
 using App.DomainModels.ViewModels.Settings;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Hosting; 
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.DependencyInjection; 
 using static App.DomainServices.Repositories.message;
 
 namespace App.Admin
@@ -28,6 +20,7 @@ namespace App.Admin
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDbContext>();
 
             ///Dependency Injection
             Bootstraper.Startup.ConfigureServices(services);            
@@ -39,11 +32,12 @@ namespace App.Admin
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IConfiguration configuration, IHostingEnvironment env, IMessagesService messagesService)
         {
-
+            
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -51,7 +45,14 @@ namespace App.Admin
             }
 
             app.UseFileServer();
-            app.UseMvcWithDefaultRoute();
+
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                 name: "default",
+                 template: "{controller=Home}/{action=Index}/{id?}");
+            });
 
             //app.Run(async context =>
             //{
