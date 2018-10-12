@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Text;
 using static App.DomainServices.Repositories.message;
 
@@ -21,7 +23,7 @@ namespace App.Bootstraper
 
             //بایند کردن موجودیت ConnectionStrings از appsetting به Model  مورد نظر
             services.Configure<ConnectionString>(options => configuration.GetSection("ConnectionStrings").Bind(options));
-
+            services.AddScoped<IDbConnection>(_ => new SqlConnection(configuration.GetConnectionString("ConnectionStrings")));
 
             //اتصال connectionStrings به AppDbContext
             services.AddDbContextPool<AppDbContext>(
