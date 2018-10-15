@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace App.DomainModels.Entities.Models
+namespace App.DomainModels.Dto.Person
 {
-    /// <summary>
-    /// جدول کاربر تست
-    /// </summary>
-    public class Person
+    public class PersonSummary
     {
-        [Key]
         public int PersonId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
