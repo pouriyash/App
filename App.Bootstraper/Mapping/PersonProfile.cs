@@ -7,9 +7,9 @@ using System.Text;
 
 namespace App.Bootstraper.Mapping
 {
-    public class Person:Profile
+    public class PersonProfile : Profile
     {
-        public Person()
+        public PersonProfile()
         {
             CreateMap<Person, PersonSummary>();
         }

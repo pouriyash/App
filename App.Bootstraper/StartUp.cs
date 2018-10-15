@@ -1,5 +1,7 @@
-﻿using App.Data.Sql.Context;
+﻿using App.Bootstraper.Mapping;
+using App.Data.Sql.Context;
 using App.DomainModels.ViewModels.Settings;
+using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +28,9 @@ namespace App.Bootstraper
 
             //اتصال connectionStrings به AppDbContext
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("AppDbConnection")));
+
+            services.AddAutoMapper(typeof(PersonProfile));
+
         }
     }
 }

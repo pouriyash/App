@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using App.Data.Sql.Context;
 using App.DomainModels.Entities.Models;
+using App.DomainServices.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,12 +14,11 @@ namespace App.Admin.Controllers
     [Route("Home")]
     public class HomeController
     {
-        private readonly IUnitOfWork _uow;
-        private readonly DbSet<Person> _person;
-        public HomeController(AppDbContext uow)
+        private readonly PersonRepository _personrepository;
+        public HomeController
+            ( PersonRepository personrepository)
         {
-            _uow = uow;
-            _person = _uow.Set<Person>();
+            _personrepository = personrepository;
         }
         //[ActionContext]
         //public ActionContext ActionContext { get; set; }
@@ -27,7 +27,7 @@ namespace App.Admin.Controllers
         public string hello()
         {
 
-           var model= _person.ToList();
+           var model= _personrepository.GetAll();
             return "Running a POCO controller!";
         }
     }
