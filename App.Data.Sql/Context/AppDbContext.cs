@@ -140,7 +140,9 @@ namespace App.Data.Sql.Context
 
         #endregion
 
-
+        /// <summary>
+        /// جدول کاربر تست
+        /// </summary>
         public DbSet<Person> Person { get; set; }
     }
 }

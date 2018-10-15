@@ -6,6 +6,5 @@ namespace App.DomainServices.Repositories
 {
     public class BaseRepository
     {
-        public 
     }
 }
