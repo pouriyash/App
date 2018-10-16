@@ -10,6 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Alamut.Data" Version="3.0.4" />
+    <PackageReference Include="Alamut.Utilities" Version="3.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.0" />
   </ItemGroup>
   

@@ -25,6 +25,7 @@ namespace App.Admin
 
             ///Dependency Injection          
             services.AddMvc();
+
             Bootstraper.StartUp.ConfigureServices(services, _Configuration);
 
         }

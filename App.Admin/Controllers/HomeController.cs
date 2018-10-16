@@ -4,18 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using App.Data.Sql.Context;
 using App.DomainModels.Entities.Models;
+using App.DomainServices.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace App.Admin.Controllers
 {
     [Route("Home")]
     public class HomeController
     {
-        private readonly AppDbContext _ctx;
-        public HomeController(AppDbContext ctx)
+        private readonly PersonRepository _personrepository;
+        public HomeController
+            ( PersonRepository personrepository)
         {
-            _ctx = ctx;
+            _personrepository = personrepository;
         }
         //[ActionContext]
         //public ActionContext ActionContext { get; set; }
@@ -24,7 +27,7 @@ namespace App.Admin.Controllers
         public string hello()
         {
 
-           var model= _ctx.Person.ToList();
+           var model= _personrepository.GetAll();
             return "Running a POCO controller!";
         }
     }
