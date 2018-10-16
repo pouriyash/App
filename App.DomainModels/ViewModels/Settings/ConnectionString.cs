@@ -4,8 +4,8 @@ using System.Text;
 
 namespace App.DomainModels.ViewModels.Settings
 {
-    public class SiteSettings
+    public class ConnectionString
     {
-        public ConnectionString ConnectionStrings { get; set; }
+        public string AppDbConnection { get; set; }
     }
 }

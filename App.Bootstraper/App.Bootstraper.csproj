@@ -14,5 +14,9 @@
     <ProjectReference Include="..\App.DomainModels\App.DomainModels.csproj" />
     <ProjectReference Include="..\App.DomainServices\App.DomainServices.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Mapping\" />
+  </ItemGroup>
 
 </Project>
