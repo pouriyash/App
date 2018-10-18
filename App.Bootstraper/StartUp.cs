@@ -1,6 +1,7 @@
 ﻿using App.Bootstraper.Mapping;
 using App.Data.Sql.Context;
 using App.DomainModels.ViewModels.Settings;
+using App.DomainServices.Repositories;
 using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,7 @@ namespace App.Bootstraper
 
             services.AddScoped<IUnitOfWork, AppDbContext>();
             services.AddTransient<IMessagesService, MessagesService>();
+            services.AddTransient<PersonRepository>();
 
             //بایند کردن موجودیت ConnectionStrings از appsetting به Model  مورد نظر
             services.Configure<ConnectionString>(options => configuration.GetSection("ConnectionStrings").Bind(options));
