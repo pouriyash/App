@@ -7,10 +7,12 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using App.DomainModels.Entities.Identity;
 
 namespace App.Data.Sql.Context
 {
-    public class AppDbContext: DbContext,IUnitOfWork
+    public class AppDbContext: IdentityDbContext<User,Role,int,UserClaim,UserRole,UserLogin,RoleClaim,UserToken>, IUnitOfWork
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
