@@ -22,6 +22,7 @@ namespace App.Bootstraper
 
             services.AddScoped<IUnitOfWork, AppDbContext>();
             services.AddTransient<IMessagesService, MessagesService>();
+            services.AddTransient<PersonRepository>();
 
             //تزریق تمام repository ها با استفاده از reflection که از فضای نام آن ها استفاده میکند
             // Domain Services
