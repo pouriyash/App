@@ -45,6 +45,7 @@ namespace App.Admin
                 app.UseExceptionHandler("/images/error.svg");
             }
 
+            app.UseHttpsRedirection();
             app.UseFileServer();
 
 
