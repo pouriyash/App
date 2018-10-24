@@ -1,5 +1,7 @@
-﻿using App.DomainModels.Entities.Models;
+﻿using App.DomainModels.Entities.Identity;
+using App.DomainModels.Entities.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace App.Data.Sql.Context
 {
-    public class AppDbContext: DbContext,IUnitOfWork
+    public class AppDbContext: IdentityDbContext<User,Role,int,UserClaim,UserRole,UserLogin,RoleClaim,UserToken>, IUnitOfWork
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
@@ -109,7 +111,7 @@ namespace App.Data.Sql.Context
         //Todo Cmpelete
         private void beforeSaveTriggers()
         {
-            //validateEntities();
+            validateEntities();
             setShadowProperties();
             //this.ApplyCorrectYeKe();
         }
@@ -124,18 +126,19 @@ namespace App.Data.Sql.Context
         }
 
         //Todo Impelement
+        //از رفیعی پرسیده شود
         private void validateEntities()
         {
-        //    var errors = this.GetValidationErrors();
-        //    if (!string.IsNullOrWhiteSpace(errors))
-        //    {
-        //        // we can't use constructor injection anymore, because we are using the `AddDbContextPool<>`
-        //        var loggerFactory = this.GetService<ILoggerFactory>();
-        //        loggerFactory.CheckArgumentIsNull(nameof(loggerFactory));
-        //        var logger = loggerFactory.CreateLogger<AppDbContext>();
-        //        logger.LogError(errors);
-        //        throw new InvalidOperationException(errors);
-        //    }
+            //var errors = this.GetValidationErrors();
+            //if (!string.IsNullOrWhiteSpace(errors))
+            //{
+            //    // we can't use constructor injection anymore, because we are using the `AddDbContextPool<>`
+            //    var loggerFactory = this.GetService<ILoggerFactory>();
+            //    loggerFactory.CheckArgumentIsNull(nameof(loggerFactory));
+            //    var logger = loggerFactory.CreateLogger<AppDbContext>();
+            //    logger.LogError(errors);
+            //    throw new InvalidOperationException(errors);
+            //}
         }
 
         #endregion
@@ -144,5 +147,7 @@ namespace App.Data.Sql.Context
         /// جدول کاربر تست
         /// </summary>
         public DbSet<Person> Person { get; set; }
+
+      
     }
 }
