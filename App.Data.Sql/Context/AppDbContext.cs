@@ -11,6 +11,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using App.DomainModels.Entities.Identity;
+using App.Common.Extentions.Persian;
+using App.DomainModels.Entities.AuditableEntity;
+using App.Common.GuardToolkit;
+using Microsoft.Extensions.Logging;
 
 namespace App.Data.Sql.Context
 {
@@ -113,9 +117,9 @@ namespace App.Data.Sql.Context
         //Todo Cmpelete
         private void beforeSaveTriggers()
         {
-            validateEntities();
+            //validateEntities();
             setShadowProperties();
-            //this.ApplyCorrectYeKe();
+            this.ApplyCorrectYeKe();
         }
 
         //Todo Compelete
@@ -123,8 +127,8 @@ namespace App.Data.Sql.Context
         {
             // we can't use constructor injection anymore, because we are using the `AddDbContextPool<>`
             var httpContextAccessor = this.GetService<IHttpContextAccessor>();
-            //httpContextAccessor.CheckArgumentIsNull(nameof(httpContextAccessor));
-            //ChangeTracker.SetAuditableEntityPropertyValues(httpContextAccessor);
+            httpContextAccessor.CheckArgumentIsNull(nameof(httpContextAccessor));
+            ChangeTracker.SetAuditableEntityPropertyValues(httpContextAccessor);
         }
 
         //Todo Impelement
