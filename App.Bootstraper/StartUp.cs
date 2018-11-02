@@ -24,6 +24,14 @@ namespace App.Bootstraper
             services.AddTransient<IMessagesService, MessagesService>();
             services.AddTransient<PersonRepository>();
 
+            //تزریق تمام repository ها با استفاده از reflection که از فضای نام آن ها استفاده میکند
+            // Domain Services
+            services.Scan(scan =>
+                scan.FromAssemblyOf<PersonRepository>()
+                    .AddClasses(classes => classes.InNamespaceOf<PersonRepository>())
+                    .AsSelf()
+                    .WithScopedLifetime());
+
             //بایند کردن موجودیت ConnectionStrings از appsetting به Model  مورد نظر
             services.Configure<ConnectionString>(options => configuration.GetSection("ConnectionStrings").Bind(options));
             services.AddScoped<IDbConnection>(_ => new SqlConnection(configuration.GetConnectionString("ConnectionStrings")));
@@ -32,6 +40,7 @@ namespace App.Bootstraper
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("AppDbConnection")));
 
             services.AddAutoMapper(typeof(PersonProfile));
+
 
         }
     }

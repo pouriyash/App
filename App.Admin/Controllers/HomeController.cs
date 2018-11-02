@@ -27,7 +27,7 @@ namespace App.Admin.Controllers
         public string hello()
         {
 
-           var model= _personrepository.GetAll();
+           var model= _personrepository.GetAlla();
             return "Running a POCO controller!";
         }
     }
