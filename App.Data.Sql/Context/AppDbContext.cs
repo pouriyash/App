@@ -143,11 +143,15 @@ namespace App.Data.Sql.Context
 
         #endregion
 
+        #region DbSets
+
         /// <summary>
         /// جدول کاربر تست
         /// </summary>
         public DbSet<Person> Person { get; set; }
 
-      
+
+        #endregion
+
     }
 }
