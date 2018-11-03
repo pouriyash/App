@@ -47,9 +47,16 @@ namespace App.DomainModels.Entities.Identity
 
         public bool IsActive { get; set; } = true;
 
+
         public virtual ICollection<UserUsedPassword> UserUsedPasswords { get; set; }
 
-        public virtual ICollection<UserToken> UserTokens { get; set; }
+        public virtual ICollection<UserToken> UserTokens { get; set; } = new List<UserToken>();
+        public virtual ICollection<UserRole> Roles { get; } = new List<UserRole>();
+
+        public virtual ICollection<UserClaim> Claims { get; } = new List<UserClaim>();
+
+        public virtual ICollection<UserLogin> Logins { get; } = new List<UserLogin>();
+
     }
 
     public class UserUsedPassword : IAuditableEntity
