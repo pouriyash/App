@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Security.Principal;
-using System.Text;
-
+ 
 namespace App.Common.Extentions.Identity
 {
     public static class IdentityExtensions
