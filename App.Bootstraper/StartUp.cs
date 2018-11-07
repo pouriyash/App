@@ -1,4 +1,5 @@
-﻿using App.Bootstraper.Mapping;
+﻿using App.Bootstraper.identity;
+using App.Bootstraper.Mapping;
 using App.Data.Sql.Context;
 using App.DomainModels.Entities.Identity;
 using App.DomainModels.ViewModels.Settings;
@@ -25,30 +26,47 @@ namespace App.Bootstraper
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
 
-            services.AddScoped<IUnitOfWork, AppDbContext>();
+            #region اضافی
+            //services.AddScoped<IUnitOfWork, AppDbContext>();
+            //services.AddScoped<IApplicationUserStore, ApplicationUserStore>();
+            //services.AddScoped<UserStore<User, Role, AppDbContext, int, UserClaim, UserRole, UserLogin, UserToken, RoleClaim>, ApplicationUserStore>();
+
+            //services.AddScoped<IApplicationUserManager, ApplicationUserManager>();
+            //services.AddScoped<UserManager<User>, ApplicationUserManager>();
+
+            //services.AddScoped<IApplicationRoleManager, ApplicationRoleManager>();
+            //services.AddScoped<RoleManager<Role>, ApplicationRoleManager>();
+
+            //services.AddScoped<IApplicationSignInManager, ApplicationSignInManager>();
+            //services.AddScoped<SignInManager<User>, ApplicationSignInManager>();
+
+            //services.AddScoped<IApplicationRoleStore, ApplicationRoleStore>();
+            //services.AddScoped<RoleStore<Role, AppDbContext, int, UserRole, RoleClaim>, ApplicationRoleStore>();
+
+            //services.AddIdentity<User, Role>(identityOptions =>
+            //{
+            //}).AddUserStore<ApplicationUserStore>()
+            //  .AddUserManager<ApplicationUserManager>()
+            //  .AddRoleStore<ApplicationRoleStore>()
+            //  .AddRoleManager<ApplicationRoleManager>()
+            //  .AddSignInManager<ApplicationSignInManager>()
+            //  // You **cannot** use .AddEntityFrameworkStores() when you customize everything
+            //  //.AddEntityFrameworkStores<ApplicationDbContext, int>()
+            //  .AddDefaultTokenProviders(); 
+            #endregion
+
+
             services.AddTransient<IMessagesService, MessagesService>();
             services.AddTransient<PersonRepository>();
+            services.Configure<SiteSettings>(options => configuration.Bind(options));
 
             #region Identity
+            services.AddCustomIdentityServices();
             //services.AddScoped<IUserClaimsPrincipalFactory<User>, ApplicationClaimsPrincipalFactory>();
             //services.AddScoped<UserClaimsPrincipalFactory<User, Role>, ApplicationClaimsPrincipalFactory>();
 
             //services.AddScoped<IdentityErrorDescriber, CustomIdentityErrorDescriber>();
 
-            //services.AddScoped<IApplicationUserStore, ApplicationUserStore>();
-            //services.AddScoped<UserStore<User, Role, ApplicationDbContext, int, UserClaim, UserRole, UserLogin, UserToken, RoleClaim>, ApplicationUserStore>();
-
-            //services.AddScoped<IApplicationUserManager, ApplicationUserManager>();
-            //services.AddScoped<UserManager<User>, ApplicationUserManager>();
-
-            services.AddScoped<IApplicationRoleManager, ApplicationRoleManager>();
-            services.AddScoped<RoleManager<Role>, ApplicationRoleManager>();
-
-            //services.AddScoped<IApplicationSignInManager, ApplicationSignInManager>();
-            //services.AddScoped<SignInManager<User>, ApplicationSignInManager>();
-
-            services.AddScoped<IApplicationRoleStore, ApplicationRoleStore>();
-            services.AddScoped<RoleStore<Role, AppDbContext, int, UserRole, RoleClaim>, ApplicationRoleStore>();
 
             #endregion
 
