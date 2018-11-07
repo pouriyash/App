@@ -62,8 +62,8 @@ namespace App.Bootstraper.identity
             // services.AddSingleton<IAntiforgery, NoBrowserCacheAntiforgery>();
             // services.AddSingleton<IHtmlGenerator, NoBrowserCacheHtmlGenerator>();
 
-            //services.AddScoped<IIdentityDbInitializer, IdentityDbInitializer>();
-            //services.AddScoped<IUsedPasswordsService, UsedPasswordsService>();
+            services.AddScoped<IIdentityDbInitializer, IdentityDbInitializer>();
+            services.AddScoped<IUsedPasswordsService, UsedPasswordsService>();
             //services.AddScoped<ISiteStatService, SiteStatService>();
             //services.AddScoped<IUsersPhotoService, UsersPhotoService>();
             //services.AddScoped<ISecurityTrimmingService, SecurityTrimmingService>();

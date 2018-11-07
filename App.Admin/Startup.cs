@@ -1,10 +1,11 @@
-﻿using App.Data.Sql.Context;
+﻿using App.Bootstraper.identity;
+using App.Data.Sql.Context;
 using App.DomainModels.ViewModels.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection; 
+using Microsoft.Extensions.DependencyInjection;
 using static App.DomainServices.Repositories.message;
 
 namespace App.Admin
@@ -21,10 +22,11 @@ namespace App.Admin
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           
+
 
             ///Dependency Injection          
             services.AddMvc();
+            var siteSettings = services.GetSiteSettings();
 
             Bootstraper.StartUp.ConfigureServices(services, _Configuration);
 
@@ -33,7 +35,7 @@ namespace App.Admin
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IConfiguration configuration, IHostingEnvironment env, IMessagesService messagesService)
         {
-            
+
 
             if (env.IsDevelopment())
             {
@@ -48,6 +50,10 @@ namespace App.Admin
             app.UseHttpsRedirection();
             app.UseFileServer();
 
+            // Adds all of the ASP.NET Core Identity related initializations at once.
+            app.UseCustomIdentityServices();
+            //نمیدونم چیه.باید تحقیق شود
+            //app.UseCookiePolicy();
 
             app.UseMvc(routes =>
             {
