@@ -13,6 +13,9 @@ using App.Common.Extentions.Persian;
 using App.DomainModels.Entities.AuditableEntity;
 using App.Common.GuardToolkit;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using App.DomainModels.ViewModels.Settings;
+using App.Data.Sql.Mapping;
 
 namespace App.Data.Sql.Context
 {
@@ -156,6 +159,21 @@ namespace App.Data.Sql.Context
 
 
         #endregion
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            // it should be placed here, otherwise it will rewrite the following settings!
+            base.OnModelCreating(builder);
+            // we can't use constructor injection anymore, because we are using the `AddDbContextPool<>`
+            var siteSettings = this.GetService<IOptionsSnapshot<SiteSettings>>();
+            siteSettings.CheckArgumentIsNull(nameof(siteSettings));
+            siteSettings.Value.CheckArgumentIsNull(nameof(siteSettings.Value));
+            // Adds all of the ASP.NET Core Identity related mappings at once.
+            builder.AddCustomIdentityMappings(siteSettings.Value);
+            
+            // This should be placed here, at the end.
+            builder.AddAuditableShadowProperties();
+        }
 
     }
 }
