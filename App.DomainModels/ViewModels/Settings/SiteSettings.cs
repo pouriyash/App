@@ -9,6 +9,7 @@ namespace App.DomainModels.ViewModels.Settings
     public class SiteSettings
     {
         public AdminUserSeed AdminUserSeed { get; set; }
+        public ActiveDatabase ActiveDatabase { get; set; }
 
         public ConnectionString ConnectionStrings { get; set; }
         public CookieOptions CookieOptions { get; set; }

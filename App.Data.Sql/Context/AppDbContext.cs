@@ -170,7 +170,14 @@ namespace App.Data.Sql.Context
             siteSettings.Value.CheckArgumentIsNull(nameof(siteSettings.Value));
             // Adds all of the ASP.NET Core Identity related mappings at once.
             builder.AddCustomIdentityMappings(siteSettings.Value);
-            
+
+            //builder.Entity<Product>(build =>
+            //{
+            //    build.Property(product => product.Name).HasMaxLength(450).IsRequired();
+            //    build.HasOne(product => product.Category)
+            //           .WithMany(category => category.Products);
+            //});
+
             // This should be placed here, at the end.
             builder.AddAuditableShadowProperties();
         }

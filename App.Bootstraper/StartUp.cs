@@ -1,20 +1,10 @@
 ﻿using App.Bootstraper.identity;
 using App.Bootstraper.Mapping;
-using App.Data.Sql.Context;
-using App.DomainModels.Entities.Identity;
 using App.DomainModels.ViewModels.Settings;
-using App.DomainServices.Identity;
-using App.DomainServices.Identity.Contracts;
 using App.DomainServices.Repositories;
 using AutoMapper;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using static App.DomainServices.Repositories.message;
@@ -58,7 +48,6 @@ namespace App.Bootstraper
 
             services.AddTransient<IMessagesService, MessagesService>();
             services.AddTransient<PersonRepository>();
-            services.Configure<SiteSettings>(options => configuration.Bind(options));
 
             #region Identity
             services.AddCustomIdentityServices();
@@ -86,7 +75,7 @@ namespace App.Bootstraper
             services.AddScoped<IDbConnection>(_ => new SqlConnection(configuration.GetConnectionString("ConnectionStrings")));
 
             //اتصال connectionStrings به AppDbContext
-            services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("AppDbConnection")));
+            //services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("AppDbConnection")));
 
             services.AddAutoMapper(typeof(PersonProfile));
 

@@ -16,6 +16,7 @@ namespace App.Data.Sql.Mapping
         /// </summary>
         public static void AddCustomIdentityMappings(this ModelBuilder modelBuilder, SiteSettings siteSettings)
         {
+
             modelBuilder.Entity<RoleClaim>(builder =>
             {
                 builder.HasOne(roleClaim => roleClaim.Role).WithMany(role => role.Claims).HasForeignKey(roleClaim => roleClaim.RoleId);
