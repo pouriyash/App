@@ -24,20 +24,20 @@ namespace App.Bootstraper.identity
             services.AddScoped<IPrincipal>(provider =>
                 provider.GetService<IHttpContextAccessor>()?.HttpContext?.User ?? ClaimsPrincipal.Current);
 
-            //services.AddScoped<ILookupNormalizer, CustomNormalizer>();
-            //services.AddScoped<UpperInvariantLookupNormalizer, CustomNormalizer>();
+            services.AddScoped<ILookupNormalizer, CustomNormalizer>();
+            services.AddScoped<UpperInvariantLookupNormalizer, CustomNormalizer>();
 
             //services.AddScoped<ISecurityStampValidator, CustomSecurityStampValidator>();
             //services.AddScoped<SecurityStampValidator<User>, CustomSecurityStampValidator>();
 
-            //services.AddScoped<IPasswordValidator<User>, CustomPasswordValidator>();
-            //services.AddScoped<PasswordValidator<User>, CustomPasswordValidator>();
+            services.AddScoped<IPasswordValidator<User>, CustomPasswordValidator>();
+            services.AddScoped<PasswordValidator<User>, CustomPasswordValidator>();
 
-            //services.AddScoped<IUserValidator<User>, CustomUserValidator>();
-            //services.AddScoped<UserValidator<User>, CustomUserValidator>();
+            services.AddScoped<IUserValidator<User>, CustomUserValidator>();
+            services.AddScoped<UserValidator<User>, CustomUserValidator>();
 
-            //services.AddScoped<IUserClaimsPrincipalFactory<User>, ApplicationClaimsPrincipalFactory>();
-            //services.AddScoped<UserClaimsPrincipalFactory<User, Role>, ApplicationClaimsPrincipalFactory>();
+            services.AddScoped<IUserClaimsPrincipalFactory<User>, ApplicationClaimsPrincipalFactory>();
+            services.AddScoped<UserClaimsPrincipalFactory<User, Role>, ApplicationClaimsPrincipalFactory>();
 
             //services.AddScoped<IdentityErrorDescriber, CustomIdentityErrorDescriber>();
 

@@ -19,6 +19,7 @@ namespace App.DomainModels.ViewModels.Settings
         public int NotAllowedPreviouslyUsedPasswords { get; set; }
         public int ChangePasswordReminderDays { get; set; }
 
-
+        public string[] EmailsBanList { get; set; }
+        public string[] PasswordsBanList { get; set; }
     }
 }

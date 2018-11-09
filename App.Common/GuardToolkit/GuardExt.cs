@@ -1,5 +1,9 @@
-﻿using System;
+﻿using DNTPersianUtils.Core;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Globalization;
+using System.Linq;
 using System.Text;
 
 namespace App.Common.GuardToolkit
@@ -14,5 +18,46 @@ namespace App.Common.GuardToolkit
             if (o == null)
                 throw new ArgumentNullException(name);
         }
+
+        public static bool IsEmailAddress(this string inputText)
+        {
+            return !string.IsNullOrWhiteSpace(inputText) && new EmailAddressAttribute().IsValid(inputText);
+        }
+
+        public static bool IsNumeric(this string inputText)
+        {
+            if (string.IsNullOrWhiteSpace(inputText)) return false;
+
+            long inputNumber;
+            return long.TryParse(inputText.ToEnglishNumbers(), out inputNumber);
+        }
+        public static bool ContainsNumber(this string inputText)
+        {
+            return !string.IsNullOrWhiteSpace(inputText) && inputText.ToEnglishNumbers().Any(char.IsDigit);
+        }
+
+        public static bool HasConsecutiveChars(this string inputText, int sequenceLength = 3)
+        {
+            var charEnumerator = StringInfo.GetTextElementEnumerator(inputText);
+            var currentElement = string.Empty;
+            var count = 1;
+            while (charEnumerator.MoveNext())
+            {
+                if (currentElement == charEnumerator.GetTextElement())
+                {
+                    if (++count >= sequenceLength)
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    count = 1;
+                    currentElement = charEnumerator.GetTextElement();
+                }
+            }
+            return false;
+        }
+
     }
 }
