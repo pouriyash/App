@@ -21,7 +21,7 @@ namespace App.Bootstraper.identity
             services.AddCustomServices();
             //قست 5 ایدنتیتی نصیری
             //services.AddCustomTicketStore(siteSettings);
-            //services.AddDynamicPermissions();
+            services.AddDynamicPermissions();
             //services.AddCustomDataProtection(siteSettings);
             services.AddIdentityOptions(siteSettings);
         }
