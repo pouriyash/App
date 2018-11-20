@@ -66,7 +66,7 @@ namespace App.Bootstraper.identity
             services.AddScoped<IUsedPasswordsService, UsedPasswordsService>();
             //services.AddScoped<ISiteStatService, SiteStatService>();
             //services.AddScoped<IUsersPhotoService, UsersPhotoService>();
-            //services.AddScoped<ISecurityTrimmingService, SecurityTrimmingService>();
+            services.AddScoped<ISecurityTrimmingService, SecurityTrimmingService>();
             //services.AddScoped<IAppLogItemsService, AppLogItemsService>();
 
             return services;
