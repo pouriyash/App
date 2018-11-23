@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <Folder Include="ViewComponents\" />
-    <Folder Include="Views\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
 
   <ItemGroup>

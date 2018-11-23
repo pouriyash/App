@@ -12,11 +12,11 @@ using Microsoft.EntityFrameworkCore;
 namespace App.Admin.Controllers
 {
     [Route("Home")]
-    public class HomeController
+    public class HomeController : Controller
     {
         private readonly PersonRepository _personrepository;
         public HomeController
-            ( PersonRepository personrepository)
+            (PersonRepository personrepository)
         {
             _personrepository = personrepository;
         }
@@ -24,11 +24,9 @@ namespace App.Admin.Controllers
         //public ActionContext ActionContext { get; set; }
         //public HttpContext HttpContext => ActionContext.HttpContext;
         [Route("")]
-        public string hello()
+        public IActionResult Index()
         {
-
-           var model= _personrepository.GetAll();
-            return "Running a POCO controller!";
+            return View();
         }
     }
 }
