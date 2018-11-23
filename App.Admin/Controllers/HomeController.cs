@@ -17,6 +17,7 @@ namespace App.Admin.Controllers
         private readonly PersonRepository _personrepository;
         public HomeController
             (PersonRepository personrepository)
+
         {
             _personrepository = personrepository;
         }
