@@ -1,8 +1,12 @@
 ﻿using App.Bootstraper.identity;
 using App.Bootstraper.Mapping;
+using App.Data.Sql.Context;
+using App.DomainModels.Entities.Identity;
 using App.DomainModels.ViewModels.Settings;
+using App.DomainServices.Identity;
 using App.DomainServices.Repositories;
 using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Data;
@@ -53,8 +57,8 @@ namespace App.Bootstraper
             services.AddCustomIdentityServices();
             //services.AddRequiredEfInternalServices(siteSettings); // It's added to access services from the dbcontext, remove it if you are using the normal `AddDbContext` and normal constructor dependency injection.
 
-            //services.AddScoped<IUserClaimsPrincipalFactory<User>, ApplicationClaimsPrincipalFactory>();
-            //services.AddScoped<UserClaimsPrincipalFactory<User, Role>, ApplicationClaimsPrincipalFactory>();
+            services.AddScoped<IUserClaimsPrincipalFactory<User>, ApplicationClaimsPrincipalFactory>();
+            services.AddScoped<UserClaimsPrincipalFactory<User, Role>, ApplicationClaimsPrincipalFactory>();
 
             //services.AddScoped<IdentityErrorDescriber, CustomIdentityErrorDescriber>();
 

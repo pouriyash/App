@@ -28,7 +28,6 @@ namespace App.Admin
 
             Bootstraper.StartUp.ConfigureServices(services, _Configuration);
             // Adds all of the ASP.NET Core Identity related services and configurations at once.
-            services.AddCustomIdentityServices();
 
             var siteSettings = services.GetSiteSettings();
             services.AddRequiredEfInternalServices(siteSettings); // It's added to access services from the dbcontext, remove it if you are using the normal `AddDbContext` and normal constructor dependency injection.

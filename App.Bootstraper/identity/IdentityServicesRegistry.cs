@@ -20,7 +20,7 @@ namespace App.Bootstraper.identity
             var siteSettings = GetSiteSettings(services);
             services.AddCustomServices();
             //قست 5 ایدنتیتی نصیری
-            //services.AddCustomTicketStore(siteSettings);
+            services.AddCustomTicketStore(siteSettings);
             services.AddDynamicPermissions();
             //services.AddCustomDataProtection(siteSettings);
             services.AddIdentityOptions(siteSettings);
