@@ -1,16 +1,25 @@
-﻿using App.DomainModels.Entities.Models;
+﻿using App.DomainModels.Entities.Identity;
+using App.DomainModels.Entities.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
-using System.Threading.Tasks;
+using System.Threading.Tasks; 
+using App.Common.Extentions.Persian;
+using App.DomainModels.Entities.AuditableEntity;
+using App.Common.GuardToolkit;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using App.DomainModels.ViewModels.Settings;
+using App.Data.Sql.Mapping;
 
 namespace App.Data.Sql.Context
 {
-    public class AppDbContext: DbContext,IUnitOfWork
+    public class AppDbContext: IdentityDbContext<User,Role,int,UserClaim,UserRole,UserLogin,RoleClaim,UserToken>, IUnitOfWork
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
@@ -111,7 +120,7 @@ namespace App.Data.Sql.Context
         {
             //validateEntities();
             setShadowProperties();
-            //this.ApplyCorrectYeKe();
+            this.ApplyCorrectYeKe();
         }
 
         //Todo Compelete
@@ -119,30 +128,59 @@ namespace App.Data.Sql.Context
         {
             // we can't use constructor injection anymore, because we are using the `AddDbContextPool<>`
             var httpContextAccessor = this.GetService<IHttpContextAccessor>();
-            //httpContextAccessor.CheckArgumentIsNull(nameof(httpContextAccessor));
-            //ChangeTracker.SetAuditableEntityPropertyValues(httpContextAccessor);
+            httpContextAccessor.CheckArgumentIsNull(nameof(httpContextAccessor));
+            ChangeTracker.SetAuditableEntityPropertyValues(httpContextAccessor);
         }
 
         //Todo Impelement
+        //از رفیعی پرسیده شود
         private void validateEntities()
         {
-        //    var errors = this.GetValidationErrors();
-        //    if (!string.IsNullOrWhiteSpace(errors))
-        //    {
-        //        // we can't use constructor injection anymore, because we are using the `AddDbContextPool<>`
-        //        var loggerFactory = this.GetService<ILoggerFactory>();
-        //        loggerFactory.CheckArgumentIsNull(nameof(loggerFactory));
-        //        var logger = loggerFactory.CreateLogger<AppDbContext>();
-        //        logger.LogError(errors);
-        //        throw new InvalidOperationException(errors);
-        //    }
+            //var errors = this.GetValidationErrors();
+            //if (!string.IsNullOrWhiteSpace(errors))
+            //{
+            //    // we can't use constructor injection anymore, because we are using the `AddDbContextPool<>`
+            //    var loggerFactory = this.GetService<ILoggerFactory>();
+            //    loggerFactory.CheckArgumentIsNull(nameof(loggerFactory));
+            //    var logger = loggerFactory.CreateLogger<AppDbContext>();
+            //    logger.LogError(errors);
+            //    throw new InvalidOperationException(errors);
+            //}
         }
 
         #endregion
+
+        #region DbSets
 
         /// <summary>
         /// جدول کاربر تست
         /// </summary>
         public DbSet<Person> Person { get; set; }
+
+
+        #endregion
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            // it should be placed here, otherwise it will rewrite the following settings!
+            base.OnModelCreating(builder);
+            // we can't use constructor injection anymore, because we are using the `AddDbContextPool<>`
+            var siteSettings = this.GetService<IOptionsSnapshot<SiteSettings>>();
+            siteSettings.CheckArgumentIsNull(nameof(siteSettings));
+            siteSettings.Value.CheckArgumentIsNull(nameof(siteSettings.Value));
+            // Adds all of the ASP.NET Core Identity related mappings at once.
+            builder.AddCustomIdentityMappings(siteSettings.Value);
+
+            //builder.Entity<Product>(build =>
+            //{
+            //    build.Property(product => product.Name).HasMaxLength(450).IsRequired();
+            //    build.HasOne(product => product.Category)
+            //           .WithMany(category => category.Products);
+            //});
+
+            // This should be placed here, at the end.
+            builder.AddAuditableShadowProperties();
+        }
+
     }
 }
