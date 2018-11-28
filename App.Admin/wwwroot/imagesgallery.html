@@ -1,0 +1,498 @@
+<!doctype html>
+<html class="no-js" dir="rtl" lang="fa">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=11">
+
+    <title>images gallery - Super Admin</title>
+
+    <link rel="stylesheet" href="./lib/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.css">
+
+    <!-- if RTL website code below delete comment and added dir="rtl" to html tag -->
+    <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.rtl.css">
+    <link rel="stylesheet" href="./fonts/font-fa.css" />
+
+    <link href="./fonts/font-fa.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./css/styles.css" />
+
+
+    <!-- favicons-->
+    <link rel="apple-touch-icon" sizes="76x76" href="./favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
+
+    <meta name="theme-color" content="#ffffff">
+
+    <script src="./lib/jquery-3.1.1/jquery-3.1.1.min.js"></script>
+    <script src="./lib/bootstrap/bootstrap.min.js"></script>
+
+    <link href="./lib/pe-icon-7-stroke/css/helper.css" rel="stylesheet" />
+    <link href="./lib/pe-icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet" />
+
+    <link href="./css/animate.css" rel="stylesheet" />
+
+    <script src="./js/wow.min.js"></script>
+
+    <link href="./lib/scrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" />
+
+    <script src="./lib/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script src="./lib/amchart/amcharts/amcharts.js"></script>
+
+    <script src="./lib/amchart/amcharts/serial.js"></script>
+
+    <script src="./lib/amchart/amcharts/themes/dark.js"></script>
+
+    <script src="./lib/amchart/amcharts/gauge.js"></script>
+
+    <script src="./js/isotope.pkgd.min.js"></script>
+
+    <!-- fancy box -->
+    <link rel="stylesheet" href="./lib/fancybox/dist/jquery.fancybox.min.css">
+    <script src="./lib/fancybox/dist/jquery.fancybox.min.js"></script>
+
+    <!-- sweetalert2 -->
+    <link rel="stylesheet" href="./lib/sweetAlert-2/sweetalert2.css" />
+    <script src="./lib/sweetAlert-2/sweetalert2.js"></script>
+
+    <!-- toaster -->
+    <link rel="stylesheet" href="./lib/toaster/toastr.min.css">
+    <script src="./lib/toaster/toastr.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <header class="header">
+
+            <div class="header__menu">
+                <i class="pe-7s-menu pe-lg"></i>
+            </div>
+
+            <div class="header__title">
+                سوپر پنل ادمین
+            </div>
+
+            <form class="header__form col-md-4">
+                <div class="input-group">
+                    <input id="email" type="text" class="form-control header__form__txt" name="email" placeholder="جستجو">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                </div>
+            </form>
+
+            <div class="header__notify">
+                <a href="#" class="header__notify__item">
+                    <i class="pe-7s-mail"></i>
+                    <span class="badge header__notify__item__badge wow flash">5</span>
+                </a>
+                <a href="#" class="header__notify__item">
+                    <i class="pe-7s-back"></i>
+                </a>
+                <a href="#" class="header__notify__item">
+                    <i class="pe-7s-keypad"></i>
+                </a>
+            </div>
+
+        </header>
+
+        <aside class="sidebar">
+            <div class="sidebar__user">
+                <div class="sidebar__user__profile">
+                    <img src="./images/user.jpg" class="sidebar__user__profile__img">
+                    <div>
+                        <div class="sidebar__user__profile__name">
+                            مهدی حسنی
+                        </div>
+                        <div class="sidebar__user__profile__email">
+                            09197572163
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="sidebar__navigation scroll-panel">
+                <li class="sidebar__navigation__item">
+                    <a href="./index.html" class="sidebar__navigation__item__link active">
+                        <i class="pe-7s-home"></i>
+                        صفحه اصلی
+                    </a>
+                </li>
+
+                <li class="sidebar__navigation__item">
+                    <a href="./form.html" target="_blank" class="sidebar__navigation__item__link">
+                        <i class="pe-7s-server"></i>
+                        فرم ها
+                    </a>
+                </li>
+
+                <li class="sidebar__navigation__item">
+                    <a href="./button.html" target="_blank" class="sidebar__navigation__item__link">
+                        <i class="pe-7s-server"></i>
+                        دکمه ها
+                    </a>
+
+                </li>
+
+                <li class="sidebar__navigation__item">
+                    <a href="./message.html" class="sidebar__navigation__item__link">
+                        <i class="pe-7s-server"></i>
+                        پیام های نمایشی
+                    </a>
+                </li>
+
+                <li class="sidebar__navigation__item">
+                    <a href="./imagesgallery.html" class="sidebar__navigation__item__link">
+                        <i class="pe-7s-server"></i>
+                        گالری عکس
+                    </a>
+                </li>
+                <li class="sidebar__navigation__item">
+                    <a href="./table.html" class="sidebar__navigation__item__link">
+                        <i class="pe-7s-server"></i>
+                        جداول
+                    </a>
+                </li>
+
+                <li class="sidebar__navigation__item">
+                    <a href="#" class="sidebar__navigation__item__link">
+                        <i class="pe-7s-smile"></i>
+                        دکمه ها
+                    </a>
+
+                    <ul class="sidebar__navigation sidebar__navigation-sub">
+                        <li class="sidebar__navigation__item">
+                            <a href="#" class="sidebar__navigation__item__link">
+                                زیر منو ها
+                            </a>
+                        </li>
+
+                        <li class="sidebar__navigation__item">
+                            <a href="#" class="sidebar__navigation__item__link">
+                                زیر منو ها
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <li class="sidebar__navigation__item">
+                    <a href="#" class="sidebar__navigation__item__link">
+                        <i class="pe-7s-target"></i>
+                        جداول
+                    </a>
+
+                    <ul class="sidebar__navigation sidebar__navigation-sub">
+                        <li class="sidebar__navigation__item">
+                            <a href="#" class="sidebar__navigation__item__link">
+                                زیر منو ها
+                            </a>
+                        </li>
+
+                        <li class="sidebar__navigation__item">
+                            <a href="#" class="sidebar__navigation__item__link">
+                                زیر منو ها
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <li class="sidebar__navigation__item">
+                    <a href="#" class="sidebar__navigation__item__link">
+                        <i class="pe-7s-target"></i>
+                        جداول
+                    </a>
+
+                    <ul class="sidebar__navigation sidebar__navigation-sub">
+                        <li class="sidebar__navigation__item">
+                            <a href="#" class="sidebar__navigation__item__link">
+                                زیر منو ها
+                            </a>
+                        </li>
+
+                        <li class="sidebar__navigation__item">
+                            <a href="#" class="sidebar__navigation__item__link">
+                                زیر منو ها
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <li class="sidebar__navigation__item">
+                    <a href="#" class="sidebar__navigation__item__link">
+                        <i class="pe-7s-target"></i>
+                        جداول
+                    </a>
+
+                    <ul class="sidebar__navigation sidebar__navigation-sub">
+                        <li class="sidebar__navigation__item">
+                            <a href="#" class="sidebar__navigation__item__link">
+                                زیر منو ها
+                            </a>
+                        </li>
+
+                        <li class="sidebar__navigation__item">
+                            <a href="#" class="sidebar__navigation__item__link">
+                                زیر منو ها
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <li class="sidebar__navigation__item">
+                    <a href="#" class="sidebar__navigation__item__link">
+                        <i class="pe-7s-target"></i>
+                        جداول
+                    </a>
+
+                    <ul class="sidebar__navigation sidebar__navigation-sub">
+                        <li class="sidebar__navigation__item">
+                            <a href="#" class="sidebar__navigation__item__link">
+                                زیر منو ها
+                            </a>
+                        </li>
+
+                        <li class="sidebar__navigation__item">
+                            <a href="#" class="sidebar__navigation__item__link">
+                                زیر منو ها
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <li class="sidebar__navigation__item">
+                    <a href="#" class="sidebar__navigation__item__link">
+                        <i class="pe-7s-target"></i>
+                        جداول
+                    </a>
+
+                    <ul class="sidebar__navigation sidebar__navigation-sub">
+                        <li class="sidebar__navigation__item">
+                            <a href="#" class="sidebar__navigation__item__link">
+                                زیر منو ها
+                            </a>
+                        </li>
+
+                        <li class="sidebar__navigation__item">
+                            <a href="#" class="sidebar__navigation__item__link">
+                                زیر منو ها
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <li class="sidebar__navigation__item">
+                    <a href="#" class="sidebar__navigation__item__link">
+                        <i class="pe-7s-target"></i>
+                        جداول
+                    </a>
+
+                    <ul class="sidebar__navigation sidebar__navigation-sub">
+                        <li class="sidebar__navigation__item">
+                            <a href="#" class="sidebar__navigation__item__link">
+                                زیر منو ها
+                            </a>
+                        </li>
+
+                        <li class="sidebar__navigation__item">
+                            <a href="#" class="sidebar__navigation__item__link">
+                                زیر منو ها
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+            </ul>
+
+            <div id="chartdivClock"></div>
+
+
+        </aside>
+
+        <section class="content">
+            <div class="content__inner">
+                <div class="content__inner__title">
+                    گالری عکس
+                </div>
+                <div class="content__inner__desc">
+                    بیش از 2000 عکس در گالری عکس وجود دارد
+                </div>
+                <div class="row photo">
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/1.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/1.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/2.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/2.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/3.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/3.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/4.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/4.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/5.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/5.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/6.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/6.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/7.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/7.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/8.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/8.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/9.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/9.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/10.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/10.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/1.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/1.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/2.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/2.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/3.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/3.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/4.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/4.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/5.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/5.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/6.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/6.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/7.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/7.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/8.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/8.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/9.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/9.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/10.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/10.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/1.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/1.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/2.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/2.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/3.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/3.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/4.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/4.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/5.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/5.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/6.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/6.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/7.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/7.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/8.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/8.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/9.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/9.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
+                        <a href="./images/10.jpg" data-fancybox="images" data-caption="گالری عکس ">
+                            <img src="./images/10.jpg" class="img-responsive" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
