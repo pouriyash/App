@@ -2,11 +2,19 @@
 @{
     ViewData["Title"] = "ورود";
 }
-<div class="panel panel-default top30">
-    <div class="panel-heading">
-        <h3 class="panel-title">@ViewData["Title"]</h3>
-    </div>
-    <div class="panel-body">
+
+
+
+
+<div class="login">
+    <div class="login__block">
+        <div class="login__block__header">
+            <div class="text-center">
+                <i class="pe-7s-user pe-3x"></i>
+            </div>
+            <h6 class="text-center">ورود به اکانت پی</h6>
+        </div>
+
         <form asp-controller="Login"
               asp-action="Index"
               asp-route-returnurl="@ViewData["ReturnUrl"]"
@@ -72,85 +80,6 @@
             </div>
         </form>
     </div>
-    <footer class="panel-footer">
-        <p>
-            <a asp-action="Index" asp-controller="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">ثبت نام</a>
-        </p>
-        <p>
-            <a asp-action="Index" asp-controller="ForgotPassword">کلمه‌ی عبور خود را فراموش کرده‌اید؟</a>
-        </p>
-    </footer>
 </div>
 
-
-
-
-
-@using AGP.Domain.ViewModels.Account
-@model LoginViewModel
-@{
-    ViewData["Title"] = "ورود - اکانت پی ";
-    Layout = null;
-}
-
-<link rel="stylesheet" href="~/docs/lib/font-awesome-4.7.0/css/font-awesome.min.css" />
-<link rel="stylesheet" href="~/docs/lib/bootstrap/dist/css/bootstrap.min.css">
-
-<!-- if RTL website code below delete comment and added dir="rtl" to html tag -->
-<link rel="stylesheet" href="~/docs/lib/bootstrap/dist/css/bootstrap.min.rtl.css">
-<link rel="stylesheet" href="~/docs/fonts/font-fa.css" />
-
-<link rel="stylesheet" href="~/docs/css/styles.css" />
-
-<script src="~/docs/lib/jquery-3.1.1/jquery-3.1.1.min.js"></script>
-<script src="~/docs/lib/bootstrap/bootstrap.min.js"></script>
-
-<link href="~/docs/lib/pe-icon-7-stroke/css/helper.css" rel="stylesheet" />
-<link href="~/docs/lib/pe-icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet" />
-
-<!-- sweetalert2 -->
-<link rel="stylesheet" href="~/docs/lib/sweetAlert-2/sweetalert2.css" />
-<script src="~/docs/lib/sweetAlert-2/sweetalert2.js"></script>
-
-<link rel="stylesheet" href="~/docs/css/styleoverride.css" />
-
-
-<div class="login">
-    <div class="login__block">
-        <div class="login__block__header">
-            <div class="text-center">
-                <i class="pe-7s-user pe-3x"></i>
-            </div>
-            <h6 class="text-center">ورود به اکانت پی</h6>
-        </div>
-
-        <form asp-action="Login" asp-controller="Account" method="post">
-
-            <div class="form-group">
-                <input required class="form-control" placeholder="نام کاربری" type="text" asp-for="UserName" />
-                <input type="hidden" name="returnUrl" value="@(ViewBag.ReturnUrl)" />
-                <i class="form-group__bar"></i>
-            </div>
-
-            <div class="form-group">
-                <input required class="form-control" placeholder="رمز عبور" type="password" asp-for="Password" />
-                <i class="form-group__bar"></i>
-            </div>
-
-            <label class="custom-control custom-checkbox m-t-20">
-                <input type="checkbox" asp-for="RememberMe" class="custom-control-input">
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">مرا به خاطر بسپار</span>
-            </label>
-
-            <div class="text-center">
-                <button type="submit" class="btn btn-dark">
-                    <i class="pe-7s-right-arrow pe-2x"></i>
-                </button>
-            </div>
-
-        </form>
-    </div>
-</div>
-
-@Html.Partial("~/Views/_Partial/_sweetAlert.cshtml")
+ 

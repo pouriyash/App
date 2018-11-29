@@ -4,8 +4,9 @@ using App.DomainModels.ViewModels.Identity;
 using App.DomainModels.ViewModels.Settings;
 using App.DomainServices.Identity.Contracts;
 using DNTBreadCrumb.Core;
+using DNTCaptcha.Core;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
+using DNTCaptcha.Core.Providers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -57,7 +58,9 @@ namespace App.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[ValidateDNTCaptcha(CaptchaGeneratorLanguage = DNTCaptcha.Core.Providers.Language.Persian)]
+        [ValidateDNTCaptcha(ErrorMessage = "لطفا کد امنیتی را وارد کنید.",
+                            IsNumericErrorMessage = "مقدار باید عدد باشد..",
+                            CaptchaGeneratorLanguage = Language.Persian)]
         public async Task<IActionResult> Index(RegisterViewModel model)
         {
             if (ModelState.IsValid)

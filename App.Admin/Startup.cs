@@ -1,6 +1,7 @@
 ﻿using App.Bootstraper.identity;
 using App.Data.Sql.Context;
 using App.DomainModels.ViewModels.Settings;
+using DNTCaptcha.Core;
 using DNTCommon.Web.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -48,6 +49,7 @@ namespace App.Admin
                 jsonOptions.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
             })
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddDNTCaptcha();
 
         }
 
