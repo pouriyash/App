@@ -1,6 +1,7 @@
 ﻿using App.Bootstraper.identity;
 using App.Data.Sql.Context;
 using App.DomainModels.ViewModels.Settings;
+using AutoMapper;
 using DNTCaptcha.Core;
 using DNTCommon.Web.Core;
 using Microsoft.AspNetCore.Builder;
@@ -26,32 +27,31 @@ namespace App.Admin
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<SiteSettings>(options => _Configuration.Bind(options));
-         
+            services.AddCustomIdentityServices();
+
             var siteSettings = services.GetSiteSettings();
-
-            // Adds all of the ASP.NET Core Identity related services and configurations at once.
-            Bootstraper.StartUp.ConfigureServices(services, _Configuration);
-
-
             services.AddRequiredEfInternalServices(siteSettings); // It's added to access services from the dbcontext, remove it if you are using the normal `AddDbContext` and normal constructor dependency injection.
+
+            Bootstraper.StartUp.ConfigureServices(services, _Configuration);
+            // Adds all of the ASP.NET Core Identity related services and configurations at once.
 
             services.AddDbContextPool<AppDbContext>((serviceProvider, optionsBuilder) =>
             {
                 optionsBuilder.SetDbContextOptions(siteSettings);
                 optionsBuilder.UseInternalServiceProvider(serviceProvider); // It's added to access services from the dbcontext, remove it if you are using the normal `AddDbContext` and normal constructor dependency injection.
             });
-
+           
             ///Dependency Injection          
             services.AddMvc(options =>
             {
-                //options.UseYeKeModelBinder();
+                options.UseYeKeModelBinder();
                 options.AllowEmptyInputInBodyModelBinding = true;
                 // options.Filters.Add(new NoBrowserCacheAttribute());
             }).AddJsonOptions(jsonOptions =>
             {
                 jsonOptions.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
-            });
-
+            })
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDNTCaptcha();
 
         }

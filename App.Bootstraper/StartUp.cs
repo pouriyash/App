@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Data;
 using System.Data.SqlClient;
+using System.Reflection;
 using static App.DomainServices.Repositories.message;
 
 namespace App.Bootstraper
@@ -48,24 +49,21 @@ namespace App.Bootstraper
             //  //.AddEntityFrameworkStores<ApplicationDbContext, int>()
             //  .AddDefaultTokenProviders(); 
             #endregion
-
-
+            
             services.AddTransient<IMessagesService, MessagesService>();
             services.AddTransient<PersonRepository>();
 
             #region Identity
-            services.AddCustomIdentityServices();
+            //services.AddCustomIdentityServices();
             //services.AddRequiredEfInternalServices(siteSettings); // It's added to access services from the dbcontext, remove it if you are using the normal `AddDbContext` and normal constructor dependency injection.
 
             services.AddScoped<IUserClaimsPrincipalFactory<User>, ApplicationClaimsPrincipalFactory>();
             services.AddScoped<UserClaimsPrincipalFactory<User, Role>, ApplicationClaimsPrincipalFactory>();
 
             //services.AddScoped<IdentityErrorDescriber, CustomIdentityErrorDescriber>();
-
-
+            
             #endregion
-
-
+            
             //تزریق تمام repository ها با استفاده از reflection که از فضای نام آن ها استفاده میکند
             // Domain Services
             services.Scan(scan =>
@@ -81,8 +79,9 @@ namespace App.Bootstraper
             //اتصال connectionStrings به AppDbContext
             //services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("AppDbConnection")));
 
-            services.AddAutoMapper(typeof(PersonProfile));
+            services.AddAutoMapper(typeof(PersonProfile).GetTypeInfo().Assembly);
 
+ 
 
         }
     }
