@@ -9,62 +9,62 @@
 
     <title>Super Admin</title>
 
-    <link rel="stylesheet" href="./lib/font-awesome-4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="~/docs/lib/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/docs/lib/bootstrap/dist/css/bootstrap.min.css">
+ 
     <!-- if RTL website code below delete comment and added dir="rtl" to html tag -->
-    <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.rtl.css">
-    <link rel="stylesheet" href="./fonts/font-fa.css" />
+    <link rel="stylesheet" href="~/docs/lib/bootstrap/dist/css/bootstrap.min.rtl.css">
+    <link rel="stylesheet" href="~/docs/fonts/font-fa.css" />
 
-    <link href="./fonts/font-fa.css" rel="stylesheet" />
+    <link href="~/docs/fonts/font-fa.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="~/docs/css/styles.css" />
 
 
     <!-- favicons-->
-    <link rel="apple-touch-icon" sizes="76x76" href="./favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
-    <link rel="manifest" href="./favicons/manifest.json">
-    <link rel="mask-icon" href="./favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/docs/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/docs/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/docs/favicons/favicon-16x16.png">
+    <link rel="manifest" href="~/docs/favicons/manifest.json">
+    <link rel="mask-icon" href="~/docs/favicons/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="theme-color" content="#ffffff">
 
-    <script src="./lib/jquery-3.1.1/jquery-3.1.1.min.js"></script>
-    <script src="./lib/bootstrap/bootstrap.min.js"></script>
+    <script src="~/docs/lib/jquery-3.1.1/jquery-3.1.1.min.js"></script>
+    <script src="~/docs/lib/bootstrap/bootstrap.min.js"></script>
 
-    <link href="./lib/pe-icon-7-stroke/css/helper.css" rel="stylesheet" />
-    <link href="./lib/pe-icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <link href="~/docs/lib/pe-icon-7-stroke/css/helper.css" rel="stylesheet" />
+    <link href="~/docs/lib/pe-icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
-    <link href="./css/animate.css" rel="stylesheet" />
+    <link href="~/docs/css/animate.css" rel="stylesheet" />
 
-    <script src="./js/wow.min.js"></script>
+    <script src="~/docs/js/wow.min.js"></script>
 
-    <link href="./lib/scrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" />
+    <link href="~/docs/lib/scrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" />
     @RenderSection("style", false)
 
-    <script src="./lib/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/docs/lib/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
 
-    <script src="./lib/amchart/amcharts/amcharts.js"></script>
+    <script src="~/docs/lib/amchart/amcharts/amcharts.js"></script>
 
-    <script src="./lib/amchart/amcharts/serial.js"></script>
+    <script src="~/docs/lib/amchart/amcharts/serial.js"></script>
 
-    <script src="./lib/amchart/amcharts/themes/dark.js"></script>
+    <script src="~/docs/lib/amchart/amcharts/themes/dark.js"></script>
 
-    <script src="./lib/amchart/amcharts/gauge.js"></script>
+    <script src="~/docs/lib/amchart/amcharts/gauge.js"></script>
 
-    <script src="./js/isotope.pkgd.min.js"></script>
+    <script src="~/docs/js/isotope.pkgd.min.js"></script>
 
     <!-- fancy box -->
-    <link rel="stylesheet" href="./lib/fancybox/dist/jquery.fancybox.min.css">
-    <script src="./lib/fancybox/dist/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" href="~/docs/lib/fancybox/dist/jquery.fancybox.min.css">
+    <script src="~/docs/lib/fancybox/dist/jquery.fancybox.min.js"></script>
 
     <!-- sweetalert2 -->
-    <link rel="stylesheet" href="./lib/sweetAlert-2/sweetalert2.css" />
-    <script src="./lib/sweetAlert-2/sweetalert2.js"></script>
+    <link rel="stylesheet" href="~/docs/lib/sweetAlert-2/sweetalert2.css" />
+    <script src="~/docs/lib/sweetAlert-2/sweetalert2.js"></script>
 
     <!-- toaster -->
-    <link rel="stylesheet" href="./lib/toaster/toastr.min.css">
-    <script src="./lib/toaster/toastr.min.js"></script>
+    <link rel="stylesheet" href="~/docs/lib/toaster/toastr.min.css">
+    <script src="~/docs/lib/toaster/toastr.min.js"></script>
     @RenderSection("script", false)
 </head>
 
@@ -107,7 +107,7 @@
         <aside class="sidebar">
             <div class="sidebar__user">
                 <div class="sidebar__user__profile">
-                    <img src="./images/user.jpg" class="sidebar__user__profile__img">
+                    <img src="~/docs/images/user.jpg" class="sidebar__user__profile__img">
                     <div>
                         <div class="sidebar__user__profile__name">
                             مهدی حسنی
@@ -121,21 +121,21 @@
 
             <ul class="sidebar__navigation scroll-panel">
                 <li class="sidebar__navigation__item">
-                    <a href="./index.html" class="sidebar__navigation__item__link active">
+                    <a href="~/docs/index.html" class="sidebar__navigation__item__link active">
                         <i class="pe-7s-home"></i>
                         صفحه اصلی
                     </a>
                 </li>
 
                 <li class="sidebar__navigation__item">
-                    <a href="./form.html" target="_blank" class="sidebar__navigation__item__link">
+                    <a href="~/docs/form.html" target="_blank" class="sidebar__navigation__item__link">
                         <i class="pe-7s-server"></i>
                         فرم ها
                     </a>
                 </li>
 
                 <li class="sidebar__navigation__item">
-                    <a href="./button.html" target="_blank" class="sidebar__navigation__item__link">
+                    <a href="~/docs/button.html" target="_blank" class="sidebar__navigation__item__link">
                         <i class="pe-7s-server"></i>
                         دکمه ها
                     </a>
@@ -143,21 +143,21 @@
                 </li>
 
                 <li class="sidebar__navigation__item">
-                    <a href="./message.html" class="sidebar__navigation__item__link">
+                    <a href="~/docs/message.html" class="sidebar__navigation__item__link">
                         <i class="pe-7s-server"></i>
                         پیام های نمایشی
                     </a>
                 </li>
 
                 <li class="sidebar__navigation__item">
-                    <a href="./imagesgallery.html" class="sidebar__navigation__item__link">
+                    <a href="~/docs/imagesgallery.html" class="sidebar__navigation__item__link">
                         <i class="pe-7s-server"></i>
                         گالری عکس
                     </a>
                 </li>
 
                 <li class="sidebar__navigation__item">
-                    <a href="./table.html" class="sidebar__navigation__item__link">
+                    <a href="~/docs/table.html" class="sidebar__navigation__item__link">
                         <i class="pe-7s-server"></i>
                         جداول
                     </a>
@@ -359,7 +359,7 @@
         </section>
     </div>
 
-    <script src="./js/script.js"></script>
+    <script src="~/docs/js/script.js"></script>
 </body>
 
 </html>

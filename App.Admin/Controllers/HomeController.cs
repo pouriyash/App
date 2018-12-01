@@ -11,7 +11,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace App.Admin.Controllers
 {
-    [Route("Home")]
     public class HomeController : Controller
     {
         private readonly PersonRepository _personrepository;
@@ -24,7 +23,6 @@ namespace App.Admin.Controllers
         //[ActionContext]
         //public ActionContext ActionContext { get; set; }
         //public HttpContext HttpContext => ActionContext.HttpContext;
-        [Route("")]
         public IActionResult Index()
         {
             return View();
