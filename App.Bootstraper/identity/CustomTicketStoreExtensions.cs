@@ -21,11 +21,14 @@ namespace App.Bootstraper.identity
                 services.AddDistributedSqlServerCache(options =>
                 {
                     var cacheOptions = cookieOptions.DistributedSqlServerCacheOptions;
+
                     var connectionString = string.IsNullOrWhiteSpace(cacheOptions.ConnectionString) ?
                             siteSettings.GetDbConnectionString() :
                             cacheOptions.ConnectionString;
                     options.ConnectionString = connectionString;
+
                     options.SchemaName = cacheOptions.SchemaName;
+
                     options.TableName = cacheOptions.TableName;
                 });
                 services.AddScoped<ITicketStore, DistributedCacheTicketStore>();

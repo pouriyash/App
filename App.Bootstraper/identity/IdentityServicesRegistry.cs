@@ -18,6 +18,7 @@ namespace App.Bootstraper.identity
         public static void AddCustomIdentityServices(this IServiceCollection services)
         {
             var siteSettings = GetSiteSettings(services);
+
             services.AddCustomServices();
             //قست 5 ایدنتیتی نصیری
             services.AddCustomTicketStore(siteSettings);

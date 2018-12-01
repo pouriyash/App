@@ -17,7 +17,7 @@ namespace App.Bootstraper.identity
 {
     public static class AddCustomServicesExtensions
     {
-        public static IServiceCollection AddCustomServices(this IServiceCollection services)
+        public static void AddCustomServices(this IServiceCollection services)
         {
             services.AddScoped<Data.Sql.Context.IUnitOfWork, AppDbContext>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -69,7 +69,7 @@ namespace App.Bootstraper.identity
             services.AddScoped<ISecurityTrimmingService, SecurityTrimmingService>();
             //services.AddScoped<IAppLogItemsService, AppLogItemsService>();
 
-            return services;
+            //return services;
         }
     }
 }
