@@ -45,7 +45,7 @@ namespace App.Data.Sql.Context
             optionsBuilder.UseInternalServiceProvider(services.BuildServiceProvider()); // It's added to access services from the dbcontext, remove it if you are using the normal `AddDbContext` and normal constructor dependency injection.
 
             //builder.UseSqlServer(@"Data Source=DESKTOP-80FGNLP\POURIYA;Initial Catalog=NewAppTest;Persist Security Info=True;User ID=sa; Password=123; MultipleActiveResultSets=True");
-            //builder.UseSqlServer(@"Server=WIN-SQL\\MSSQLSERVER2016;Initial Catalog=NewAppTest;Persist Security Info=True;User ID=sa; Password=exir@123; MultipleActiveResultSets=True");
+            optionsBuilder.UseSqlServer(siteSettings.Value.ConnectionStrings.AppDbConnection);
             return new AppDbContext(optionsBuilder.Options);
         }
     }

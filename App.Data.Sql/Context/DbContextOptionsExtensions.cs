@@ -72,7 +72,7 @@ namespace App.Data.Sql.Context
 
         public static string GetDbConnectionString(this SiteSettings siteSettingsValue)
         {
-            return "Data Source=DESKTOP-80FGNLP\\POURIYA;Initial Catalog=NewAppTest;Persist Security Info=True;User ID=sa; Password=123; MultipleActiveResultSets=True";
+            return siteSettingsValue.ConnectionStrings.AppDbConnection;
             //siteSettingsValue.CheckArgumentIsNull(nameof(siteSettingsValue));
 
             //switch (siteSettingsValue.ActiveDatabase)
