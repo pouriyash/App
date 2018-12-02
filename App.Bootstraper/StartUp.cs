@@ -49,7 +49,7 @@ namespace App.Bootstraper
             //  //.AddEntityFrameworkStores<ApplicationDbContext, int>()
             //  .AddDefaultTokenProviders(); 
             #endregion
-            
+
             services.AddTransient<IMessagesService, MessagesService>();
             services.AddTransient<PersonRepository>();
 
@@ -61,9 +61,9 @@ namespace App.Bootstraper
             services.AddScoped<UserClaimsPrincipalFactory<User, Role>, ApplicationClaimsPrincipalFactory>();
 
             //services.AddScoped<IdentityErrorDescriber, CustomIdentityErrorDescriber>();
-            
+
             #endregion
-            
+
             //تزریق تمام repository ها با استفاده از reflection که از فضای نام آن ها استفاده میکند
             // Domain Services
             services.Scan(scan =>
@@ -79,9 +79,10 @@ namespace App.Bootstraper
             //اتصال connectionStrings به AppDbContext
             //services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("AppDbConnection")));
 
-            services.AddAutoMapper(typeof(PersonProfile).GetTypeInfo().Assembly);
+            //services.AddAutoMapper(typeof(PersonProfile).GetTypeInfo().Assembly);
+            services.AddAutoMapper();
 
- 
+            Initializer.Init();
 
         }
     }

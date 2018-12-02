@@ -25,6 +25,7 @@ namespace App.Admin.Controllers
         //public HttpContext HttpContext => ActionContext.HttpContext;
         public IActionResult Index()
         {
+            _personrepository.GetAlla();
             return View();
         }
     }

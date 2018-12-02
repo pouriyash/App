@@ -20,9 +20,10 @@ namespace App.DomainServices.Repositories
             _person = Context.Set<Person>();
         }
 
-        public IEnumerable<PersonSummary> GetAlla()
+        public List<PersonSummary> GetAlla()
         {
-            return _person.ProjectTo<PersonSummary>().ToList();
+            var model= _person.ProjectTo<PersonSummary>().ToList();
+            return model;
         }
 
     }
