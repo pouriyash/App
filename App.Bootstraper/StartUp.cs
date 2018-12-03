@@ -78,11 +78,12 @@ namespace App.Bootstraper
 
             //اتصال connectionStrings به AppDbContext
             //services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("AppDbConnection")));
-
+            Mapper.Initialize(c => {
+                c.AddProfiles(typeof(PersonProfile).GetTypeInfo().Assembly);
+            });
             //services.AddAutoMapper(typeof(PersonProfile).GetTypeInfo().Assembly);
             services.AddAutoMapper();
-
-            Initializer.Init();
+            
 
         }
     }
