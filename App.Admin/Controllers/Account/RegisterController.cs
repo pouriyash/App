@@ -61,6 +61,7 @@ namespace App.Admin.Controllers
         [ValidateDNTCaptcha(ErrorMessage = "لطفا کد امنیتی را وارد کنید.",
                             IsNumericErrorMessage = "مقدار باید عدد باشد..",
                             CaptchaGeneratorLanguage = Language.Persian)]
+        [Route("")]
         public async Task<IActionResult> Index(RegisterViewModel model)
         {
             if (ModelState.IsValid)
@@ -73,7 +74,7 @@ namespace App.Admin.Controllers
                     LastName = model.LastName
                 };
                 var result = await _userManager.CreateAsync(user, model.Password);
-                //if (result.Succeeded)
+                if (result.Succeeded)
                 {
                     _logger.LogInformation(3, $"{user.UserName} created a new account with password.");
 
@@ -104,13 +105,15 @@ namespace App.Admin.Controllers
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
+            
             return View(model);
         }
 
-        //[BreadCrumb(Title = "تائیدیه ایمیل", Order = 1)]
-        //public IActionResult ConfirmedRegisteration()
-        //{
-        //    return View();
-        //}
+        [BreadCrumb(Title = "تائیدیه ایمیل", Order = 1)]
+        [Route("ConfirmedRegisteration")]
+        public IActionResult ConfirmedRegisteration()
+        {
+            return View();
+        }
     }
 }
