@@ -73,7 +73,7 @@ namespace App.Admin.Controllers
                     LastName = model.LastName
                 };
                 var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                //if (result.Succeeded)
                 {
                     _logger.LogInformation(3, $"{user.UserName} created a new account with password.");
 
