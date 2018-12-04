@@ -27,6 +27,7 @@ namespace App.Admin
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<SiteSettings>(options => _Configuration.Bind(options));
+
             services.AddCustomIdentityServices();
 
             var siteSettings = services.GetSiteSettings();
