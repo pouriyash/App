@@ -81,6 +81,8 @@
             <div class="header__title">
                 سوپر پنل ادمین
             </div>
+          
+
 
             <form class="header__form col-md-4">
                 <div class="input-group">
@@ -100,6 +102,13 @@
                 <a href="#" class="header__notify__item">
                     <i class="pe-7s-keypad"></i>
                 </a>
+                @{
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-action="LogOff" asp-controller="LogIn">خروج</a>
+                        
+                    }
+                }
             </div>
 
         </header>

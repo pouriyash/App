@@ -26,8 +26,8 @@ namespace App.Admin
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //بایند کردن موجودیت ConnectionStrings از appsetting به Model  مورد نظر
             services.Configure<SiteSettings>(options => _Configuration.Bind(options));
-            services.AddCustomIdentityServices();
 
             var siteSettings = services.GetSiteSettings();
             services.AddRequiredEfInternalServices(siteSettings); // It's added to access services from the dbcontext, remove it if you are using the normal `AddDbContext` and normal constructor dependency injection.

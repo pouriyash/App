@@ -21,34 +21,7 @@ namespace App.Bootstraper
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
 
-            #region اضافی
-            //services.AddScoped<IUnitOfWork, AppDbContext>();
-            //services.AddScoped<IApplicationUserStore, ApplicationUserStore>();
-            //services.AddScoped<UserStore<User, Role, AppDbContext, int, UserClaim, UserRole, UserLogin, UserToken, RoleClaim>, ApplicationUserStore>();
-
-            //services.AddScoped<IApplicationUserManager, ApplicationUserManager>();
-            //services.AddScoped<UserManager<User>, ApplicationUserManager>();
-
-            //services.AddScoped<IApplicationRoleManager, ApplicationRoleManager>();
-            //services.AddScoped<RoleManager<Role>, ApplicationRoleManager>();
-
-            //services.AddScoped<IApplicationSignInManager, ApplicationSignInManager>();
-            //services.AddScoped<SignInManager<User>, ApplicationSignInManager>();
-
-            //services.AddScoped<IApplicationRoleStore, ApplicationRoleStore>();
-            //services.AddScoped<RoleStore<Role, AppDbContext, int, UserRole, RoleClaim>, ApplicationRoleStore>();
-
-            //services.AddIdentity<User, Role>(identityOptions =>
-            //{
-            //}).AddUserStore<ApplicationUserStore>()
-            //  .AddUserManager<ApplicationUserManager>()
-            //  .AddRoleStore<ApplicationRoleStore>()
-            //  .AddRoleManager<ApplicationRoleManager>()
-            //  .AddSignInManager<ApplicationSignInManager>()
-            //  // You **cannot** use .AddEntityFrameworkStores() when you customize everything
-            //  //.AddEntityFrameworkStores<ApplicationDbContext, int>()
-            //  .AddDefaultTokenProviders(); 
-            #endregion
+            services.AddCustomIdentityServices();
 
             services.AddTransient<IMessagesService, MessagesService>();
             services.AddTransient<PersonRepository>();
@@ -72,8 +45,8 @@ namespace App.Bootstraper
                     .AsSelf()
                     .WithScopedLifetime());
 
+            //services.Configure<ConnectionString>(options => configuration.GetSection("ConnectionStrings").Bind(options));
             //بایند کردن موجودیت ConnectionStrings از appsetting به Model  مورد نظر
-            services.Configure<ConnectionString>(options => configuration.GetSection("ConnectionStrings").Bind(options));
             services.AddScoped<IDbConnection>(_ => new SqlConnection(configuration.GetConnectionString("ConnectionStrings")));
 
             //اتصال connectionStrings به AppDbContext

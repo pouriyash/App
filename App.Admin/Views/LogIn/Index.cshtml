@@ -19,13 +19,12 @@
 
 <link href="~/docs/lib/pe-icon-7-stroke/css/helper.css" rel="stylesheet" />
 <link href="~/docs/lib/pe-icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet" />
-
+<script src="~/js/site.min.js"></script>
 <!-- sweetalert2 -->
 <link rel="stylesheet" href="~/docs/lib/sweetAlert-2/sweetalert2.css" />
 <script src="~/docs/lib/sweetAlert-2/sweetalert2.js"></script>
 
 <link rel="stylesheet" href="~/docs/css/styleoverride.css" />
-
 
 <div class="login">
     <div class="login__block">
@@ -33,11 +32,11 @@
             <div class="text-center">
                 <i class="pe-7s-user pe-3x"></i>
             </div>
-            <h6 class="text-center">ورود به اکانت پی</h6>
+            <h6 class="text-center">ورود به برنامه</h6>
         </div>
 
         <form asp-action="Index" asp-controller="Login" method="post">
-
+            <input type="hidden" name="ReturnUrl" value="@ViewData["ReturnUrl"]" />
             <div class="form-group">
                 <input required class="form-control" placeholder="نام کاربری" type="text" asp-for="Username" />
                 <i class="form-group__bar"></i>
@@ -76,7 +75,9 @@
                     <i class="pe-7s-right-arrow pe-2x"></i>
                 </button>
             </div>
-
+            <a asp-action="Index" asp-controller="Register">ثبت نام</a>
+            <br />
+            <a>فراموشی رمزعبور</a>
         </form>
     </div>
 </div>

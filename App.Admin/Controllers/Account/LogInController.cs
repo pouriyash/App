@@ -43,9 +43,9 @@ namespace App.Admin.Controllers
         }
         [BreadCrumb(Title = "ایندکس", Order = 1)]
         [NoBrowserCache]
-        public IActionResult Index(string returnUrl = null)
+        public IActionResult Index(string ReturnUrl = null)
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            ViewData["ReturnUrl"] = ReturnUrl;
             return View();
         }
 
@@ -54,7 +54,7 @@ namespace App.Admin.Controllers
         [ValidateDNTCaptcha(ErrorMessage = "لطفا کد امنیتی را وارد کنید.",
                            IsNumericErrorMessage = "مقدار باید عدد باشد.",
                            CaptchaGeneratorLanguage = Language.Persian)]
-        public async Task<IActionResult> Index(LoginViewModel vm, string returnUrl = null)
+        public async Task<IActionResult> Index(LoginViewModel vm, string ReturnUrl = null)
         {
             if (ModelState.IsValid)
             {
@@ -83,9 +83,9 @@ namespace App.Admin.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, $"{vm.Username} logged in.");
-                    if (Url.IsLocalUrl(returnUrl))
+                    if (Url.IsLocalUrl(ReturnUrl))
                     {
-                        return Redirect(returnUrl);
+                        return Redirect(ReturnUrl);
                     }
                     return RedirectToAction(nameof(HomeController.Index), "Home");
                 }
@@ -107,6 +107,20 @@ namespace App.Admin.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(vm);
+        }
+
+        [Route("LogOff")]
+        public async Task<IActionResult> LogOff()
+        {
+            var user = User.Identity.IsAuthenticated ? await _userManager.FindByNameAsync(User.Identity.Name) : null;
+            await _signInManager.SignOutAsync();
+            if (user != null)
+            {
+                await _userManager.UpdateSecurityStampAsync(user);
+                _logger.LogInformation(4, $"{user.UserName} logged out.");
+            }
+
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
     }
 }
