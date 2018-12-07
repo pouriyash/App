@@ -111,10 +111,13 @@ namespace App.DomainServices.Identity
 
             var skipRecords = pageNumber * recordsPerPage;
 
+            //شناسه کاربران دارای این نقش
             var roleUserIdsQuery = from role in Roles
                                    where role.Id == roleId
                                    from user in role.Users
                                    select user.UserId;
+
+            //لیست کاربران دارای نقش مورد نظر به همراه نقش هایشان
             var query = _users.Include(user => user.Roles)
                               .Where(user => roleUserIdsQuery.Contains(user.Id))
                          .AsNoTracking();

@@ -67,20 +67,24 @@
                                         </a>
                                     </td>
                                     <td>
-                                        @{
-                                            if (item.IsActive)
-                                            {
-                                                <a asp-action="" asp-controller="" asp-route-Id="">
-                                                    <p class="btn btn-success">غیر فعال شود</p>
-                                                </a>
+
+                                        <form asp-action="ChangeUserActive" asp-controller="UsersManager" asp-route-userId="@item.Id" asp-route-ReturnUrl="~/RolesManager/Index">
+                                            @{
+                                                if (item.IsActive)
+                                                {
+                                                    <input class="btn btn-success" type="hidden" name="activate" value="false" />
+                                                    <input class="btn btn-success" type="submit" value="غیر فعال شود" />
+                                                }
+                                                else
+                                                {
+                                                    <input class="btn btn-success" type="hidden" name="activate" value="true" />
+                                                    <input class="btn btn-danger" type="submit" value="فعال شود" />
+
+                                                }
                                             }
-                                            else
-                                            {
-                                                <a asp-action="" asp-controller="" asp-route-Id="">
-                                                    <p class="btn btn-danger">فعال شود</p>
-                                                </a>
-                                            }
-                                        }
+                                        </form>
+
+
                                     </td>
                                     <td>
                                         @{

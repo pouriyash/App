@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "خانه";
+}
+@model Tuple<User, List<Role>>
+
+<form asp-action="ChangeUserRoles" asp-controller="RolesManager" asp-route-userId="@Model.Item1.Id">
+
+    @foreach (var role in Model.Item2)
+    {
+        var selected = Model.Item1.Roles.Any(userRole => userRole.RoleId == role.Id) ? "checked" : "";
+        <div>
+            <input type="checkbox" name="roleIds" value="@role.Id" @selected />
+            @role.Name
+        </div>
+    }
+    
+    <input type="submit" class="btn btn-success" />
+</form>

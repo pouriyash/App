@@ -1003,6 +1003,13 @@ namespace App.DomainServices.Identity.Contracts
         /// <returns></returns>
         User GetUserById(int Id);
 
+        /// <summary>
+        /// واکشی کاربر بهمراه نقش هایش با استفاده از شناسه کاربر
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        User GetUserWithRolesByuserId(int Id);
+
         #endregion
 
         #region CustomMethods

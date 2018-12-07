@@ -90,5 +90,30 @@ namespace App.Admin.Controllers
             return View(model);
         }
 
+        #region مدیریت نقش های کاربر
+
+        public async Task<IActionResult> UserRolesManager(int userId)
+        {
+            var Roles = await _roleManager.GetAllCustomRolesAsync();
+            var userwithRoles = _userManager.GetUserWithRolesByuserId(userId);
+            return View(new Tuple<User, List<Role>>(userwithRoles, Roles));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangeUserRoles(int userId, List<int> roleIds)
+        {
+            User thisUser = null;
+            var result = await _userManager.AddOrUpdateUserRolesAsync(
+                userId, roleIds, user => thisUser = user);
+            if (!result.Succeeded)
+            {
+                return BadRequest(error: result.DumpErrors(useHtmlNewLine: true));
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        #endregion
+
     }
 }

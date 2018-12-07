@@ -432,6 +432,11 @@ namespace App.DomainServices.Identity
             
         }
 
+        public User GetUserWithRolesByuserId(int Id)
+        {
+            return _users.Where(p=>p.Id==Id).Include(p=>p.Roles).FirstOrDefault();
+        }
+
         #endregion
     }
 }
