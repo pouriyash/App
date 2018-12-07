@@ -426,6 +426,12 @@ namespace App.DomainServices.Identity
             return await UpdateSecurityStampAsync(user);
         }
 
+        public User GetUserById(int Id)
+        {
+            return _users.Find(Id);
+            
+        }
+
         #endregion
     }
 }

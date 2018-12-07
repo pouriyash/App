@@ -1,0 +1,125 @@
+﻿@{
+    ViewData["Title"] = "خانه";
+}
+@model PagedUsersListViewModel
+@{
+    int counter = 0;
+}
+@*<a asp-action="Create" asp-controller=" " class="btn btn-primary">ایجاد یک نقش جدید</a>*@
+<br />
+<div class="content__inner">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="content__inner__card wow zoomIn">
+                <div class="content__inner__card__title">
+                    جدول ها
+                </div>
+                <div class="content__inner__card__desc">
+                    از طریق جعبه زیر می توانید جدول ها را مشاهده کنید
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-xs-4 col-xs-4">
+                        <div class="form-group">
+                            <div class="select dataTables-select">
+                                <select class="form-control">
+                                    <option>نمایش ۱۰ آیتم</option>
+                                    <option>نمایش ۱۵ ایتم</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-xs-8 col-xs-8">
+                        <form>
+                            <div class="form-group from-txt-search">
+                                <input type="text" placeholder="جستجو کنید ..." class="form-control " />
+                                <i class="form-group__bar"></i>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table  table-striped">
+                        <thead>
+                            <tr>
+                                <th>ردیف</th>
+                                <th>نام کاربر</th>
+                                <th>نام کاربری </th>
+                                <th>ویرایش مشخصات</th>
+                                <th>وضعیت کاربری</th>
+                                <th>وضعیت ایمیل</th>
+                                <th>نقش های سیستم</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Users)
+                            {
+                                <tr>
+                                    <td>@(++counter)</td>
+                                    <td>@item.DisplayName </td>
+                                    <td>@item.UserName </td>
+
+                                    <td>
+                                        <a class="action">
+                                            <i class="pe-7s-edit"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @{
+                                            if (item.IsActive)
+                                            {
+                                                <a asp-action="" asp-controller="" asp-route-Id="">
+                                                    <p class="btn btn-success">غیر فعال شود</p>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a asp-action="" asp-controller="" asp-route-Id="">
+                                                    <p class="btn btn-danger">فعال شود</p>
+                                                </a>
+                                            }
+                                        }
+                                    </td>
+                                    <td>
+                                        @{
+                                            if (item.EmailConfirmed)
+                                            {
+                                                <p class="btn btn-success">فعال</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="btn btn-danger">غیر فعال</p>
+                                            }
+                                        }
+                                    </td>
+                                    <td>
+                                        <a asp-action="UserRolesManager" asp-controller="RolesManager" asp-route-userId="@item.Id" class="btn btn-primary">
+                                            مدیریت نقش ها
+                                        </a>
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                @*<div class="text-center font-size-12 margin-top-20">
+                        نمایش 1 تا 2 از 17 مورد
+                    </div>
+
+                    <div class="pagination">
+                        <a class="pagination__btn"><i class="pe-7s-angle-left"></i></a>
+                        <a href="#" class="pagination__btn active">1</a>
+                        <a href="#" class="pagination__btn">2</a>
+                        <a href="#" class="pagination__btn">3</a>
+                        <a href="#" class="pagination__btn">4</a>
+                        <a class="pagination__btn disabled"><i class="pe-7s-angle-right"></i></a>
+                    </div>*@
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using App.Common.Extentions.Identity;
 using App.Data.Sql.Context;
+using App.DomainModels.Entities.Identity;
 using App.DomainModels.Entities.Models;
 using App.DomainModels.ViewModels.Identity;
 using App.DomainServices.Identity.Contracts;
@@ -19,11 +21,16 @@ namespace App.Admin.Controllers
     public class RolesManagerController : Controller
     {
         private readonly IApplicationRoleManager _roleManager;
+        private readonly IApplicationUserManager _userManager;
+
+        private const int DefaultPageSize = 10;
+
         public RolesManagerController
-            (PersonRepository personrepository, IApplicationRoleManager roleManager)
+            (PersonRepository personrepository, IApplicationRoleManager roleManager, IApplicationUserManager userManager)
 
         {
             _roleManager = roleManager;
+            _userManager = userManager;
         }
         //[ActionContext]
         //public ActionContext ActionContext { get; set; }
@@ -33,6 +40,8 @@ namespace App.Admin.Controllers
             var RoleList = _roleManager.GetAllCustomRolesAndUsersCountList();
             return View(RoleList);
         }
+
+        #region ایجاد نقش جدید
 
         public IActionResult Create()
         {
@@ -53,5 +62,33 @@ namespace App.Admin.Controllers
             }
             return View(vm);
         }
+
+        #endregion
+
+        /// <summary>
+        /// مدیریت کاربران و نقش هایشان
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="page"></param>
+        /// <param name="field"></param>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> UsersInRole(int? id, int? page = 1, string field = "Id", SortOrder order = SortOrder.Ascending)
+        {
+            var model= await _roleManager.GetPagedApplicationUsersInRoleListAsync(
+                roleId: id.Value,
+                pageNumber: page.Value - 1,
+                recordsPerPage: DefaultPageSize,
+                sortByField: field,
+                sortOrder: order,
+                showAllUsers: true);
+
+            model.Paging.CurrentPage = page.Value;
+            model.Paging.ItemsPerPage = DefaultPageSize;
+            model.Paging.ShowFirstLast = true;
+            
+            return View(model);
+        }
+
     }
 }

@@ -20,7 +20,7 @@ using App.Common.Extentions.Identity;
 
 namespace App.DomainServices.Identity
 {
-    public class ApplicationRoleManager: RoleManager<Role>, IApplicationRoleManager
+    public class ApplicationRoleManager : RoleManager<Role>, IApplicationRoleManager
     {
         private readonly IHttpContextAccessor _contextAccessor;
         private readonly Data.Sql.Context.IUnitOfWork _uow;
@@ -108,6 +108,7 @@ namespace App.DomainServices.Identity
                 string sortByField, SortOrder sortOrder,
                 bool showAllUsers)
         {
+
             var skipRecords = pageNumber * recordsPerPage;
 
             var roleUserIdsQuery = from role in Roles
@@ -142,6 +143,8 @@ namespace App.DomainServices.Identity
                 Users = await query.Skip(skipRecords).Take(recordsPerPage).ToListAsync(),
                 Roles = await Roles.ToListAsync()
             };
+
+
         }
 
 

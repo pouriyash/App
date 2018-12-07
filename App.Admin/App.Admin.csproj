@@ -770,6 +770,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Views\RolesManager\UsersInRole.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\RolesManager\Create.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
