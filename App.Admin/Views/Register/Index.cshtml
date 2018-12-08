@@ -24,8 +24,7 @@
 <link rel="stylesheet" href="~/docs/lib/sweetAlert-2/sweetalert2.css" />
 <script src="~/docs/lib/sweetAlert-2/sweetalert2.js"></script>
 
-<link href="~/docs/css/styleoverride.css.css" rel="stylesheet" />
-
+@*<link rel="stylesheet" href="~/docs/css/styleoverride.css" />*@
 
 <div class="login">
     <div class="login__block">
@@ -33,33 +32,52 @@
             <div class="text-center">
                 <i class="pe-7s-user pe-3x"></i>
             </div>
-            <h6 class="text-center"> ثبت نام در  برنامه</h6>
+            <h6 class="text-center"> ثبت نام </h6>
         </div>
-        <form asp-action="Register" asp-controller="Account" method="post">
-
+        <form asp-controller="Register" asp-action="Index">
+            <partial name="_CustomValidationSummary" />
             <div class="form-group">
-                <input class="form-control" placeholder="نام " required type="text" asp-for="FirstName" />
-                <i class="form-group__bar"></i>
+                <label asp-for="FirstName" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input dir="rtl" asp-for="FirstName" class="form-control col-md-4" />
+                    @*<span asp-validation-for="FirstName" class="text-danger"></span>*@
+                </div>
             </div>
             <div class="form-group">
-                <input class="form-control" placeholder="  نام خانوادگی" required type="text" asp-for="LastName" />
-                <i class="form-group__bar"></i>
+                <label asp-for="LastName" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input dir="rtl" asp-for="LastName" class="form-control col-md-4" />
+                    @*<span asp-validation-for="LastName" class="text-danger"></span>*@
+                </div>
             </div>
             <div class="form-group">
-                <input class="form-control" placeholder="ایمیل" required type="Email" asp-for="Email" />
-                <i class="form-group__bar"></i>
+                <label asp-for="Username" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input dir="ltr" asp-for="Username" onblur="triggerRemoteValidation()" class="form-control col-md-4" />
+                    @*<span asp-validation-for="Username" class="text-danger"></span>*@
+                    <span class="optional-label">(جهت لاگین)</span>
+                </div>
             </div>
             <div class="form-group">
-                <input class="form-control" required placeholder="شماره همراه" type="number" asp-for="Username" />
-                <i class="form-group__bar"></i>
+                <label asp-for="Email" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input dir="ltr" asp-for="Email" onblur="triggerRemoteValidation()" class="form-control col-md-4" />
+                    @*<span asp-validation-for="Email" class="text-danger"></span>*@
+                </div>
             </div>
             <div class="form-group">
-                <input class="form-control" required placeholder="رمزعبور " type="password" asp-for="Password" />
-                <i class="form-group__bar"></i>
+                <label asp-for="Password" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input dir="ltr" asp-for="Password" class="form-control col-md-4" />
+                    @*<span asp-validation-for="Password" class="text-danger"></span>*@
+                </div>
             </div>
             <div class="form-group">
-                <input class="form-control" placeholder="تکرار رمزعبور" required type="password" asp-for="ConfirmPassword" />
-                <i class="form-group__bar"></i>
+                <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input dir="ltr" asp-for="ConfirmPassword" class="form-control col-md-4" />
+                    @*<span asp-validation-for="ConfirmPassword" class="text-danger"></span>*@
+                </div>
             </div>
             <div class="form-group">
                 <label class="col col-md-2 control-label">
@@ -75,15 +93,18 @@
                              asp-fore-color="#333333"
                              asp-back-color="#ccc"
                              asp-text-box-class="text-box single-line form-control col-md-4"
-                             asp-text-box-template="<div class='input-group col-md-12'><span class='input-group-addon'><span class='glyphicon glyphicon-lock'></span></span>{0}</div>"
+                             asp-text-box-template="<div class='input-group col-md-4'><span class='input-group-addon'><span class='glyphicon glyphicon-lock'></span></span>{0}</div>"
                              asp-validation-message-class="text-danger"
                              asp-refresh-button-class="glyphicon glyphicon-refresh btn-sm" />
             </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-dark">
-                    <i class="pe-7s-right-arrow pe-2x"></i>
-                </button>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-info col-md-2">ثبت نام</button>
+                </div>
             </div>
         </form>
     </div>
 </div>
+
+
+
