@@ -3,6 +3,7 @@ using App.Data.Sql.Context;
 using App.DomainModels.Entities.Identity;
 using App.DomainServices.Identity;
 using App.DomainServices.Identity.Contracts;
+using DNTCommon.Web.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -27,6 +28,7 @@ namespace App.Bootstraper.identity
             services.AddScoped<ILookupNormalizer, CustomNormalizer>();
             services.AddScoped<UpperInvariantLookupNormalizer, CustomNormalizer>();
 
+            services.AddScoped<IMvcActionsDiscoveryService, MvcActionsDiscoveryService>();
             //services.AddScoped<ISecurityStampValidator, CustomSecurityStampValidator>();
             //services.AddScoped<SecurityStampValidator<User>, CustomSecurityStampValidator>();
 

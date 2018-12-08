@@ -5,7 +5,7 @@ using System.Text;
 
 namespace App.DomainModels.ViewModels.Identity
 {
-   public class RoleAndUsersCountViewModel
+    public class RoleAndUsersCountViewModel
     {
         public Role Role { set; get; }
         public int UsersCount { set; get; }

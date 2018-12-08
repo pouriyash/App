@@ -23,7 +23,7 @@ namespace App.DomainServices.Repositories
             public string GetSiteName()
             {
                 var cs=_settings.Value.AppDbConnection;
-                return "DNT";
+                return "App";
             }
         }
     }

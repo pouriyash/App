@@ -5,7 +5,26 @@
 }
 
 
+<link rel="stylesheet" href="~/docs/lib/font-awesome-4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="~/docs/lib/bootstrap/dist/css/bootstrap.min.css">
 
+<!-- if RTL website code below delete comment and added dir="rtl" to html tag -->
+<link rel="stylesheet" href="~/docs/lib/bootstrap/dist/css/bootstrap.min.rtl.css">
+<link rel="stylesheet" href="~/docs/fonts/font-fa.css" />
+
+<link rel="stylesheet" href="~/docs/css/styles.css" />
+
+<script src="~/docs/lib/jquery-3.1.1/jquery-3.1.1.min.js"></script>
+<script src="~/docs/lib/bootstrap/bootstrap.min.js"></script>
+
+<link href="~/docs/lib/pe-icon-7-stroke/css/helper.css" rel="stylesheet" />
+<link href="~/docs/lib/pe-icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet" />
+<script src="~/js/site.min.js"></script>
+<!-- sweetalert2 -->
+<link rel="stylesheet" href="~/docs/lib/sweetAlert-2/sweetalert2.css" />
+<script src="~/docs/lib/sweetAlert-2/sweetalert2.js"></script>
+
+<link rel="stylesheet" href="~/docs/css/styleoverride.css" />
 
 <div class="login">
     <div class="login__block">
@@ -13,74 +32,52 @@
             <div class="text-center">
                 <i class="pe-7s-user pe-3x"></i>
             </div>
-            <h6 class="text-center">ورود به اکانت پی</h6>
+            <h6 class="text-center">ورود به برنامه</h6>
         </div>
 
-        <form asp-controller="Login"
-              asp-action="Index"
-              asp-route-returnurl="@ViewData["ReturnUrl"]"
-              method="post"
-              autocomplete="off"
-              class="form-horizontal">
-            <partial name="_CustomValidationSummary" />
+        <form asp-action="Index" asp-controller="Login" method="post">
+            <input type="hidden" name="ReturnUrl" value="@ViewData["ReturnUrl"]" />
             <div class="form-group">
-                <label asp-for="Username" class="col-md-2 control-label"></label>
-                <div class="controls col col-md-10">
-                    <div class="input-group col-md-4">
-                        <span class="input-group-addon">
-                            <span class="fas fa-user"></span>
-                        </span>
-                        <input asp-for="Username" autocomplete="off" dir="ltr" class="form-control col-md-4" />
-                    </div>
-                    <span asp-validation-for="Username" class="text-danger"></span>
-                </div>
+                <input required class="form-control" placeholder="نام کاربری" type="text" asp-for="Username" />
+                <i class="form-group__bar"></i>
             </div>
+
             <div class="form-group">
-                <label asp-for="Password" class="col-md-2 control-label"></label>
-                <div class="controls col col-md-10">
-                    <div class="input-group col-md-4">
-                        <span class="input-group-addon">
-                            <span class="fas fa-asterisk"></span>
-                        </span>
-                        <input asp-for="Password" dir="ltr" class="form-control col-md-4" />
-                    </div>
-                    <span asp-validation-for="Password" class="text-danger"></span>
-                </div>
+                <input required class="form-control" placeholder="رمز عبور" type="password" asp-for="Password" />
+                <i class="form-group__bar"></i>
             </div>
+
+
             <div class="form-group">
                 <label class="col col-md-2 control-label">
                     کد امنیتی
                 </label>
-                <div class="controls col col-md-10">
+                <div class="controls col col-md12">
                     <dnt-captcha asp-captcha-generator-max="9000"
                                  asp-captcha-generator-min="1"
                                  asp-captcha-generator-language="Persian"
                                  asp-font-name="Tahoma"
-                                 asp-font-size="20"
+                                 asp-font-size="16"
                                  asp-fore-color="#333333"
                                  asp-back-color="#ccc"
                                  asp-text-box-class="text-box single-line form-control col-md-4"
-                                 asp-text-box-template="<div class='input-group col-md-4'><span class='input-group-addon'><span class='glyphicon glyphicon-lock'></span></span>{0}</div>"
+                                 asp-text-box-template="<div class='input-group col-md-12'><span class='input-group-addon'><span class='glyphicon glyphicon-lock'></span></span>{0}</div>"
                                  asp-validation-message-class="text-danger" />
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <div class="checkbox">
-                        <label asp-for="RememberMe">
-                            <input asp-for="RememberMe" />
-                            @Html.DisplayNameFor(m => m.RememberMe)
-                        </label>
-                    </div>
-                </div>
+            <label class="custom-control custom-checkbox m-t-20">
+                <input type="checkbox" asp-for="RememberMe" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">مرا به خاطر بسپار</span>
+            </label>
+            <div class="text-center">
+                <button type="submit" class="btn btn-dark">
+                    <i class="pe-7s-right-arrow pe-2x"></i>
+                </button>
             </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" class="btn btn-info col-md-2">ورود</button>
-                </div>
-            </div>
+            <a asp-action="Index" asp-controller="Register">ثبت نام</a>
+            <br />
+            <a>فراموشی رمزعبور</a>
         </form>
     </div>
 </div>
-
- 

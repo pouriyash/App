@@ -28,6 +28,7 @@ namespace App.DomainServices.Identity
         public async Task<string> StoreAsync(AuthenticationTicket ticket)
         {
             var key = $"{KeyPrefix}{Guid.NewGuid().ToString("N")}";
+            //TODO:میره تو دیوار
             await RenewAsync(key, ticket);
             return key;
         }

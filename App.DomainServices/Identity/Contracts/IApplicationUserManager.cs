@@ -996,6 +996,20 @@ namespace App.DomainServices.Identity.Contracts
         /// <returns>The security token bytes.</returns>
         Task<byte[]> CreateSecurityTokenAsync(User user);
 
+        /// <summary>
+        /// واکشی کاربر با استفاده از شناسه کاربر
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        User GetUserById(int Id);
+
+        /// <summary>
+        /// واکشی کاربر بهمراه نقش هایش با استفاده از شناسه کاربر
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        User GetUserWithRolesByuserId(int Id);
+
         #endregion
 
         #region CustomMethods

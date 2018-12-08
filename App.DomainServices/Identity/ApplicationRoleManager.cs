@@ -20,7 +20,7 @@ using App.Common.Extentions.Identity;
 
 namespace App.DomainServices.Identity
 {
-    public class ApplicationRoleManager: RoleManager<Role>, IApplicationRoleManager
+    public class ApplicationRoleManager : RoleManager<Role>, IApplicationRoleManager
     {
         private readonly IHttpContextAccessor _contextAccessor;
         private readonly Data.Sql.Context.IUnitOfWork _uow;
@@ -108,12 +108,16 @@ namespace App.DomainServices.Identity
                 string sortByField, SortOrder sortOrder,
                 bool showAllUsers)
         {
+
             var skipRecords = pageNumber * recordsPerPage;
 
+            //شناسه کاربران دارای این نقش
             var roleUserIdsQuery = from role in Roles
                                    where role.Id == roleId
                                    from user in role.Users
                                    select user.UserId;
+
+            //لیست کاربران دارای نقش مورد نظر به همراه نقش هایشان
             var query = _users.Include(user => user.Roles)
                               .Where(user => roleUserIdsQuery.Contains(user.Id))
                          .AsNoTracking();
@@ -142,6 +146,8 @@ namespace App.DomainServices.Identity
                 Users = await query.Skip(skipRecords).Take(recordsPerPage).ToListAsync(),
                 Roles = await Roles.ToListAsync()
             };
+
+
         }
 
 
