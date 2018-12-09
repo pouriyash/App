@@ -262,4 +262,13 @@ $(function () {
         toastr.error('در وارد کردن اطلاغات دقت کنید ');
         toastr.success('عملیات با موفقیت انجام شد  ');
     })
+
+    $('[data-fancybox]').fancybox({
+        iframe: {
+            css: {
+                width: '768px',
+                height: '400px'
+            }
+        }
+    });
 })
