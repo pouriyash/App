@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Html
+@using Newtonsoft.Json
+@{
+    var messages = TempData["serviceResult.Messages"];
+    var success = TempData["serviceResult.Success"];
+}
+@if (messages != null)
+{
+    <script>
+        var messages =@(Html.Raw(new HtmlString(JsonConvert.SerializeObject(messages))));
+        var success = @(JsonConvert.SerializeObject(success));
+        if (success) {
+            swal({
+                text: messages,
+                type: 'success',
+            })
+        }
+        else {
+            var txt="";
+            for(i=0;i<messages.length;i++) {
+                txt+="<div>"+messages[i]+"</div>"
+            }
+            console.log(txt);
+            swal({
+
+               title:'خطا',
+                type: 'warning',
+                html:txt,
+            })
+        }
+    </script>
+}

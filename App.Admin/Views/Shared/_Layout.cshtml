@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="~/docs/lib/font-awesome-4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="~/docs/lib/bootstrap/dist/css/bootstrap.min.css">
- 
+
     <!-- if RTL website code below delete comment and added dir="rtl" to html tag -->
     <link rel="stylesheet" href="~/docs/lib/bootstrap/dist/css/bootstrap.min.rtl.css">
     <link rel="stylesheet" href="~/docs/fonts/font-fa.css" />
@@ -81,7 +81,7 @@
             <div class="header__title">
                 سوپر پنل ادمین
             </div>
-          
+
 
 
             <form class="header__form col-md-4">
@@ -106,7 +106,7 @@
                     if (User.Identity.IsAuthenticated)
                     {
                         <a asp-action="LogOff" asp-controller="LogIn">خروج</a>
-                        
+
                     }
                 }
             </div>
@@ -347,7 +347,7 @@
                     @RenderBody()
                 </div>
 
-               
+
 
             </div>
 
@@ -358,3 +358,4 @@
 </body>
 
 </html>
+@Html.Partial("~/Views/Shared/Partial/_SweatAlert.cshtml")

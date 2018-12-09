@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using App.Common.Extentions.Identity;
+using App.Common.Toolkit;
 using App.Data.Sql.Context;
 using App.DomainModels.Entities.Identity;
 using App.DomainModels.Entities.Models;
@@ -56,7 +57,7 @@ namespace App.Admin.Controllers
                 var result = await _roleManager.CreateAsync(new DomainModels.Entities.Identity.Role { Name = vm.Name });
                 if (result.Succeeded)
                 {
-                    return View(nameof(Index));
+                    return Utility.CloseAndRefresh();
                 }
                 ModelState.AddErrorsFromResult(result);
             }

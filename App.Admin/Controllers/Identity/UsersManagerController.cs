@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using App.Common.Extentions;
 using App.Common.Extentions.Identity;
 using App.Data.Sql.Context;
 using App.DomainModels.Entities.Identity;
@@ -51,7 +52,7 @@ namespace App.Admin.Controllers
             {
                 return BadRequest(error: result.DumpErrors(useHtmlNewLine: true));
             }
-
+            TempData.AddResult(new Alamut.Data.Structure.ServiceResult { Message="عملیات با موفقیت انجام شد!",Succeed=true,StatusCode=200});
             return View(ReturnUrl);
         }
 
