@@ -25,7 +25,7 @@
         <input name="RoleId" value="@Model.RoleIncludeRoleClaims.Id" type="hidden" />
         @foreach (var controller in Model.SecuredControllerActions.OrderBy(x => x.ControllerDisplayName))
         {
-            <div class="panel panel-default top30">
+            <div class="panel panel-default top30" style="color:black;">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         @{
