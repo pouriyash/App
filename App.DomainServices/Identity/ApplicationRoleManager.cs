@@ -258,5 +258,7 @@ namespace App.DomainServices.Identity
         private int getCurrentUserId() => Convert.ToInt32(_contextAccessor.HttpContext.User.Identity.GetUserId());
 
         #endregion
+
+      
     }
 }

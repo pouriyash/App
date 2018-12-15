@@ -1,9 +1,6 @@
 ﻿using Alamut.Data.Structure;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace App.Common.Toolkit
 {
@@ -26,8 +23,11 @@ namespace App.Common.Toolkit
         public static ContentResult CloseAndRefresh()
         {
             const string content = @"<script>
-                window.parent.closeAndRefresh();
-            </script>";
+               parent.$.fancybox.close(true);
+            setTimeout(function () {
+            alert('clossssssseeeeeee');
+        }, 2500);
+        </script>";
 
             return new ContentResult()
             {

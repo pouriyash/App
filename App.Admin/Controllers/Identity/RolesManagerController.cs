@@ -66,6 +66,70 @@ namespace App.Admin.Controllers
 
         #endregion
 
+        #region ویرایش نقش
+
+        public async Task<IActionResult> Edit(string RoleId)
+        {
+            var role =await _roleManager.FindByIdAsync(RoleId);
+            return View(role);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(RoleViewModel vm)
+        {
+            if (ModelState.IsValid)
+            {
+                var role =await _roleManager.FindByIdAsync(vm.Id);
+                if (role==null)
+                {
+                    //ارور
+                    return View(nameof(Index));
+                }
+                else
+                {
+                    role.Name = vm.Name;
+                    var result = await _roleManager.UpdateAsync(role);
+                    if (result.Succeeded)
+                    {
+                        return Json(new { success = true });
+                    }
+                    ModelState.AddErrorsFromResult(result);
+                }
+            }
+            return View(nameof(Edit),new { RoleId=vm.Id.ToString()});
+
+        }
+
+        #endregion
+
+        #region جذف نقش
+
+        //[HttpPost]
+        public async Task<IActionResult> Delete(int RoleId)
+        {
+            var role =await _roleManager.FindByIdAsync(RoleId.ToString());
+            if (role==null)
+            {
+                //ارور نات فاند
+                //ModelState.AddModelError("");
+                return View("Index");
+            }
+            else
+            {
+                var result = await _roleManager.DeleteAsync(role);
+                if (result.Succeeded)
+                {
+                    return Json(new { success = true });
+                }
+
+                ModelState.AddErrorsFromResult(result);
+                return View("Index");
+
+            }
+
+        }
+        #endregion
+
         /// <summary>
         /// مدیریت کاربران و نقش هایشان
         /// </summary>
