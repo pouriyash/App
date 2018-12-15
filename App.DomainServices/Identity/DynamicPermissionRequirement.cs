@@ -11,7 +11,7 @@ using App.DomainModels.ViewModels.Identity;
 
 namespace App.DomainServices.Identity
 {
-    public class DynamicPermissionRequirement: IAuthorizationRequirement
+    public class DynamicPermissionRequirement : IAuthorizationRequirement
     {
     }
     public class DynamicPermissionsAuthorizationHandler : AuthorizationHandler<DynamicPermissionRequirement>

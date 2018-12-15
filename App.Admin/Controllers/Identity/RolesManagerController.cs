@@ -9,6 +9,7 @@ using App.Data.Sql.Context;
 using App.DomainModels.Entities.Identity;
 using App.DomainModels.Entities.Models;
 using App.DomainModels.ViewModels.Identity;
+using App.DomainServices.Identity;
 using App.DomainServices.Identity.Contracts;
 using App.DomainServices.Repositories;
 using Microsoft.AspNetCore.Authorization;
@@ -18,7 +19,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace App.Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = ConstantRoles.Admin)]
     public class RolesManagerController : Controller
     {
         private readonly IApplicationRoleManager _roleManager;

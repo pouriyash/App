@@ -22,31 +22,22 @@ namespace App.Common.Toolkit
 
         public static ContentResult CloseAndRefresh()
         {
-            const string content = @"<script>
-               parent.$.fancybox.close(true);
-            setTimeout(function () {
-            alert('clossssssseeeeeee');
-        }, 2500);
-        </script>";
-
-            return new ContentResult()
-            {
-                Content = content,
-                ContentType = "text/html",
-            };
+            var message = JsonConvert.SerializeObject(ServiceResult.Okay());
+            var content = $"<script>window.parent.showBeautyMessageOnFancyBox({message});" +
+                $"alert('HIiiiiiiiiii')" +
+                $" setTimeout(window.parent.closeFancybox, 10);" +
+                $"</script>";
+            return new ContentResult() { Content = content, ContentType = "text/html; charset=utf-8" };
         }
 
         public static ContentResult CloseAndRedirectOneLevel()
         {
-            const string content = @"<script>
-                window.parent.closeAndRedirectOneLevel();
-            </script>";
-
-            return new ContentResult()
-            {
-                Content = content,
-                ContentType = "text/html",
-            };
+            var message = JsonConvert.SerializeObject(ServiceResult.Okay());
+            var content = $"<script>window.parent.showBeautyMessageOnFancyBox({message});" +
+                $"alert('HIiiiiiiiiii')" +
+                $" setTimeout(window.parent.closeFancybox, 10);" +
+                $"</script>";
+            return new ContentResult() { Content = content, ContentType = "text/html; charset=utf-8" };
         }
 
         public static ContentResult CloseAndRedirect(string url)

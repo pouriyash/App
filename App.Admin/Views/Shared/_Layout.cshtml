@@ -363,3 +363,42 @@
 </html>
 @Html.Partial("~/Views/Shared/Partial/_SweatAlert.cshtml")
 
+<script>
+        function showBeautyMessage(res) {
+            console.log(res)
+            res = res || {};
+            swal({
+                title: (res.Succeed ? 'موفق' : 'خطا'),
+                text: res.Message || (res.Succeed ? 'تغییرات با موفقیت ذخیره شد' : "خطایی در ارسال درخواست به سرور اتفاق افتاده است"),
+                type: res.Succeed ? "success" : "error",
+                icon: res.Succeed ? "success" : "error",
+                confirmButtonText: "تایید",
+                showCancelButton: false,
+                button: "تایید",
+                html: true
+            },
+                function (isConfirm) {
+                });
+        }
+</script>
+<script>
+        function showBeautyMessageOnFancyBox(res) {
+            console.log(res)
+            res = res || {};
+            swal({
+                title: (res.Succeed ? 'موفق' : 'خطا'),
+                text: res.Message || (res.Succeed ? 'تغییرات با موفقیت ذخیره شد' : "خطایی در ارسال درخواست به سرور اتفاق افتاده است"),
+                type: res.Succeed ? "success" : "error",
+                icon: res.Succeed ? "success" : "error",
+                confirmButtonText: "تایید",
+                showCancelButton: false,
+                button: "تایید",
+                html: true
+            },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        location.reload(true);
+                    }
+                });
+        }
+</script>
