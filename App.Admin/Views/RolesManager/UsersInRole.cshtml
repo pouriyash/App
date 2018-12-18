@@ -6,6 +6,37 @@
     int counter = 0;
 }
 @*<a asp-action="Create" asp-controller=" " class="btn btn-primary">ایجاد یک نقش جدید</a>*@
+<style>
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+        color: #fff;
+        cursor: default;
+        background-color: transparent;
+        border: 1px solid #ddd;
+        border-bottom-color: transparent;
+    }
+
+    .nav-tabs > li > a {
+        color: #fff;
+        margin-right: 0;
+    }
+
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover, .nav > li > a:focus, .nav > li > a:hover {
+        background-color: #5F1A2B;
+    }
+
+    .tab-pane {
+        margin-bottom: 2.3rem;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+        position: relative;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: rgba(0,0,0,0.2);
+        background-clip: border-box;
+        border: 1px solid transparent;
+        border-radius: 2px;
+        padding: 15px;
+    }
+</style>
 <br />
 <div class="content__inner">
     <div class="row">
@@ -40,74 +71,154 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table  table-striped">
-                        <thead>
-                            <tr>
-                                <th>ردیف</th>
-                                <th>نام کاربر</th>
-                                <th>نام کاربری </th>
-                                <th>ویرایش مشخصات</th>
-                                <th>وضعیت کاربری</th>
-                                <th>وضعیت ایمیل</th>
-                                <th>نقش های سیستم</th>
+                    @foreach (var item in Model.Users)
+                    {
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.Users)
-                            {
-                                <tr>
-                                    <td>@(++counter)</td>
-                                    <td>@item.DisplayName </td>
-                                    <td>@item.UserName </td>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a data-toggle="tab" href="#tab1">مشخصات</a></li>
+                                    <li><a data-toggle="tab" href="#tab2">فعالیت ها </a></li>
+                                    <li><a data-toggle="tab" href="#tab3">شبکه های اجتماعی </a></li>
 
-                                    <td>
-                                        <a class="action">
-                                            <i class="pe-7s-edit"></i>
-                                        </a>
-                                    </td>
-                                    <td>
+                                </ul>
 
-                                        <form asp-action="ChangeUserActive" asp-controller="UsersManager" asp-route-userId="@item.Id" asp-route-ReturnUrl="~/RolesManager/Index">
-                                            @{
-                                                if (item.IsActive)
-                                                {
-                                                    <input class="btn btn-success" type="hidden" name="activate" value="false" />
-                                                    <input class="btn btn-success" type="submit" value="غیر فعال شود" />
-                                                }
-                                                else
-                                                {
-                                                    <input class="btn btn-success" type="hidden" name="activate" value="true" />
-                                                    <input class="btn btn-danger" type="submit" value="فعال شود" />
+                                <div class="tab-content">
+                                    <div id="tab1" class="tab-pane fade in active">
+                                        <div class="row">
+                                            <div class="col-md-4 col-xs-12 col-sm-6">
+                                                <img src="./images/1.jpg" class="img-responsive img-thumbnail" />
+                                            </div>
+                                            <div class="col-md-4 col-xs-12 col-sm-6">
+                                                <div class="content__inner__card__desc">
+                                                    <b>نام و نام خانوادگی : </b> @item.DisplayName
+                                                </div>
+                                                <div class="content__inner__card__desc">
+                                                    <b>نام کاربری : </b> @item.UserName
+                                                </div>
+                                                <div class="content__inner__card__desc">
+                                                    <b>ویرایش مشخصات : </b>
+                                                    <a class="btn btn-outline-warning">
+                                                        ویرایش
+                                                    </a>
+                                                </div>
+                                                <div class="content__inner__card__desc">
+                                                    <b>وضعیت کاربری : </b>
+                                                    <form asp-action="ChangeUserActive" asp-controller="UsersManager" asp-route-userId="@item.Id" asp-route-ReturnUrl="~/RolesManager/Index">
+                                                        @{
+                                                            if (item.IsActive)
+                                                            {
+                                                                <input class="btn btn-outline-success" type="hidden" name="activate" value="false" />
+                                                                <input class="btn btn-outline-success" type="submit" value="غیر فعال شود" />
+                                                            }
+                                                            else
+                                                            {
+                                                                <input class="btn btn-outline-success" type="hidden" name="activate" value="true" />
+                                                                <input class="btn btn-outline-danger" type="submit" value="فعال شود" />
 
-                                                }
-                                            }
-                                        </form>
+                                                            }
+                                                        }
+                                                    </form>
+                                                </div>
+                                                <div class="content__inner__card__desc">
+                                                    <b>وضعیت ایمیل : </b>
+                                                    <form asp-action="ChangeUserActive" asp-controller="UsersManager" asp-route-userId="@item.Id" asp-route-ReturnUrl="~/RolesManager/Index">
+                                                        @{
+                                                            if (item.IsActive)
+                                                            {
+                                                                <input class="btn btn-outline-success" type="hidden" name="activate" value="false" />
+                                                                <input class="btn btn-outline-success" type="submit" value="غیر فعال شود" />
+                                                            }
+                                                            else
+                                                            {
+                                                                <input class="btn btn-outline-success" type="hidden" name="activate" value="true" />
+                                                                <input class="btn btn-outline-danger" type="submit" value="فعال شود" />
 
+                                                            }
+                                                        }
+                                                    </form>
+                                                </div>
+                                                <div class="content__inner__card__desc">
+                                                    <b>نقش های سیستم : </b>  
+                                                    <a asp-action="UserRolesManager" asp-controller="RolesManager" asp-route-userId="@item.Id" class="btn btn-outline-primary">
+                                                        مدیریت نقش ها
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="tab2" class="tab-pane fade">
+                                        <div class="row">
+                                            <div class="col-md-4 col-xs-12 col-sm-4">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-lg" placeholder="col-md-4">
+                                                    <i class="form-group__bar"></i>
+                                                </div>
+                                            </div>
 
-                                    </td>
-                                    <td>
-                                        @{
-                                            if (item.EmailConfirmed)
-                                            {
-                                                <p class="btn btn-success">فعال</p>
-                                            }
-                                            else
-                                            {
-                                                <p class="btn btn-danger">غیر فعال</p>
-                                            }
-                                        }
-                                    </td>
-                                    <td>
-                                        <a asp-action="UserRolesManager" asp-controller="RolesManager" asp-route-userId="@item.Id" class="btn btn-primary">
-                                            مدیریت نقش ها
-                                        </a>
-                                    </td>
+                                            <div class="col-md-4 col-xs-12 col-sm-4">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-lg" placeholder="col-md-4">
+                                                    <i class="form-group__bar"></i>
+                                                </div>
+                                            </div>
 
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
+                                            <div class="col-md-4 col-xs-12 col-sm-4">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-lg" placeholder="col-md-4">
+                                                    <i class="form-group__bar"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input">
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-description">
+                                                        آپشنی که انتخاب می کنید شما
+                                                        ؟؟؟ 1
+                                                    </span>
+                                                </label>
+
+                                                <label class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input">
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-description">
+                                                        آپشنی که انتخاب می کنید شما
+                                                        ؟؟؟ 1
+                                                    </span>
+                                                </label>
+
+                                                <label class="custom-control custom-checkbox custom-checkbox-inline">
+                                                    <input type="checkbox" class="custom-control-input">
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-description">گزینه اول</span>
+                                                </label>
+
+                                                <div>
+                                                    <button class="btn btn-outline-primary">primary</button>
+                                                    <button class="btn btn-outline-success">success</button>
+                                                    <button class="btn btn-outline-danger">danger</button>
+                                                    <button class="btn btn-outline-warning">warning</button>
+                                                    <button class="btn btn-outline-info">info</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="tab3" class="tab-pane fade">
+                                        <h3>Menu 2</h3>
+                                        <p>
+                                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                            doloremque laudantium, totam rem aperiam.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+ 
+                    }
                 </div>
 
                 @*<div class="text-center font-size-12 margin-top-20">
