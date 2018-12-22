@@ -19,15 +19,6 @@
     <link href="~/docs/fonts/font-fa.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="~/docs/css/styles.css" />
-    <script src="~/js/site.min.js"></script>
-
-    <!-- favicons-->
-    <link rel="apple-touch-icon" sizes="76x76" href="~/docs/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="~/docs/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="~/docs/favicons/favicon-16x16.png">
-    <link rel="manifest" href="~/docs/favicons/manifest.json">
-    <link rel="mask-icon" href="~/docs/favicons/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="theme-color" content="#ffffff">
 
     <script src="~/docs/lib/jquery-3.1.1/jquery-3.1.1.min.js"></script>
     <script src="~/docs/lib/bootstrap/bootstrap.min.js"></script>
@@ -363,42 +354,10 @@
 </html>
 @Html.Partial("~/Views/Shared/Partial/_SweatAlert.cshtml")
 
+ 
 <script>
-        function showBeautyMessage(res) {
-            console.log(res)
-            res = res || {};
-            swal({
-                title: (res.Succeed ? 'موفق' : 'خطا'),
-                text: res.Message || (res.Succeed ? 'تغییرات با موفقیت ذخیره شد' : "خطایی در ارسال درخواست به سرور اتفاق افتاده است"),
-                type: res.Succeed ? "success" : "error",
-                icon: res.Succeed ? "success" : "error",
-                confirmButtonText: "تایید",
-                showCancelButton: false,
-                button: "تایید",
-                html: true
-            },
-                function (isConfirm) {
-                });
-        }
-</script>
-<script>
-        function showBeautyMessageOnFancyBox(res) {
-            console.log(res)
-            res = res || {};
-            swal({
-                title: (res.Succeed ? 'موفق' : 'خطا'),
-                text: res.Message || (res.Succeed ? 'تغییرات با موفقیت ذخیره شد' : "خطایی در ارسال درخواست به سرور اتفاق افتاده است"),
-                type: res.Succeed ? "success" : "error",
-                icon: res.Succeed ? "success" : "error",
-                confirmButtonText: "تایید",
-                showCancelButton: false,
-                button: "تایید",
-                html: true
-            },
-                function (isConfirm) {
-                    if (isConfirm) {
-                        location.reload(true);
-                    }
-                });
+    function CloseAndRefresh() {
+        debugger;
+        alert("hassanKachal")
         }
 </script>
