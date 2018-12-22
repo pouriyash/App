@@ -103,7 +103,7 @@
                                             </div>
                                             <div class="content__inner__card__desc">
                                                 <b>وضعیت کاربری : </b>
-                                                <form asp-action="ChangeUserActive" asp-controller="UsersManager" asp-route-userId="@item.Id" asp-route-ReturnUrl="~/RolesManager/Index">
+                                                <form style="display: inline-block;" asp-action="ChangeUserActive" asp-controller="UsersManager" asp-route-userId="@item.Id" asp-route-ReturnUrl="~/RolesManager/Index">
                                                     @{
                                                         if (item.IsActive)
                                                         {
@@ -119,9 +119,9 @@
                                                     }
                                                 </form>
                                             </div>
-                                            <div class="content__inner__card__desc">
+                                            <div  class="content__inner__card__desc">
                                                 <b>وضعیت ایمیل : </b>
-                                                <form asp-action="ChangeUserActive" asp-controller="UsersManager" asp-route-userId="@item.Id" asp-route-ReturnUrl="~/RolesManager/Index">
+                                                <form  style="display: inline-block;" asp-action="ChangeUserActive" asp-controller="UsersManager" asp-route-userId="@item.Id" asp-route-ReturnUrl="~/RolesManager/Index">
                                                     @{
                                                         if (item.IsActive)
                                                         {
