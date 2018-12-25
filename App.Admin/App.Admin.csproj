@@ -22,7 +22,6 @@
     <Folder Include="Scripts\" />
     <Folder Include="ViewComponents\" />
     <Folder Include="Views\Home\" />
-    <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -796,6 +795,9 @@
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\Shared\Partial\_SweatAlert.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\UsersManager\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\_ViewStart.cshtml">
