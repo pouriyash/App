@@ -11,6 +11,7 @@ using App.DomainModels.Entities.Models;
 using App.DomainModels.ViewModels.Identity;
 using App.DomainServices.Identity.Contracts;
 using App.DomainServices.Repositories;
+using DNTCommon.Web.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -32,9 +33,26 @@ namespace App.Admin.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(int? page=1,string field="Id",SortOrder order=SortOrder.Ascending)
         {
-            return View();
+            var model =await _userManager.GetPagedUsersListAsync(
+                pageNumber: page.Value - 1,
+                recordsPerPage: DefaultPageSize,
+                sortByField: field,
+                sortOrder: order,
+                showAllUsers: true);
+
+            model.Paging.CurrentPage = page.Value;
+            model.Paging.ItemsPerPage = DefaultPageSize;
+            model.Paging.ShowFirstLast = true;
+
+            //نمیدونم چیه؟؟؟
+            if (HttpContext.Request.IsAjaxRequest())
+            {
+                return PartialView("_UsersList", model);
+            }
+
+            return View(model);
         }
 
         #region وضعیت ها
