@@ -163,6 +163,10 @@ namespace App.Data.Sql.Context
         /// </summary>
         public DbSet<ProductType> ProductType { get; set; }
 
+        /// <summary>
+        /// جدول محصولات
+        /// </summary>
+        public DbSet<Product> Product { get; set; }
 
         #endregion
 
