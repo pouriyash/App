@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
 using App.Common.Extentions.Persian;
 using App.DomainModels.Entities.AuditableEntity;
 using App.Common.GuardToolkit;
@@ -20,7 +20,7 @@ using App.DomainModels.Entities.Products;
 
 namespace App.Data.Sql.Context
 {
-    public class AppDbContext: IdentityDbContext<User,Role,int,UserClaim,UserRole,UserLogin,RoleClaim,UserToken>, IUnitOfWork
+    public class AppDbContext : IdentityDbContext<User, Role, int, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>, IUnitOfWork
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
@@ -115,7 +115,7 @@ namespace App.Data.Sql.Context
             ChangeTracker.AutoDetectChangesEnabled = true;
             return result;
         }
-        
+
         //Todo Cmpelete
         private void beforeSaveTriggers()
         {
@@ -168,6 +168,10 @@ namespace App.Data.Sql.Context
         /// </summary>
         public DbSet<Product> Product { get; set; }
 
+        /// <summary>
+        ///رنگ محصول
+        /// </summary>
+        public DbSet<ProductColor> ProductColor { get; set; }
         #endregion
 
         protected override void OnModelCreating(ModelBuilder builder)

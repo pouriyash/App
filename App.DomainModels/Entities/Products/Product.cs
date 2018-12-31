@@ -35,12 +35,14 @@ namespace App.DomainModels.Entities.Products
         /// تصویر اصلی محصول
         /// </summary>
         public string Image { get; set; }
-         
+
+     
         #region Relations
 
         [ForeignKey(nameof(ProductTypeId))]
         public virtual ProductType ProductType { get; set; }
-
+         
+        public virtual ICollection<ProductColor> ProductColors { get; set; }
         #endregion
     }
 }
