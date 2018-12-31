@@ -172,6 +172,11 @@ namespace App.Data.Sql.Context
         ///رنگ محصول
         /// </summary>
         public DbSet<ProductColor> ProductColor { get; set; }
+
+        /// <summary>
+        /// گالری محصولات
+        /// </summary>
+        public DbSet<ProductGalleryImage> ProductGalleryImage { get; set; }
         #endregion
 
         protected override void OnModelCreating(ModelBuilder builder)

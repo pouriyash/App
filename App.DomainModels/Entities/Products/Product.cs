@@ -42,7 +42,17 @@ namespace App.DomainModels.Entities.Products
         [ForeignKey(nameof(ProductTypeId))]
         public virtual ProductType ProductType { get; set; }
          
+        /// <summary>
+        /// رنگ های محصولات
+        /// </summary>
         public virtual ICollection<ProductColor> ProductColors { get; set; }
+
+        /// <summary>
+        /// گالری محصولات
+        /// </summary>
+        public virtual ICollection<ProductGalleryImage> ProductGalleryImages { get; set; }
+
+
         #endregion
     }
 }
