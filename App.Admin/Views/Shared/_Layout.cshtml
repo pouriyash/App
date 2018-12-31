@@ -91,16 +91,15 @@
                     <i class="pe-7s-mail"></i>
                     <span class="badge header__notify__item__badge wow flash">5</span>
                 </a>
-                <a href="#" class="header__notify__item">
-                    <i class="pe-7s-back"></i>
-                </a>
+
+
                 <a href="#" class="header__notify__item">
                     <i class="pe-7s-keypad"></i>
                 </a>
                 @{
                     if (User.Identity.IsAuthenticated)
                     {
-                        <a asp-action="LogOff" asp-controller="LogIn">خروج</a>
+                        <a asp-action="LogOff" asp-controller="LogIn" class="header__notify__item"> <i class="pe-7s-back"></i></a>
 
                     }
                 }
@@ -125,7 +124,49 @@
 
             <ul class="sidebar__navigation scroll-panel">
                 <li class="sidebar__navigation__item">
-                    <a href="~/docs/index.html" class="sidebar__navigation__item__link active">
+                    <a href="#" class="sidebar__navigation__item__link active">
+                        <i class="pe-7s-home"></i>
+                        مدیریت نوع محصولات
+                    </a>
+                </li>
+                <li class="sidebar__navigation__item">
+                    <a href="#" class="sidebar__navigation__item__link ">
+                        <i class="pe-7s-home"></i>
+                        مدیریت محصولات
+                    </a>
+                </li>
+                <li class="sidebar__navigation__item">
+                    <a href="#" class="sidebar__navigation__item__link ">
+                        <i class="pe-7s-home"></i>
+                        مدیریت اسلایدر
+                    </a>
+                </li>
+                <li class="sidebar__navigation__item">
+                    <a href="#" class="sidebar__navigation__item__link ">
+                        <i class="pe-7s-home"></i>
+                        مدیریت ارتباط با ما
+                    </a>
+                </li>
+                <li class="sidebar__navigation__item">
+                    <a href="#" class="sidebar__navigation__item__link ">
+                        <i class="pe-7s-home"></i>
+                        مدیریت کامنت ها
+                    </a>
+                </li>
+                <li class="sidebar__navigation__item">
+                    <a href="#" class="sidebar__navigation__item__link ">
+                        <i class="pe-7s-home"></i>
+                        مدیریت نقش ها
+                    </a>
+                </li>
+                <li class="sidebar__navigation__item">
+                    <a href="#" class="sidebar__navigation__item__link  ">
+                        <i class="pe-7s-home"></i>
+                        مدیریت کاربران
+                    </a>
+                </li>
+                <li class="sidebar__navigation__item">
+                    <a href="#" class="sidebar__navigation__item__link  ">
                         <i class="pe-7s-home"></i>
                         صفحه اصلی
                     </a>

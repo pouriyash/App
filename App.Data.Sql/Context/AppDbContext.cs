@@ -16,6 +16,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using App.DomainModels.ViewModels.Settings;
 using App.Data.Sql.Mapping;
+using App.DomainModels.Entities.Products;
 
 namespace App.Data.Sql.Context
 {
@@ -156,6 +157,11 @@ namespace App.Data.Sql.Context
         /// جدول کاربر تست
         /// </summary>
         public DbSet<Person> Person { get; set; }
+
+        /// <summary>
+        /// جدول نوع محصولات
+        /// </summary>
+        public DbSet<ProductType> ProductType { get; set; }
 
 
         #endregion
