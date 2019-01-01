@@ -23,7 +23,7 @@ namespace App.DomainServices.Repositories
             return new ServiceResult<int>();
 
         }
-
+         
         public virtual ServiceResult<int> Delete(T entity)
         {
             _context.Set<T>().Remove(entity);

@@ -35,6 +35,11 @@ namespace App.Data.Sql.Context
             Set<TEntity>().AddRange(entities);
         }
 
+        public void Add<TEntity>(TEntity entity) where TEntity : class
+        {
+            Set<TEntity>().Add(entity);
+        }
+
         public void ExecuteSqlCommand(string query)
         {
             Database.ExecuteSqlCommand(query);
