@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>b0432af4-31cb-4ba8-b3d8-2b333abdca5e</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,7 +15,7 @@
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.4" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0-preview3-35497" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0" />
-    <PackageReference Include="Regate" Version="0.9.5" />
+    <PackageReference Include="Regate" Version="0.17.4" />
     <PackageReference Include="Scrutor" Version="3.0.1" /> 
   </ItemGroup>
 
@@ -773,10 +774,13 @@
     <Content Update="Views\DynamicRoleClaimsManager\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Product\Edit.cshtml">
+    <Content Update="Views\Products\Create.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\Product\Index.cshtml">
+    <Content Update="Views\Products\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Products\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\ProductTypes\Edit.cshtml">

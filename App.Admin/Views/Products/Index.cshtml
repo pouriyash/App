@@ -11,12 +11,13 @@
         <div class="col-md-12">
             <div class="content__inner__card wow zoomIn">
                 <div class="content__inner__card__title">
-                     محصولات
+                    محصولات
                 </div>
+                <br />
 
-                <a dataasp-action="Create" asp-controller="Product" class="btn btn-outline-warning">ایجاد محصول</a>
-
-                <hr />
+                <hr /> 
+                <a style="margin:30px 0px" asp-action="Create" asp-controller="Products" class="btn btn-outline-warning">ایجاد محصول</a>
+ 
 
                 <div class="table-responsive">
                     <table class="table  table-striped">
@@ -33,22 +34,22 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>@(++counter)</td>
-                                    <td>@item.Name</td>
-                                    <td>@item.ProductType.Title</td>
-                                    <td>@item.Image</td>
-                                    <td>@item.ShortDescription</td>
-                                    <td>
-                                        <a data-fancybox data-type="iframe" asp-action="Edit" asp-controller="Product" asp-route-Id="@item.Id" class="action">
-                                            <i class="pe-7s-edit"></i>
-                                        </a>
-                                        <a asp-action="Delete" asp-controller="Product" asp-route-Id="@item.Id" class="action">
-                                            <i class="pe-7s-trash"></i>
-                                        </a>
-                                    </td>
+                            <tr>
+                                <td>@(++counter)</td>
+                                <td>@item.Name</td>
+                                <td>@item.ProductType.Title</td>
+                                <td>@item.Image</td>
+                                <td>@item.ShortDescription</td>
+                                <td>
+                                    <a data-fancybox data-type="iframe" asp-action="Edit" asp-controller="Products" asp-route-Id="@item.Id" class="action">
+                                        <i class="pe-7s-edit"></i>
+                                    </a>
+                                    <a asp-action="Delete" asp-controller="Products" asp-route-Id="@item.Id" class="action">
+                                        <i class="pe-7s-trash"></i>
+                                    </a>
+                                </td>
 
-                                </tr>
+                            </tr>
                             }
                         </tbody>
                     </table>
