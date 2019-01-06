@@ -14,54 +14,54 @@ using System.Text;
 
 namespace App.DomainServices.Repositories
 {
-    public class ProductTypeRepository : BaseRepository<Person>
+    public class ProductRepository : BaseRepository<Person>
     {
         private readonly IUnitOfWork _Context;
-        private readonly DbSet<ProductType> _productType;
-        public ProductTypeRepository(IUnitOfWork Context) :base(Context)
+        private readonly DbSet<Product> _Product;
+        public ProductRepository(IUnitOfWork Context) :base(Context)
         {
             _Context = Context;
-            _productType = Context.Set<ProductType>();
+            _Product = Context.Set<Product>();
         }
 
-        public List<ProductTypeDTO> GetAll()
+        public List<ProductDTO> GetAll()
         {
-            var model= _productType.ProjectTo<ProductTypeDTO>().ToList();
+            var model= _Product.ProjectTo<ProductDTO>().ToList();
             return model;
         }
 
-        public ServiceResult Create(ProductTypeDTO model)
+        public ServiceResult Create(ProductDTO model)
         {
-            var entity = new ProductType();
+            var entity = new Product();
 
             Mapper.Map(model, entity);
 
-            _productType.Add(entity);
+            _Product.Add(entity);
             _Context.SaveChanges();
 
             return ServiceResult.Okay();
         }
 
-        public ProductTypeDTO GetById(int Id)
+        public ProductDTO GetById(int Id)
         {
-            return _productType.Where(p => p.Id == Id).ProjectTo<ProductTypeDTO>().FirstOrDefault();
+            return _Product.Where(p => p.Id == Id).ProjectTo<ProductDTO>().FirstOrDefault();
         }
 
-        public ServiceResult Edit(ProductTypeEditViewModel model,int Id)
+        public ServiceResult Edit(ProductEditViewModel model,int Id)
         {
-            var entity = _productType.Find(Id);
+            var entity = _Product.Find(Id);
             Mapper.Map(model, entity);
 
-            _productType.Update(entity);
+            _Product.Update(entity);
             _Context.SaveChanges();
             return ServiceResult.Okay();
         }
 
         public ServiceResult Delete(int Id)
         {
-            var entity = _productType.Find(Id);
+            var entity = _Product.Find(Id);
 
-            _productType.Remove(entity);
+            _Product.Remove(entity);
             _Context.SaveChanges();
             return ServiceResult.Okay();
         }

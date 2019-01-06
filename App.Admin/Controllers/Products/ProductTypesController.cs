@@ -11,9 +11,7 @@ using App.DomainModels.Entities.Models;
 using App.DomainModels.ViewModels;
 using App.DomainServices.Repositories;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace App.Admin.Controllers
 {
@@ -30,8 +28,8 @@ namespace App.Admin.Controllers
 
         public IActionResult Index()
         {
-            _productTypeRepository.GetAll();
-            return View();
+           var model= _productTypeRepository.GetAll();
+            return View(model);
         }
 
         public IActionResult Create()
@@ -44,12 +42,12 @@ namespace App.Admin.Controllers
         {
             var result = _productTypeRepository.Create(model);
             TempData.AddResult(result);
-            return Utility.CloseAndRefresh();
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Edit(int Id)
         {
-            var model = _productTypeRepository.GEtById(Id);
+            var model = _productTypeRepository.GetById(Id);
             if (model==null)
             {
                 TempData.AddResult(ServiceResult.Error("نوعی یافت نشد!"));
@@ -63,15 +61,15 @@ namespace App.Admin.Controllers
         {
             var result = _productTypeRepository.Edit(model,Id);
             TempData.AddResult(result);
-            return Utility.CloseAndRefresh();
+            return RedirectToAction(nameof(Edit),new { Id });
         }
 
-        [HttpPost]
+   
         public IActionResult Delete(int Id)
         {
-            var result = _productTypeRepository.Delete( Id);
+            var result = _productTypeRepository.Delete(Id);
             TempData.AddResult(result);
-            return Utility.CloseAndRefresh();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
