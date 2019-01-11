@@ -17,6 +17,7 @@ using Microsoft.Extensions.Options;
 using App.DomainModels.ViewModels.Settings;
 using App.Data.Sql.Mapping;
 using App.DomainModels.Entities.Products;
+using App.DomainModels.Entities;
 
 namespace App.Data.Sql.Context
 {
@@ -182,6 +183,11 @@ namespace App.Data.Sql.Context
         /// گالری محصولات
         /// </summary>
         public DbSet<ProductGalleryImage> ProductGalleryImage { get; set; }
+
+        /// <summary>
+        /// ارتباط با ما
+        /// </summary>
+        public DbSet<ContactUs> ContactUs { get; set; }
         #endregion
 
         protected override void OnModelCreating(ModelBuilder builder)

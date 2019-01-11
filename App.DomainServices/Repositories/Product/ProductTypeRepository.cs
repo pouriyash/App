@@ -26,10 +26,13 @@ namespace App.DomainServices.Repositories
 
         public List<ProductTypeDTO> GetAll()
         {
-            var model= _productType.ProjectTo<ProductTypeDTO>().ToList();
+            var model= _productType
+                .OrderBy(p=>p.Title)
+                .ProjectTo<ProductTypeDTO>()
+                .ToList();
             return model;
         }
-
+        
         public ServiceResult Create(ProductTypeDTO model)
         {
             var entity = new ProductType();
@@ -44,7 +47,10 @@ namespace App.DomainServices.Repositories
 
         public ProductTypeDTO GetById(int Id)
         {
-            return _productType.Where(p => p.Id == Id).ProjectTo<ProductTypeDTO>().FirstOrDefault();
+            return _productType
+                .Where(p => p.Id == Id)
+                .ProjectTo<ProductTypeDTO>()
+                .FirstOrDefault();
         }
 
         public ServiceResult Edit(ProductTypeEditViewModel model,int Id)

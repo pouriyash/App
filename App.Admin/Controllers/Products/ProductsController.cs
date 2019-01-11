@@ -14,6 +14,7 @@ using App.DomainServices.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
@@ -23,14 +24,18 @@ namespace App.Admin.Controllers
     public class ProductsController : Controller
     {
         private readonly ProductRepository _productRepository;
+        private readonly ProductTypeRepository _productTypeRepository;
         private readonly IOptionsSnapshot<FileConfig> _fileConfig;
 
         public ProductsController
-            (ProductRepository productRepository, IOptionsSnapshot<FileConfig> fileConfig)
+            (ProductRepository productRepository
+            , IOptionsSnapshot<FileConfig> fileConfig
+            , ProductTypeRepository productTypeRepository)
 
         {
             _productRepository = productRepository;
             _fileConfig = fileConfig;
+            _productTypeRepository = productTypeRepository;
         }
 
         public IActionResult Index()
@@ -41,13 +46,19 @@ namespace App.Admin.Controllers
 
         public IActionResult Create()
         {
+            var ProductTypes = _productTypeRepository.GetAll().Select(x => new { x.Id, Value = x.Title });
+
+            ViewBag.ProductTypes = new SelectList(ProductTypes, "Id", "Value");
+
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(ProductDTO model,IFormFile Image)
+        public IActionResult Create(ProductDTO model, IFormFile Image)
         {
-            var imageName = FileHelper.SaveFile(Image, _fileConfig, FileType.image);
+            var imageName = FileHelper.SaveFile(Image, _fileConfig, FileType.Image);
+            if (imageName != null)
+                model.Image = imageName;
             var result = _productRepository.Create(model);
             TempData.AddResult(result);
             return RedirectToAction(nameof(Index));
@@ -61,12 +72,19 @@ namespace App.Admin.Controllers
                 TempData.AddResult(ServiceResult.Error("نوعی یافت نشد!"));
                 return View(nameof(Index));
             }
+            var ProductTypes = _productTypeRepository.GetAll().Select(x => new { x.Id, Value = x.Title });
+
+            ViewBag.ProductTypes = new SelectList(ProductTypes, "Id", "Value");
+
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult Edit(ProductEditViewModel model, int Id)
+        public IActionResult Edit(ProductEditViewModel model, int Id, IFormFile Image)
         {
+            var imageName = FileHelper.SaveFile(Image, _fileConfig, FileType.Image);
+            if (imageName != null)
+                model.Image = imageName;
             var result = _productRepository.Edit(model, Id);
             TempData.AddResult(result);
             return RedirectToAction(nameof(Edit), new { Id });

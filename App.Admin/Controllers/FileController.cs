@@ -38,7 +38,7 @@ namespace App.Admin.Controllers
 
             try
             {
-                ViewBag.FileName = FileHelper.SaveFile(image, _fileConfig, FileType.image);
+                ViewBag.FileName = FileHelper.SaveFile(image, _fileConfig, FileType.Image);
             }
             catch (Exception e)
             {

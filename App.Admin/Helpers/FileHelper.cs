@@ -75,5 +75,10 @@ namespace App.Admin.Helpers
 
 
         }
+
+        //public static void DeleteFile(string Image, IOptionsSnapshot<FileConfig> config, DomainModels.SSOT.FileType fileType)
+        //{
+        //    File.Delete(config.Value.PhysicalAddress + Image);
+        //}
     }
 }

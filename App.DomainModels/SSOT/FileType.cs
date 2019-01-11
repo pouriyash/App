@@ -6,7 +6,7 @@ namespace App.DomainModels.SSOT
 {
     public enum FileType
     {
-        image,
+        Image,
         file
     }
 }
