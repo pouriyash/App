@@ -188,6 +188,12 @@ namespace App.Data.Sql.Context
         /// ارتباط با ما
         /// </summary>
         public DbSet<ContactUs> ContactUs { get; set; }
+
+
+        /// <summary>
+        /// اسلایدر
+        /// </summary>
+        public DbSet<Slider> Slider { get; set; }
         #endregion
 
         protected override void OnModelCreating(ModelBuilder builder)
