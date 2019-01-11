@@ -1,5 +1,6 @@
 ﻿using App.Bootstraper.identity;
 using App.Data.Sql.Context;
+using App.DomainModels.SSOT;
 using App.DomainModels.ViewModels.Settings;
 using AutoMapper;
 using DNTCaptcha.Core;
@@ -28,6 +29,10 @@ namespace App.Admin
         {
             //بایند کردن موجودیت ConnectionStrings از appsetting به Model  مورد نظر
             services.Configure<SiteSettings>(options => _Configuration.Bind(options));
+            //services.Configure<FileConfig>(options => _Configuration.Bind(options));
+            //TODO UPDATEd
+            services.Configure<FileConfig>(options => _Configuration.GetSection("FileConfig").Bind(options));
+
 
             var siteSettings = services.GetSiteSettings();
             services.AddRequiredEfInternalServices(siteSettings); // It's added to access services from the dbcontext, remove it if you are using the normal `AddDbContext` and normal constructor dependency injection.

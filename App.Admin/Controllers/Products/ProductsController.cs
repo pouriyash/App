@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Alamut.Data.Structure;
+using App.Admin.Helpers;
 using App.Common.Extentions;
 using App.Data.Sql.Context;
 using App.DomainModels.Dto.Product;
 using App.DomainModels.Entities.Models;
+using App.DomainModels.SSOT;
 using App.DomainModels.ViewModels;
 using App.DomainServices.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace App.Admin.Controllers
 {
@@ -20,11 +23,14 @@ namespace App.Admin.Controllers
     public class ProductsController : Controller
     {
         private readonly ProductRepository _productRepository;
+        private readonly IOptionsSnapshot<FileConfig> _fileConfig;
+
         public ProductsController
-            (ProductRepository productRepository)
+            (ProductRepository productRepository, IOptionsSnapshot<FileConfig> fileConfig)
 
         {
             _productRepository = productRepository;
+            _fileConfig = fileConfig;
         }
 
         public IActionResult Index()
@@ -39,8 +45,9 @@ namespace App.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(ProductDTO model)
+        public IActionResult Create(ProductDTO model,IFormFile Image)
         {
+            var imageName = FileHelper.SaveFile(Image, _fileConfig, FileType.image);
             var result = _productRepository.Create(model);
             TempData.AddResult(result);
             return RedirectToAction(nameof(Index));

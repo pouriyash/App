@@ -15,11 +15,13 @@
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.4" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0-preview3-35497" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0" />
+    <PackageReference Include="Mime" Version="3.0.2" />
     <PackageReference Include="Regate" Version="0.17.4" />
     <PackageReference Include="Scrutor" Version="3.0.1" /> 
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="NewFolder\" />
     <Folder Include="Scripts\" />
     <Folder Include="ViewComponents\" />
     <Folder Include="Views\Home\" />
@@ -768,6 +770,7 @@
   <ItemGroup>
     <ProjectReference Include="..\App.Bootstraper\App.Bootstraper.csproj" />
     <ProjectReference Include="..\App.DomainServices\App.DomainServices.csproj" />
+    <ProjectReference Include="..\App.Regate\App.Regate.csproj" />
   </ItemGroup>
 
   <ItemGroup>

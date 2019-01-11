@@ -23,6 +23,9 @@ namespace App.Bootstraper
 
             services.AddCustomIdentityServices();
 
+
+
+
             services.AddTransient<IMessagesService, MessagesService>();
             services.AddTransient<PersonRepository>();
 

@@ -1,13 +1,12 @@
 ﻿@using App.DomainModels.Dto.Product
 @model ProductDTO
-@using Regate
+@using App.Regate
 @using App.Common.Toolkit
 @{
     ViewData["Title"] = "افزودن محصول";
 }
-
-<form asp-action="Create" asp-controller="Products" method="post">
-
+@using (Html.BeginForm("Create", "Products", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+{
     <div class="container">
 
         <div class="row">
@@ -26,13 +25,17 @@
                 </div>
             </div>
 
-            <div class="col-md-3 col-xs-12 col-sm-4">
-                <div class="form-group">
-                    @*@Html.Raw(RegateImage.)*@
-                    <input type="file" asp-for="Image" required class="form-control form-control-sm" placeholder="عکس اصلی محصول ">
-                    <i class="form-group__bar"></i>
-                </div>
-            </div>
+            @* <div class="col-md-3 col-xs-12 col-sm-4"> *@
+
+            @*<div class="form-group">
+               <div class="col-sm-2 control-label">عکس اصلی محصول</div>
+
+                   <input type="file" name="Image"  />
+
+        </div>*@
+
+            @*</div>*@
+            <input type="file" name="Image" required class="form-control form-control-sm" placeholder="عکس اصلی محصول ">
 
 
             <div class="col-md-12 col-xs-12 col-sm-4">
@@ -54,5 +57,5 @@
             </div>
         </div>
     </div>
+}
 
-</form>

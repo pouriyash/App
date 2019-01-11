@@ -124,13 +124,13 @@
 
             <ul class="sidebar__navigation scroll-panel">
                 <li class="sidebar__navigation__item">
-                    <a href="#" class="sidebar__navigation__item__link active">
+                    <a asp-action="Index" asp-controller="ProductTypes" class="sidebar__navigation__item__link active">
                         <i class="pe-7s-home"></i>
                         مدیریت نوع محصولات
                     </a>
                 </li>
                 <li class="sidebar__navigation__item">
-                    <a href="#" class="sidebar__navigation__item__link ">
+                    <a asp-action="Index" asp-controller="Products" class="sidebar__navigation__item__link ">
                         <i class="pe-7s-home"></i>
                         مدیریت محصولات
                     </a>
@@ -147,30 +147,30 @@
                         مدیریت ارتباط با ما
                     </a>
                 </li>
-                <li class="sidebar__navigation__item">
+                @*<li class="sidebar__navigation__item">
                     <a href="#" class="sidebar__navigation__item__link ">
                         <i class="pe-7s-home"></i>
                         مدیریت کامنت ها
                     </a>
-                </li>
+                </li>*@
                 <li class="sidebar__navigation__item">
-                    <a href="#" class="sidebar__navigation__item__link ">
+                    <a asp-action="Index" asp-controller="RolesManager" class="sidebar__navigation__item__link ">
                         <i class="pe-7s-home"></i>
                         مدیریت نقش ها
                     </a>
                 </li>
                 <li class="sidebar__navigation__item">
-                    <a href="#" class="sidebar__navigation__item__link  ">
+                    <a asp-action="Index" asp-controller="UsersManager" class="sidebar__navigation__item__link  ">
                         <i class="pe-7s-home"></i>
                         مدیریت کاربران
                     </a>
                 </li>
-                <li class="sidebar__navigation__item">
+                @*<li class="sidebar__navigation__item">
                     <a href="#" class="sidebar__navigation__item__link  ">
                         <i class="pe-7s-home"></i>
                         صفحه اصلی
                     </a>
-                </li>
+                </li>*@
 
                 <li class="sidebar__navigation__item">
                     <a href="~/docs/form.html" target="_blank" class="sidebar__navigation__item__link">
