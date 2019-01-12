@@ -18,6 +18,7 @@ using App.DomainModels.ViewModels.Settings;
 using App.Data.Sql.Mapping;
 using App.DomainModels.Entities.Products;
 using App.DomainModels.Entities;
+using App.DomainModels.Entities.Blogs;
 
 namespace App.Data.Sql.Context
 {
@@ -194,6 +195,11 @@ namespace App.Data.Sql.Context
         /// اسلایدر
         /// </summary>
         public DbSet<Slider> Slider { get; set; }
+
+        /// <summary>
+        /// بلاگ ها
+        /// </summary>
+        public DbSet<Blogs> Blogs { get; set; }
         #endregion
 
         protected override void OnModelCreating(ModelBuilder builder)
