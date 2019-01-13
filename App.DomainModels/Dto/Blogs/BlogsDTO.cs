@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.DomainModels.Entities.Blogs
+namespace App.DomainModels.Dto.Blogs
 {
-    public class Blogs
+    public class BlogsDTO
     {
         public int Id { get; set; }
 
@@ -13,7 +13,7 @@ namespace App.DomainModels.Entities.Blogs
         public string Image { get; set; }
 
         public string ShortDescription { get; set; }
-
         public string Title { get; set; }
+
     }
 }

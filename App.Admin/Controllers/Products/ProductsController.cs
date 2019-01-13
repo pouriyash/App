@@ -1,21 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Alamut.Data.Structure;
 using App.Admin.Helpers;
-using App.Common.Extentions;
-using App.Data.Sql.Context;
-using App.DomainModels.Dto.Product;
-using App.DomainModels.Entities.Models;
+using App.Common.Extentions; 
+using App.DomainModels.Dto.Product; 
 using App.DomainModels.SSOT;
 using App.DomainModels.ViewModels;
 using App.DomainServices.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering; 
 using Microsoft.Extensions.Options;
 
 namespace App.Admin.Controllers
