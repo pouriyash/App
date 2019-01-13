@@ -75,7 +75,7 @@ namespace App.Admin.Controllers
                 model.Image = imageName;
             var result = _blogsRepository.Edit(model, Id);
             TempData.AddResult(result);
-            return RedirectToAction(nameof(Edit), new { Id });
+            return RedirectToAction(nameof(Edit), new { Id }); 
         }
 
 
@@ -86,11 +86,11 @@ namespace App.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        //public IActionResult View(int Id)
-        //{
-        //    var result = _productRepository.Delete(Id);
-        //    TempData.AddResult(result);
-        //    return RedirectToAction(nameof(Index));
-        //}
+        public IActionResult View(int Id)
+        {
+            var result = _blogsRepository.Delete(Id);
+            TempData.AddResult(result);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

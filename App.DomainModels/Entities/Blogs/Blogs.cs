@@ -15,5 +15,6 @@ namespace App.DomainModels.Entities.Blogs
         public string ShortDescription { get; set; }
 
         public string Title { get; set; }
+        public int View { get; set; } = 0;
     }
 }

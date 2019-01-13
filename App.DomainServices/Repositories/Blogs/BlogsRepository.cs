@@ -68,5 +68,10 @@ namespace App.DomainServices.Repositories
             _Context.SaveChanges();
             return ServiceResult.Okay();
         }
+
+        public int View(int Id)
+        {
+            return _blogs.Find(Id).View;              
+        }
     }
 }

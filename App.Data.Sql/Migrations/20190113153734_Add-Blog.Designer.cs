@@ -4,14 +4,16 @@ using App.Data.Sql.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace App.Data.Sql.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190113153734_Add-Blog")]
+    partial class AddBlog
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,25 +40,6 @@ namespace App.Data.Sql.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Blogs");
-                });
-
-            modelBuilder.Entity("App.DomainModels.Entities.Blogs.BlogsGallery", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Alt");
-
-                    b.Property<int>("BlogId");
-
-                    b.Property<string>("Image");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BlogId");
-
-                    b.ToTable("BlogsGallery");
                 });
 
             modelBuilder.Entity("App.DomainModels.Entities.ContactUs", b =>
@@ -584,14 +567,6 @@ namespace App.Data.Sql.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Slider");
-                });
-
-            modelBuilder.Entity("App.DomainModels.Entities.Blogs.BlogsGallery", b =>
-                {
-                    b.HasOne("App.DomainModels.Entities.Blogs.Blogs", "Blog")
-                        .WithMany()
-                        .HasForeignKey("BlogId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("App.DomainModels.Entities.Identity.RoleClaim", b =>
