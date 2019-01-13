@@ -16,10 +16,10 @@ namespace App.Admin.Controllers
     public class BlogsController : Controller
     {
         private readonly BlogsRepository _blogsRepository;
-        private readonly IOptionsSnapshot<FileConfig> _fileConfig;
+        private readonly FileConfig _fileConfig;
 
         public BlogsController(BlogsRepository blogsRepository
-            , IOptionsSnapshot<FileConfig> fileConfig)
+            , FileConfig fileConfig)
         {
             _fileConfig = fileConfig;
             _blogsRepository = blogsRepository;

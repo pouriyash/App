@@ -1,6 +1,7 @@
 ﻿using App.Bootstraper.identity;
 using App.Data.Sql.Context;
 using App.DomainModels.SSOT;
+using App.DomainModels.Validation;
 using App.DomainModels.ViewModels.Settings;
 using AutoMapper;
 using DNTCaptcha.Core;
@@ -11,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using static App.DomainServices.Repositories.message;
 
 namespace App.Admin
@@ -27,12 +29,14 @@ namespace App.Admin
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             //بایند کردن موجودیت ConnectionStrings از appsetting به Model  مورد نظر
             services.Configure<SiteSettings>(options => _Configuration.Bind(options));
-            //services.Configure<FileConfig>(options => _Configuration.Bind(options));
-            //TODO UPDATEd
-            services.Configure<FileConfig>(options => _Configuration.GetSection("FileConfig").Bind(options));
 
+            services.Configure<FileConfig>(options => _Configuration.GetSection("FileConfig").Bind(options));
+            // Explicitly register the settings object by delegating to the IOptions object
+            services.AddSingleton(resolver =>
+                resolver.GetRequiredService<IOptions<FileConfig>>().Value);
 
             var siteSettings = services.GetSiteSettings();
             services.AddRequiredEfInternalServices(siteSettings); // It's added to access services from the dbcontext, remove it if you are using the normal `AddDbContext` and normal constructor dependency injection.
@@ -57,6 +61,7 @@ namespace App.Admin
                 jsonOptions.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
             })
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
             services.AddDNTCaptcha();
 
         }

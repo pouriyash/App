@@ -21,11 +21,11 @@ namespace App.Admin.Controllers
     {
         private readonly ProductRepository _productRepository;
         private readonly ProductTypeRepository _productTypeRepository;
-        private readonly IOptionsSnapshot<FileConfig> _fileConfig;
+        private readonly FileConfig _fileConfig;
 
         public ProductsController
             (ProductRepository productRepository
-            , IOptionsSnapshot<FileConfig> fileConfig
+            , FileConfig fileConfig
             , ProductTypeRepository productTypeRepository)
 
         {

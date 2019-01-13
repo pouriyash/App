@@ -18,9 +18,9 @@ namespace App.Admin.Controllers
     [Authorize]
     public class FileController : Controller
     {
-        private readonly IOptionsSnapshot<FileConfig> _fileConfig;
+        private readonly FileConfig _fileConfig;
 
-        public FileController(IOptionsSnapshot<FileConfig> fileConfig)
+        public FileController(FileConfig fileConfig)
         {
             _fileConfig = fileConfig;
         }
