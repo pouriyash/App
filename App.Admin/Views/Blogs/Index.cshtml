@@ -1,9 +1,9 @@
-﻿@using App.DomainModels.Dto.Product
-@model IEnumerable<ProductDTO>
+﻿@using App.DomainModels.Dto.Blogs
+@model IEnumerable<BlogsDTO>
 @using App.DomainModels.SSOT
 @inject IOptionsSnapshot<FileConfig> config
 @{
-    ViewData["Title"] = "انواع محصولات";
+    ViewData["Title"] = "مقالات";
 }
 @{
     int counter = 0;
@@ -13,23 +13,21 @@
         <div class="col-md-12">
             <div class="content__inner__card wow zoomIn">
                 <div class="content__inner__card__title">
-                    محصولات
+                    مقالات
                 </div>
                 <br />
 
-                <hr /> 
-                <a style="margin:30px 0px" asp-action="Create" asp-controller="Products" class="btn btn-outline-warning">ایجاد محصول</a>
- 
+                <hr />
+                <a style="margin:30px 0px" asp-action="Create" asp-controller="Blogs" class="btn btn-outline-warning">ایجاد مقاله</a>
+
 
                 <div class="table-responsive">
                     <table class="table  table-striped">
                         <thead>
                             <tr>
                                 <th>ردیف</th>
-                                <th>نام محصول</th>
-                                <th>نوع محصول</th>
-                                <th>تصویر اصلی محصول</th>
-                                <th>توضیح مختصر</th>
+                                <th>عنوان مقاله</th>
+                                <th>تصویر اصلی مقاله</th>
                                 <th>گالری</th>
                                 <th>اقدامات</th>
                             </tr>
@@ -37,41 +35,40 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>@(++counter)</td>
-                                <td>@item.Name</td>
-                                <td>@item.ProductType.Title</td>
-                                <td>
-                                <img  src="@config.Value.WebAddress@item.Image" width="100" height="100" />
-                                 <td>@item.ShortDescription</td>
-                                <td>#</td>
-                                <td>
-                                    <a  asp-action="Edit" asp-controller="Products" asp-route-Id="@item.Id" class="action">
-                                        <i class="pe-7s-edit"></i>
-                                    </a>
-                                    <a asp-action="Delete" asp-controller="Products" asp-route-Id="@item.Id" class="action">
-                                        <i class="pe-7s-trash"></i>
-                                    </a>
-                                </td>
+                                <tr>
+                                    <td>@(++counter)</td>
+                                    <td>@item.Title</td>
+                                    <td>
+                                        <img src="@config.Value.WebAddress@item.Image" width="100" height="100" />
+                                    </td>
+                                    <td>#</td>
+                                    <td>
+                                        <a asp-action="Edit" asp-controller="Blogs" asp-route-Id="@item.Id" class="action">
+                                            <i class="pe-7s-edit"></i>
+                                        </a>
+                                        <a asp-action="Delete" asp-controller="Blogs" asp-route-Id="@item.Id" class="action">
+                                            <i class="pe-7s-trash"></i>
+                                        </a>
+                                    </td>
 
-                            </tr>
+                                </tr>
                             }
                         </tbody>
                     </table>
                 </div>
 
                 @*<div class="text-center font-size-12 margin-top-20">
-            نمایش 1 تا 2 از 17 مورد
-        </div>
+                        نمایش 1 تا 2 از 17 مورد
+                    </div>
 
-        <div class="pagination">
-            <a class="pagination__btn"><i class="pe-7s-angle-left"></i></a>
-            <a href="#" class="pagination__btn active">1</a>
-            <a href="#" class="pagination__btn">2</a>
-            <a href="#" class="pagination__btn">3</a>
-            <a href="#" class="pagination__btn">4</a>
-            <a class="pagination__btn disabled"><i class="pe-7s-angle-right"></i></a>
-        </div>*@
+                    <div class="pagination">
+                        <a class="pagination__btn"><i class="pe-7s-angle-left"></i></a>
+                        <a href="#" class="pagination__btn active">1</a>
+                        <a href="#" class="pagination__btn">2</a>
+                        <a href="#" class="pagination__btn">3</a>
+                        <a href="#" class="pagination__btn">4</a>
+                        <a class="pagination__btn disabled"><i class="pe-7s-angle-right"></i></a>
+                    </div>*@
 
             </div>
         </div>

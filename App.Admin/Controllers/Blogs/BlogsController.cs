@@ -8,9 +8,7 @@ using App.DomainServices.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Options;
-using System.Linq;
 
 namespace App.Admin.Controllers
 {
@@ -20,8 +18,8 @@ namespace App.Admin.Controllers
         private readonly BlogsRepository _blogsRepository;
         private readonly IOptionsSnapshot<FileConfig> _fileConfig;
 
-        public BlogsController
-           (BlogsRepository blogsRepository, IOptionsSnapshot<FileConfig> fileConfig)
+        public BlogsController(BlogsRepository blogsRepository
+            , IOptionsSnapshot<FileConfig> fileConfig)
         {
             _fileConfig = fileConfig;
             _blogsRepository = blogsRepository;
@@ -35,9 +33,6 @@ namespace App.Admin.Controllers
 
         public IActionResult Create()
         {
-            var ProductTypes = _blogsRepository.GetAll().Select(x => new { x.Id, Value = x.Title });
-
- 
             return View();
         }
 
@@ -57,12 +52,9 @@ namespace App.Admin.Controllers
             var model = _blogsRepository.GetById(Id);
             if (model == null)
             {
-                TempData.AddResult(ServiceResult.Error("نوعی یافت نشد!"));
+                TempData.AddResult(ServiceResult.Error("مقاله ای یافت نشد!"));
                 return View(nameof(Index));
             }
-            var ProductTypes = _blogsRepository.GetAll().Select(x => new { x.Id, Value = x.Title });
-
-            ViewBag.ProductTypes = new SelectList(ProductTypes, "Id", "Value");
 
             return View(model);
         }
@@ -77,7 +69,6 @@ namespace App.Admin.Controllers
             TempData.AddResult(result);
             return RedirectToAction(nameof(Edit), new { Id }); 
         }
-
 
         public IActionResult Delete(int Id)
         {

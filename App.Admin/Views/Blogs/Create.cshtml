@@ -1,12 +1,11 @@
 ﻿@using App.DomainModels.Dto.Product
 @model ProductDTO
-@using App.Regate
-@using App.Common.Toolkit
+
 @{
-    ViewData["Title"] = "افزودن محصول";
+    ViewData["Title"] = "افزودن مقاله";
 }
 
-@using (Html.BeginForm("Create", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Blogs", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="container">
 
@@ -14,40 +13,33 @@
 
             <div class="col-lg-2 col-xs-12 col-sm-4">
                 <div class="form-group">
-                    <input type="text" asp-for="Name" required class="form-control form-control-sm" placeholder="نام محصول ">
+                    <input type="text" name="Title" required class="form-control form-control-sm" placeholder="عنوان مقاله">
                     <i class="form-group__bar"></i>
                 </div>
             </div>
 
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="form-element form-select">
-                    @Html.DropDownList("ProductTypeId", (IEnumerable<SelectListItem>)ViewBag.ProductTypes, "نوع محصول را انتخاب کنید", new { @class = "form-control" })
-                </div>
-            </div>
- 
             <div class="col-md-6 col-xs-12 col-sm-4">
-                <div class="col-lg-4 control-label">عکس اصلی محصول</div>
+                <div class="col-lg-4 control-label">عکس اصلی مقاله</div>
                 <div class="col-lg-8">
-                    <input type="file" name="Image" class="form-control form-control-sm" placeholder="عکس اصلی محصول ">
+                    <input type="file" name="Image" value="@Model.Image" class="form-control form-control-sm" placeholder="عکس اصلی مقاله ">
 
                 </div>
             </div>
 
-
             <div class="col-md-12 col-xs-12 col-sm-4">
                 <div class="form-group">
-                    <textarea class="form-control form-control-lg" asp-for="Description" rows="8" placeholder="توضیحات را وارد کنید "></textarea>
+                    <textarea class="form-control form-control-lg" name="ShortDescription" rows="8" placeholder="توضیحات مختصر را وارد کنید "></textarea>
                     <i class="form-group__bar"></i>
                 </div>
             </div>
 
-
             <div class="col-md-12 col-xs-12 col-sm-4">
                 <div class="form-group">
-                    <textarea class="form-control form-control-lg" asp-for="ShortDescription" rows="8" placeholder="توضیحات مختصر را وارد کنید "></textarea>
+                    <textarea class="form-control form-control-lg" name="Content" rows="8" placeholder="توضیحات را وارد کنید "></textarea>
                     <i class="form-group__bar"></i>
                 </div>
             </div>
+
             <div class="form-group">
                 <button type="submit" style="float:left" class="btn btn-lg btn-outline-success">ایجاد</button>
             </div>
