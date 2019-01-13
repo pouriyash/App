@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using Alamut.Data.Structure;
 using App.Admin.Helpers;
-using App.Common.Extentions; 
-using App.DomainModels.Dto.Product; 
+using App.Common.Extentions;
+using App.DomainModels.Dto.Product;
 using App.DomainModels.SSOT;
 using App.DomainModels.ViewModels;
 using App.DomainServices.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering; 
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Options;
 
 namespace App.Admin.Controllers
@@ -76,20 +76,27 @@ namespace App.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(ProductEditViewModel model, int Id, IFormFile Image)
+        public IActionResult Edit(ProductEditViewModel model, int Id, IFormFile NewImage)
         {
-            var imageName = FileHelper.SaveFile(Image, _fileConfig, FileType.Image);
-            if (imageName != null)
+            if (NewImage != null)
+            {
+                var imageName = FileHelper.SaveFile(NewImage, _fileConfig, FileType.Image);
+                FileHelper.DeleteFile(model.Image, _fileConfig, FileType.Image);
                 model.Image = imageName;
+            }
+
             var result = _productRepository.Edit(model, Id);
             TempData.AddResult(result);
             return RedirectToAction(nameof(Edit), new { Id });
         }
 
 
-        public IActionResult Delete(int Id)
+        public IActionResult Delete(int Id, string ImagePath)
         {
             var result = _productRepository.Delete(Id);
+            if (result.Succeed)
+                FileHelper.DeleteFile(ImagePath, _fileConfig, FileType.Image);
+
             TempData.AddResult(result);
             return RedirectToAction(nameof(Index));
         }

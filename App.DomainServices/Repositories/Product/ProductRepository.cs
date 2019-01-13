@@ -62,8 +62,10 @@ namespace App.DomainServices.Repositories
             var entity = _Product.Find(Id);
 
             _Product.Remove(entity);
-            _Context.SaveChanges();
-            return ServiceResult.Okay();
+            var result = _Context.SaveChanges();
+            if (result > 0)
+                return ServiceResult.Okay();
+            return ServiceResult.Error();
         }
 
     }

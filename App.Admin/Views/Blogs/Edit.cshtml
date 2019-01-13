@@ -11,6 +11,7 @@
 @using (Html.BeginForm("Edit", "Blogs", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="Image" />
     <div class="container">
 
         <div class="row">
@@ -25,7 +26,7 @@
             <div class="col-md-6 col-xs-12 col-sm-4">
                 <div class="col-lg-4 control-label">عکس اصلی مقاله</div>
                 <div class="col-lg-8">
-                    <input type="file" name="Image" value="@Model.Image" class="form-control form-control-sm" placeholder="عکس اصلی مقاله ">
+                    <input type="file" name="NewImage" value="@Model.Image" class="form-control form-control-sm" placeholder="عکس اصلی مقاله ">
 
                 </div>
             </div>

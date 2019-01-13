@@ -72,13 +72,11 @@ namespace App.Admin.Helpers
             }
 
             throw new Exception("فایل مورد نظر غیر مجاز می‌باشد");
-
-
         }
 
-        //public static void DeleteFile(string Image, IOptionsSnapshot<FileConfig> config, DomainModels.SSOT.FileType fileType)
-        //{
-        //    File.Delete(config.Value.PhysicalAddress + Image);
-        //}
+        public static void DeleteFile(string Image, IOptionsSnapshot<FileConfig> config, DomainModels.SSOT.FileType fileType)
+        {
+            File.Delete(config.Value.PhysicalAddress + Image);
+        }
     }
 }

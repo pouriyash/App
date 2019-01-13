@@ -60,19 +60,27 @@ namespace App.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(BlogsViewModel model, int Id, IFormFile Image)
+        public IActionResult Edit(BlogsViewModel model, int Id, IFormFile NewImage)
         {
-            var imageName = FileHelper.SaveFile(Image, _fileConfig, FileType.Image);
-            if (imageName != null)
+
+            if (NewImage != null)
+            {
+                var imageName = FileHelper.SaveFile(NewImage, _fileConfig, FileType.Image);
+                FileHelper.DeleteFile(model.Image, _fileConfig, FileType.Image);
                 model.Image = imageName;
+            }
+
             var result = _blogsRepository.Edit(model, Id);
             TempData.AddResult(result);
-            return RedirectToAction(nameof(Edit), new { Id }); 
+            return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Delete(int Id)
+        public IActionResult Delete(int Id, string ImagePath)
         {
             var result = _blogsRepository.Delete(Id);
+            if (result.Succeed)
+                FileHelper.DeleteFile(ImagePath, _fileConfig, FileType.Image);
+
             TempData.AddResult(result);
             return RedirectToAction(nameof(Index));
         }

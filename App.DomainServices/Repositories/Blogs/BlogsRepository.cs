@@ -8,10 +8,11 @@ using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace App.DomainServices.Repositories
 {
-    public class BlogsRepository: BaseRepository<Blogs>
+    public class BlogsRepository : BaseRepository<Blogs>
     {
         private readonly IUnitOfWork _Context;
         private readonly DbSet<Blogs> _blogs;
@@ -65,13 +66,32 @@ namespace App.DomainServices.Repositories
             var entity = _blogs.Find(Id);
 
             _blogs.Remove(entity);
-            _Context.SaveChanges();
-            return ServiceResult.Okay();
+            var result = _Context.SaveChanges();
+            if (result > 0)
+                return ServiceResult.Okay();
+            return ServiceResult.Error();
         }
 
         public int View(int Id)
         {
-            return _blogs.Find(Id).View;              
+            return _blogs.Find(Id).View;
+        }
+
+        public BlogsDTO GetByIdToShowUSer(int Id)
+        {
+            
+            return _blogs
+                .Where(p => p.Id == Id)
+                .ProjectTo<BlogsDTO>()
+                .FirstOrDefault();
+        }
+
+        public void AddNumberOfView(int Id)
+        {
+            var entity = _blogs.Find(Id);
+            entity.View++;
+            _Context.Entry<Blogs>(entity).State = EntityState.Modified;
+            var result=_Context.SaveChanges();
         }
     }
 }
