@@ -774,10 +774,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Views\BlogsGallery\Create.cshtml">
+    <Content Update="Views\BlogGallery\Create.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\BlogsGallery\Index.cshtml">
+    <Content Update="Views\BlogGallery\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
     <Content Update="Views\DynamicRoleClaimsManager\Index.cshtml">

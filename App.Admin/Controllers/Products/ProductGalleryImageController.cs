@@ -31,14 +31,16 @@ namespace App.Admin.Controllers
             _productGalleryImageRepository = productGalleryImageRepository;
         }
 
-        public IActionResult Index(int productId)
+        public IActionResult Index(int ProductId)
         {
-            var model = _productGalleryImageRepository.GetAll(productId);
+            ViewBag.ProductId = ProductId;
+            var model = _productGalleryImageRepository.GetAll(ProductId);
             return View(model);
         }
 
-        public IActionResult Create()
+        public IActionResult Create(int ProductId)
         {
+            ViewBag.ProductId = ProductId;
             return View();
         }
 

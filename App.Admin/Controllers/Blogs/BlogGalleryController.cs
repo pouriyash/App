@@ -26,12 +26,14 @@ namespace App.Admin.Controllers
 
         public IActionResult Index(int BlogId)
         {
+            ViewBag.BlogId = BlogId;
             var model = _blogGalleryRepository.GetAll(BlogId);
             return View(model);
         }
 
-        public IActionResult Create()
+        public IActionResult Create(int BlogId)
         {
+             ViewBag.BlogId = BlogId;
             return View();
         }
 

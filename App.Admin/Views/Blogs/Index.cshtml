@@ -18,7 +18,7 @@
                 <br />
 
                 <hr />
-                <a style="margin:30px 0px" asp-action="Create" asp-controller="Blogs" class="btn btn-outline-warning">ایجاد مقاله</a>
+                <a style="margin:30px 0px" asp-action="Create" asp-controller="Blogs"  class="btn btn-outline-warning">ایجاد مقاله</a>
 
 
                 <div class="table-responsive">
@@ -43,7 +43,7 @@
                                     </td>
                                     <td>
                                         <div class="form-group">
-                                            <a asp-action="Index" asp-controller="BlogsGallery" asp-route-Id="@item.Id"  class="btn btn-lg btn-outline-info">مدیریت گالری</a>
+                                            <a asp-action="Index" asp-controller="BlogGallery" asp-route-BlogId="@item.Id"  class="btn btn-lg btn-outline-info">مدیریت گالری</a>
                                         </div>
                                     </td>
                                     <td>

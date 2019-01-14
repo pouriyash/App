@@ -44,7 +44,11 @@
                                 <td>
                                 <img  src="@config.WebAddress@item.Image" width="100" height="100" />
                                  <td>@item.ShortDescription</td>
-                                <td>#</td>
+                                 <td>
+                                     <div class="form-group">
+                                         <a asp-action="Index" asp-controller="ProductGalleryImage" asp-route-ProductId="@item.Id" class="btn btn-lg btn-outline-info">مدیریت گالری</a>
+                                     </div>
+                                 </td>
                                 <td>
                                     <a  asp-action="Edit" asp-controller="Products" asp-route-Id="@item.Id" class="action">
                                         <i class="pe-7s-edit"></i>
