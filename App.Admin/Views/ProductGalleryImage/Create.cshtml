@@ -1,15 +1,15 @@
-﻿@using App.DomainModels.Dto.Blogs
-@model BlogGalleryDTO
+﻿@using App.DomainModels.Dto.Product
+@model ProductGalleryImageDTO
 @{
-    ViewData["Title"] = "افزودن تصویر جدید گالری مقاله";
+    ViewData["Title"] = "افزودن تصویر جدید گالری محصولات";
 }
 
-@using (Html.BeginForm("Create", "BlogsGallery", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "ProductGalleryImage", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="container">
 
         <div class="row">
-            <input asp-for="BlogId" value="@ViewBag.BlogId" />
+            <input asp-for="ProductId" value="@ViewBag.productId" />
             <div class="col-lg-2 col-xs-12 col-sm-4">
                 <div class="form-group">
                     <input type="text" asp-for="Alt" class="form-control form-control-sm" placeholder="کپشن عکس">

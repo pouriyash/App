@@ -62,7 +62,7 @@ namespace App.Admin.Controllers
                 }
                 ModelState.AddErrorsFromResult(result);
             }
-            return View(vm);
+            return Utility.CloseAndRefresh();
         }
 
         #endregion

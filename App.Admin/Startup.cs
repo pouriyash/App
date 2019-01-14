@@ -1,7 +1,6 @@
 ﻿using App.Bootstraper.identity;
 using App.Data.Sql.Context;
 using App.DomainModels.SSOT;
-using App.DomainModels.Validation;
 using App.DomainModels.ViewModels.Settings;
 using AutoMapper;
 using DNTCaptcha.Core;

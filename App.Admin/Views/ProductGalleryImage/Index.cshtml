@@ -1,12 +1,12 @@
-﻿@using App.DomainModels.Dto.Blogs
-@model IEnumerable<BlogGalleryDTO>
+﻿@using App.DomainModels.Dto.Product
+@model IEnumerable<ProductGalleryImageDTO>
 @using App.DomainModels.SSOT
 @inject FileConfig config
 @{
     ViewData["Title"] = "گالری تصاویر محصولات";
 }
 
-<a style="margin:30px 0px" asp-action="Create" asp-controller="BlogsGallery" asp-route-productId="@ViewBag.productId" class="btn btn-outline-warning">ایجاد تصویر  جدید</a>
+<a style="margin:30px 0px" asp-action="Create" asp-controller="ProductGalleryImage" asp-route-productId="@ViewBag.productId" class="btn btn-outline-warning">ایجاد محصول</a>
 
 
 <div class="content__inner">

@@ -19,6 +19,8 @@ namespace App.DomainModels.Entities.Products
         /// </summary>
         public string Image { get; set; }
 
+        public string Alt { get; set; }
+
         public int? ProductId { get; set; }
 
         #region Relations
