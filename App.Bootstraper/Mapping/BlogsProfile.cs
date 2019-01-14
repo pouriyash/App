@@ -17,7 +17,11 @@ namespace App.Bootstraper.Mapping
         {
             CreateMap<BlogsViewModel, Blogs>().ReverseMap();
             CreateMap<BlogsDTO, Blogs>().ReverseMap();
-             
+
+
+            CreateMap<BlogGalleryViewModel, BlogsGallery>().ReverseMap();
+            CreateMap<BlogGalleryDTO, BlogsGallery>().ReverseMap();
+
         }
     }
 }
