@@ -206,6 +206,12 @@ namespace App.Data.Sql.Context
         /// گالری بلاگ
         /// </summary>
         public DbSet<BlogsGallery> BlogsGallery { get; set; }
+
+
+        /// <summary>
+        /// اطلاعات
+        /// </summary>
+        public DbSet<Info> Info { get; set; }
         #endregion
 
         protected override void OnModelCreating(ModelBuilder builder)
