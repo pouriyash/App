@@ -1,7 +1,9 @@
 ﻿using App.Bootstraper.identity;
 using App.Data.Sql.Context;
 using App.DomainModels.SSOT;
+using App.DomainModels.Validation;
 using App.DomainModels.ViewModels.Settings;
+using App.DomainServices.Validation;
 using AutoMapper;
 using DNTCaptcha.Core;
 using DNTCommon.Web.Core;
@@ -48,7 +50,10 @@ namespace App.Admin
                 optionsBuilder.SetDbContextOptions(siteSettings);
                 optionsBuilder.UseInternalServiceProvider(serviceProvider); // It's added to access services from the dbcontext, remove it if you are using the normal `AddDbContext` and normal constructor dependency injection.
             });
-           
+
+
+
+
             ///Dependency Injection          
             services.AddMvc(options =>
             {
@@ -61,6 +66,33 @@ namespace App.Admin
             })
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            #region PocoConfigure Validation
+
+            services.AddTransient<IStartupFilter, SettingValidationStartupFilter>();
+            // Bind the configuration using IOptions
+
+            #region FileConfig Validation
+
+            services.AddSingleton(resolver =>
+               resolver.GetRequiredService<IOptions<FileConfig>>().Value);
+
+            services.AddSingleton<IValidatable>(resolver =>
+               resolver.GetRequiredService<IOptions<FileConfig>>().Value);
+
+            #endregion
+
+            #region SiteSettings Validation
+
+            services.AddSingleton(resolver =>
+               resolver.GetRequiredService<IOptions<SiteSettings>>().Value);
+
+            services.AddSingleton<IValidatable>(resolver =>
+               resolver.GetRequiredService<IOptions<SiteSettings>>().Value);
+
+            #endregion
+
+            #endregion
+            
             services.AddDNTCaptcha();
 
         }
@@ -89,7 +121,7 @@ namespace App.Admin
             //app.UseCookiePolicy();
 
             app.UseMvc(routes =>
-            {                
+            {
                 routes.MapRoute(
                   name: "default",
                   template: "{controller=Home}/{action=Index}/{id?}");
