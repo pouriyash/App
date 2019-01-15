@@ -1,0 +1,53 @@
+﻿@using App.DomainModels.Entities
+@model Info
+@{
+    ViewData["Title"] = "اطلاعات درباره ما";
+}
+
+@using (Html.BeginForm("Edit", "Info", new { enctype = "multipart/form-data" }))
+{
+    <input type="hidden" asp-for="Id" />
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-3 col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <input type="text" asp-for="Email" required class="form-control form-control-sm" placeholder="ایمیل خود را وارد کنید">
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <input type="text" asp-for="fax" required class="form-control form-control-sm" placeholder="فکس خود را وارد کنید">
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <input type="text" asp-for="Mobile" required class="form-control form-control-sm" placeholder="شماره موبایل خود را وارد کنید">
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <input type="text" asp-for="Tell" required class="form-control form-control-sm" placeholder="تلفن خود را وارد کنید">
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <textarea class="form-control form-control-lg" asp-for="Address" rows="8" placeholder="آدرس خود را وارد کنید "></textarea>
+                    <i class="form-group__bar"></i>
+                </div>
+            </div> 
+            <div class="form-group">
+                <button type="submit" style="float:left" class="btn btn-lg btn-outline-warning">ویرایش</button>
+            </div>
+        </div>
+    </div>
+}

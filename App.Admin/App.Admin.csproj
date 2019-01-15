@@ -792,6 +792,9 @@
     <Content Update="Views\Blogs\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Info\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\ProductGalleryImage\Create.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
