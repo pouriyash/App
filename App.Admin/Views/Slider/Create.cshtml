@@ -42,6 +42,7 @@
 
             <div class="col-md-12 col-xs-12 col-sm-4">
                 <div class="form-group">
+                    <label for="Content">محتوی</label>
                     <textarea class="form-control form-control-lg" name="Content" rows="8" placeholder="محتوی "></textarea>
                     <i class="form-group__bar"></i>
                 </div>
@@ -55,3 +56,6 @@
     </div>
 }
 
+<script>
+    CKEDITOR.replace( 'Content' );
+</script>
