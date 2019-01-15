@@ -9,14 +9,14 @@ namespace App.DomainModels.Entities
         public int Id { get; set; }
 
         /// <summary>
+        /// عنوان
+        /// </summary>
+        public string Title { get; set; }
+
+        /// <summary>
         /// عکس
         /// </summary>
         public string Image { get; set; }
-
-        /// <summary>
-        /// توضیحات
-        /// </summary>
-        public string Description { get; set; }
 
         /// <summary>
         /// وضعیت
@@ -26,7 +26,12 @@ namespace App.DomainModels.Entities
         /// <summary>
         /// ترتیب
         /// </summary>
-        public int Order { get; set; }
+        public int? Order { get; set; }
+        
+        /// <summary>
+        /// محتوا نمایشی
+        /// </summary>
+        public string Content { get; set; }
 
     }
 }

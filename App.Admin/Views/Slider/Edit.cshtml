@@ -1,0 +1,66 @@
+﻿@using App.DomainModels.Dto
+@model sliderDTO
+@using App.Common.Toolkit
+@using App.DomainModels.SSOT
+@inject FileConfig config
+@Html.Raw(Styles.MakeLayoutBlank())
+@{
+    ViewData["Title"] = "ویرایش مقاله";
+}
+
+
+
+@using (Html.BeginForm("Edit", "Slider", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="Image" />
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-3 col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <input type="text" asp-for="Title" required class="form-control form-control-sm" placeholder="عنوان مقاله">
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-xs-12 col-sm-4">
+
+                <label class="custom-control custom-checkbox custom-checkbox-inline">
+                    <input type="checkbox" @(Model.IsActive==true?"checked":"") value="true" name="IsActive" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">وضعیت</span>
+                </label>
+            </div>
+
+            <div class="col-lg-3 col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <input type="number"  asp-for="Order" class="form-control form-control-sm" placeholder="ترتیب">
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xs-12 col-sm-4">
+                <div class="col-lg-4 control-label">عکس</div>
+                <div class="col-lg-8">
+                    <input type="file" name="NewImage" class="form-control form-control-sm" placeholder="عکس  ">
+
+                </div>
+            </div>
+
+            <div class="col-md-12 col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <textarea class="form-control form-control-lg" asp-for="Content" rows="8" placeholder="محتوی "></textarea>
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <button type="submit" style="float:left" class="btn btn-lg btn-outline-warning">ویرایش</button>
+            </div>
+        </div>
+    </div>
+}
