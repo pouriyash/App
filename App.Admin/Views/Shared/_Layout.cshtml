@@ -48,9 +48,9 @@
     <script src="~/docs/js/jquery.bootstrap-modal-confirm.js"></script>
     <!-- fancy box -->
     @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js"></script>*@
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js"></script>*@
 
     <!-- sweetalert2 -->
     <link rel="stylesheet" href="~/docs/lib/sweetAlert-2/sweetalert2.css" />
@@ -61,12 +61,16 @@
     <script src="~/docs/lib/toaster/toastr.min.js"></script>
     <script src="~/js/site.js"></script>
 
-
+    <!-- fancyBox -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.6/jquery.fancybox.min.js"></script>
+
+    <!-- ckeditor -->
+    <script src="https://cdn.ckeditor.com/4.11.2/full/ckeditor.js"></script>
+
     @RenderSection("scripts", false)
 
 </head>
@@ -144,7 +148,7 @@
                     </a>
                 </li>
                 <li class="sidebar__navigation__item">
-                    <a href="#" class="sidebar__navigation__item__link ">
+                    <a asp-action="Index" asp-controller="Slider" class="sidebar__navigation__item__link ">
                         <i class="pe-7s-home"></i>
                         مدیریت اسلایدر
                     </a>
@@ -159,6 +163,13 @@
                     <a href="#" class="sidebar__navigation__item__link ">
                         <i class="pe-7s-home"></i>
                         مدیریت ارتباط با ما
+                    </a>
+                </li>
+
+                <li class="sidebar__navigation__item">
+                    <a asp-action="Edit" asp-controller="Info" class="sidebar__navigation__item__link ">
+                        <i class="pe-7s-home"></i>
+                        مدیریت اطلاعات درباره ما
                     </a>
                 </li>
                 @*<li class="sidebar__navigation__item">
@@ -186,202 +197,7 @@
             </a>
         </li>*@
 
-                <li class="sidebar__navigation__item">
-                    <a href="~/docs/form.html" target="_blank" class="sidebar__navigation__item__link">
-                        <i class="pe-7s-server"></i>
-                        فرم ها
-                    </a>
-                </li>
-
-                <li class="sidebar__navigation__item">
-                    <a href="~/docs/button.html" target="_blank" class="sidebar__navigation__item__link">
-                        <i class="pe-7s-server"></i>
-                        دکمه ها
-                    </a>
-
-                </li>
-
-                <li class="sidebar__navigation__item">
-                    <a href="~/docs/message.html" class="sidebar__navigation__item__link">
-                        <i class="pe-7s-server"></i>
-                        پیام های نمایشی
-                    </a>
-                </li>
-
-                <li class="sidebar__navigation__item">
-                    <a href="~/docs/imagesgallery.html" class="sidebar__navigation__item__link">
-                        <i class="pe-7s-server"></i>
-                        گالری عکس
-                    </a>
-                </li>
-
-                <li class="sidebar__navigation__item">
-                    <a href="~/docs/table.html" class="sidebar__navigation__item__link">
-                        <i class="pe-7s-server"></i>
-                        جداول
-                    </a>
-                </li>
-
-                <li class="sidebar__navigation__item">
-                    <a href="#" class="sidebar__navigation__item__link">
-                        <i class="pe-7s-smile"></i>
-                        دکمه ها
-                    </a>
-
-                    <ul class="sidebar__navigation sidebar__navigation-sub">
-                        <li class="sidebar__navigation__item">
-                            <a href="#" class="sidebar__navigation__item__link">
-                                زیر منو ها
-                            </a>
-                        </li>
-
-                        <li class="sidebar__navigation__item">
-                            <a href="#" class="sidebar__navigation__item__link">
-                                زیر منو ها
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </li>
-
-                <li class="sidebar__navigation__item">
-                    <a href="#" class="sidebar__navigation__item__link">
-                        <i class="pe-7s-target"></i>
-                        جداول
-                    </a>
-
-                    <ul class="sidebar__navigation sidebar__navigation-sub">
-                        <li class="sidebar__navigation__item">
-                            <a href="#" class="sidebar__navigation__item__link">
-                                زیر منو ها
-                            </a>
-                        </li>
-
-                        <li class="sidebar__navigation__item">
-                            <a href="#" class="sidebar__navigation__item__link">
-                                زیر منو ها
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </li>
-
-                <li class="sidebar__navigation__item">
-                    <a href="#" class="sidebar__navigation__item__link">
-                        <i class="pe-7s-target"></i>
-                        جداول
-                    </a>
-
-                    <ul class="sidebar__navigation sidebar__navigation-sub">
-                        <li class="sidebar__navigation__item">
-                            <a href="#" class="sidebar__navigation__item__link">
-                                زیر منو ها
-                            </a>
-                        </li>
-
-                        <li class="sidebar__navigation__item">
-                            <a href="#" class="sidebar__navigation__item__link">
-                                زیر منو ها
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </li>
-
-                <li class="sidebar__navigation__item">
-                    <a href="#" class="sidebar__navigation__item__link">
-                        <i class="pe-7s-target"></i>
-                        جداول
-                    </a>
-
-                    <ul class="sidebar__navigation sidebar__navigation-sub">
-                        <li class="sidebar__navigation__item">
-                            <a href="#" class="sidebar__navigation__item__link">
-                                زیر منو ها
-                            </a>
-                        </li>
-
-                        <li class="sidebar__navigation__item">
-                            <a href="#" class="sidebar__navigation__item__link">
-                                زیر منو ها
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </li>
-
-                <li class="sidebar__navigation__item">
-                    <a href="#" class="sidebar__navigation__item__link">
-                        <i class="pe-7s-target"></i>
-                        جداول
-                    </a>
-
-                    <ul class="sidebar__navigation sidebar__navigation-sub">
-                        <li class="sidebar__navigation__item">
-                            <a href="#" class="sidebar__navigation__item__link">
-                                زیر منو ها
-                            </a>
-                        </li>
-
-                        <li class="sidebar__navigation__item">
-                            <a href="#" class="sidebar__navigation__item__link">
-                                زیر منو ها
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </li>
-
-                <li class="sidebar__navigation__item">
-                    <a href="#" class="sidebar__navigation__item__link">
-                        <i class="pe-7s-target"></i>
-                        جداول
-                    </a>
-
-                    <ul class="sidebar__navigation sidebar__navigation-sub">
-                        <li class="sidebar__navigation__item">
-                            <a href="#" class="sidebar__navigation__item__link">
-                                زیر منو ها
-                            </a>
-                        </li>
-
-                        <li class="sidebar__navigation__item">
-                            <a href="#" class="sidebar__navigation__item__link">
-                                زیر منو ها
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </li>
-
-                <li class="sidebar__navigation__item">
-                    <a href="#" class="sidebar__navigation__item__link">
-                        <i class="pe-7s-target"></i>
-                        جداول
-                    </a>
-
-                    <ul class="sidebar__navigation sidebar__navigation-sub">
-                        <li class="sidebar__navigation__item">
-                            <a href="#" class="sidebar__navigation__item__link">
-                                زیر منو ها
-                            </a>
-                        </li>
-
-                        <li class="sidebar__navigation__item">
-                            <a href="#" class="sidebar__navigation__item__link">
-                                زیر منو ها
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </li>
+               
 
             </ul>
 

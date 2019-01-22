@@ -36,6 +36,8 @@
 
             <div class="col-md-12 col-xs-12 col-sm-4">
                 <div class="form-group">
+                    <label for="Description">توضیحات</label>
+
                     <textarea class="form-control form-control-lg" asp-for="Description" rows="8" placeholder="توضیحات را وارد کنید "></textarea>
                     <i class="form-group__bar"></i>
                 </div>
@@ -44,6 +46,8 @@
 
             <div class="col-md-12 col-xs-12 col-sm-4">
                 <div class="form-group">
+                    <label for="ShortDescription">توضیحات مختصر</label>
+
                     <textarea class="form-control form-control-lg" asp-for="ShortDescription" rows="8" placeholder="توضیحات مختصر را وارد کنید "></textarea>
                     <i class="form-group__bar"></i>
                 </div>
@@ -55,3 +59,7 @@
     </div>
 }
 
+    <script>
+        CKEDITOR.replace( 'ShortDescription' );
+        CKEDITOR.replace( 'Description' );
+    </script>

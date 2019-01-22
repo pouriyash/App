@@ -1,0 +1,61 @@
+﻿@using App.DomainModels.Dto
+
+@{
+    ViewData["Title"] = "افزودن صفحه جدید اسلایدر";
+}
+
+@using (Html.BeginForm("Create", "Slider", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-3 col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <input type="text" name="Title" required class="form-control form-control-sm" placeholder="عنوان ">
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-xs-12 col-sm-4">
+
+                <label class="custom-control custom-checkbox custom-checkbox-inline">
+                    <input type="checkbox" value="true" name="IsActive" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">وضعیت</span>
+                </label>
+            </div>
+            <div class="col-lg-3 col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <input type="number" value="true" name="Order" class="form-control form-control-sm" placeholder="ترتیب">
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xs-12 col-sm-4">
+                <div class="col-lg-4 control-label">عکس</div>
+                <div class="col-lg-8">
+                    <input type="file" name="Image" class="form-control form-control-sm" placeholder="عکس  ">
+
+                </div>
+            </div>
+
+            <div class="col-md-12 col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <label for="Content">محتوی</label>
+                    <textarea class="form-control form-control-lg" name="Content" rows="8" placeholder="محتوی "></textarea>
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <button type="submit" style="float:left" class="btn btn-lg btn-outline-success">ایجاد</button>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    CKEDITOR.replace( 'Content' );
+</script>

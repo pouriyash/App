@@ -23,22 +23,12 @@ namespace App.Admin.Controllers
             _InfoRepository = InfoRepository;
             _fileConfig = fileConfig; 
         }
-
-        public IActionResult Index()
-        {
-            var model = _InfoRepository.GetAll();
-            return View(model);
-        }
          
-        public IActionResult Edit(int Id)
+         
+        public IActionResult Edit()
         {
-            var model = _InfoRepository.GetById(Id);
-            if (model == null)
-            {
-                TempData.AddResult(ServiceResult.Error("نوعی یافت نشد!"));
-                return View(nameof(Index));
-            }
-  
+            var model = _InfoRepository.Get();
+             
             return View(model);
         }
 
@@ -47,18 +37,9 @@ namespace App.Admin.Controllers
         {
             var result = _InfoRepository.Edit(model, Id);
             TempData.AddResult(result);
-            return RedirectToAction(nameof(Edit), new { Id });
+            return RedirectToAction(nameof(Edit));
         }
 
-
-        public IActionResult Delete(int Id, string ImagePath)
-        {
-            var result = _InfoRepository.Delete(Id);
-            if (result.Succeed)
-                FileHelper.DeleteFile(ImagePath, _fileConfig, FileType.Image);
-
-            TempData.AddResult(result);
-            return RedirectToAction(nameof(Index));
-        }
+         
     }
 }
