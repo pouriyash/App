@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Bootstraper", "App.Boot
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Common", "App.Common\App.Common.csproj", "{1D366679-20C5-4C0E-9472-D9F04943D945}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Regate", "App.Regate\App.Regate.csproj", "{8D73F179-2885-4EA6-9157-2191A0A6C6CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Regate", "App.Regate\App.Regate.csproj", "{8D73F179-2885-4EA6-9157-2191A0A6C6CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarMarWax", "MarMarWax\MarMarWax.csproj", "{41D348C1-BB9C-428E-AD64-E298AAC238A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{8D73F179-2885-4EA6-9157-2191A0A6C6CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D73F179-2885-4EA6-9157-2191A0A6C6CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D73F179-2885-4EA6-9157-2191A0A6C6CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41D348C1-BB9C-428E-AD64-E298AAC238A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41D348C1-BB9C-428E-AD64-E298AAC238A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41D348C1-BB9C-428E-AD64-E298AAC238A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41D348C1-BB9C-428E-AD64-E298AAC238A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +74,7 @@ Global
 		{8EF9FB93-4D3B-4428-BE14-72241F457A35} = {BACF8661-143C-4974-B7DE-307F86ACFB33}
 		{1D366679-20C5-4C0E-9472-D9F04943D945} = {BACF8661-143C-4974-B7DE-307F86ACFB33}
 		{8D73F179-2885-4EA6-9157-2191A0A6C6CF} = {BACF8661-143C-4974-B7DE-307F86ACFB33}
+		{41D348C1-BB9C-428E-AD64-E298AAC238A7} = {7C657D38-501B-4B84-B133-91007DDFCCB1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {947AFED0-1E32-48AF-87AC-679E4A0853AA}
