@@ -41,12 +41,12 @@
 <body class="animsition">
 
     <!-- Header -->
-    @Html.Partial("~/Views/Shared/_Header.cshtml")
+    @Html.PartialAsync("~/Views/Shared/_Header.cshtml")
 
     @RenderBody()
 
     <!-- Footer -->
-    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+    @Html.PartialAsync("~/Views/Shared/_Footer.cshtml")
     @*<!-- New Product -->
         <section class="newproduct bgwhite p-t-45 p-b-105">
             <div class="container">

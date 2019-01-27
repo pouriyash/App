@@ -27,8 +27,7 @@ namespace App.Bootstraper
 
 
             services.AddTransient<IMessagesService, MessagesService>();
-            services.AddTransient<PersonRepository>();
-
+ 
             #region Identity
             //services.AddCustomIdentityServices();
             //services.AddRequiredEfInternalServices(siteSettings); // It's added to access services from the dbcontext, remove it if you are using the normal `AddDbContext` and normal constructor dependency injection.
@@ -54,12 +53,43 @@ namespace App.Bootstraper
 
             //اتصال connectionStrings به AppDbContext
             //services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("AppDbConnection")));
-            Mapper.Initialize(c => {
+            Mapper.Initialize(c =>
+            {
                 c.AddProfiles(typeof(PersonProfile).GetTypeInfo().Assembly);
             });
             //services.AddAutoMapper(typeof(PersonProfile).GetTypeInfo().Assembly);
             services.AddAutoMapper();
+
+
+        }
+        public static void ConfigureServicesUI(IServiceCollection services, IConfiguration configuration)
+        {
+             
+            services.AddTransient<IMessagesService, MessagesService>();
+
             
+
+            //تزریق تمام repository ها با استفاده از reflection که از فضای نام آن ها استفاده میکند
+            // Domain Services
+            services.Scan(scan =>
+                scan.FromAssemblyOf<PersonRepository>()
+                    .AddClasses(classes => classes.InNamespaceOf<PersonRepository>())
+                    .AsSelf()
+                    .WithScopedLifetime());
+
+            //services.Configure<ConnectionString>(options => configuration.GetSection("ConnectionStrings").Bind(options));
+            //بایند کردن موجودیت ConnectionStrings از appsetting به Model  مورد نظر
+            //services.AddScoped<IDbConnection>(_ => new SqlConnection(configuration.GetConnectionString("ConnectionStrings")));
+
+            //اتصال connectionStrings به AppDbContext
+            //services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("AppDbConnection")));
+            Mapper.Initialize(c =>
+            {
+                c.AddProfiles(typeof(PersonProfile).GetTypeInfo().Assembly);
+            });
+            //services.AddAutoMapper(typeof(PersonProfile).GetTypeInfo().Assembly);
+            services.AddAutoMapper();
+
 
         }
     }

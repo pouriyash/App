@@ -5,13 +5,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MarMarWax.Models;
+using App.DomainServices.Repositories;
 
 namespace MarMarWax.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ProductRepository _productRepository;
+        private readonly BlogsRepository _blogsRepository;
+        public HomeController(ProductRepository productRepository, BlogsRepository blogsRepository)
+        {
+            _blogsRepository = blogsRepository;
+            _productRepository = productRepository;
+        }
         public IActionResult Index()
         {
+            ViewBag.ProductList = _productRepository.GetAll();
+            ViewBag.BlogList = _blogsRepository.GetRandom();
+
             return View();
         }
 

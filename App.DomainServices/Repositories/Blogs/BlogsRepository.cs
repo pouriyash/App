@@ -6,6 +6,7 @@ using App.DomainModels.ViewModels.Blogs;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -26,6 +27,16 @@ namespace App.DomainServices.Repositories
         {
             var model = _blogs
                 .OrderBy(p => p.Title)
+                .ProjectTo<BlogsDTO>()
+                .ToList();
+            return model;
+        }
+
+        public List<BlogsDTO> GetRandom(int count=3)
+        {
+            var model = _blogs
+                .OrderBy(qu => Guid.NewGuid())
+                .Take(count)
                 .ProjectTo<BlogsDTO>()
                 .ToList();
             return model;
