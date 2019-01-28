@@ -65,9 +65,10 @@ namespace App.Bootstraper
         public static void ConfigureServicesUI(IServiceCollection services, IConfiguration configuration)
         {
              
-            services.AddTransient<IMessagesService, MessagesService>();
+            //services.AddTransient<IMessagesService, MessagesService>();
+            services.AddScoped<IUnitOfWork, AppDbContext>();
 
-            
+
 
             //تزریق تمام repository ها با استفاده از reflection که از فضای نام آن ها استفاده میکند
             // Domain Services
