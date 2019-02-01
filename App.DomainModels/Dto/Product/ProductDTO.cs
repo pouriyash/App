@@ -34,6 +34,9 @@ namespace App.DomainModels.Dto.Product
         public string Image { get; set; }
 
         public ProductTypeDTO ProductType { get; set; }
+        public virtual ICollection<ProductColorSummaryDTO> ProductColors { get; set; }
+
+        public virtual ICollection<ProductGalleryImageDTO> ProductGalleryImages { get; set; }
 
     }
 }

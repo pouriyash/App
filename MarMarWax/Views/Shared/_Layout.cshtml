@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="~/css/util.css">
     <link rel="stylesheet" type="text/css" href="~/css/main.css">
     <!--===============================================================================================-->
-
+    @RenderSection("style",false)
 </head>
 
 <body class="animsition">
@@ -43,7 +43,8 @@
     <!-- Header -->
     @Html.Partial("~/Views/Shared/_Header.cshtml")
 
-    @RenderBody()
+  
+     @RenderBody()
 
     <!-- Footer -->
     @Html.Partial("~/Views/Shared/_Footer.cshtml")
@@ -409,6 +410,8 @@
     <script src="~/js/map-custom.js"></script>
     <!--===============================================================================================-->
     <script src="~/js/main.js"></script>
+    <script type="text/javascript" src="~/vendor/noui/nouislider.min.js"></script>
+    @RenderSection("script",false)
 
 </body>
 
