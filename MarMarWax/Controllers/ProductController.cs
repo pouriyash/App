@@ -25,7 +25,7 @@ namespace MarMarWax.Controllers
             return View(ProductList);
         }
 
-        public IActionResult Detail(int Id)
+        public IActionResult ProductDetail(int Id)
         {
             var Product= _productRepository.GetById(Id);
             return View(Product);
