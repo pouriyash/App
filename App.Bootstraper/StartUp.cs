@@ -6,6 +6,7 @@ using App.DomainModels.ViewModels.Settings;
 using App.DomainServices.Identity;
 using App.DomainServices.Repositories;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -67,6 +68,7 @@ namespace App.Bootstraper
              
             //services.AddTransient<IMessagesService, MessagesService>();
             services.AddScoped<IUnitOfWork, AppDbContext>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
 
