@@ -17,7 +17,7 @@ namespace MarMarWax.Controllers
     public class ContactUsController : Controller
     {
         private readonly ContactUsRepository _ContactUsRepository;
-        public ContactUsController(ContactUsRepository ContactUsRepository, BlogsRepository blogsRepository)
+        public ContactUsController(ContactUsRepository ContactUsRepository)
         {
             _ContactUsRepository = ContactUsRepository;
         }

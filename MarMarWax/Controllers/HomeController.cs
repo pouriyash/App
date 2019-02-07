@@ -13,8 +13,10 @@ namespace MarMarWax.Controllers
     {
         private readonly ProductRepository _productRepository;
         private readonly BlogsRepository _blogsRepository;
-        public HomeController(ProductRepository productRepository, BlogsRepository blogsRepository)
+        private readonly InfoRepository _infoRepository;
+        public HomeController(ProductRepository productRepository, BlogsRepository blogsRepository, InfoRepository infoRepository)
         {
+            _infoRepository = infoRepository;
             _blogsRepository = blogsRepository;
             _productRepository = productRepository;
         }
@@ -28,9 +30,9 @@ namespace MarMarWax.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            var model = _infoRepository.Get();
 
-            return View();
+            return View(model);
         }
 
         public IActionResult Contact()

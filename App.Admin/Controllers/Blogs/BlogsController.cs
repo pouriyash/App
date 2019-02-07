@@ -91,5 +91,11 @@ namespace App.Admin.Controllers
             TempData.AddResult(result);
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult BlogDetail(int Id)
+        {
+            var result = _blogsRepository.GetById(Id); 
+            return View(result);
+        }
     }
 }
