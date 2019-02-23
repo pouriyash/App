@@ -94,7 +94,7 @@ namespace App.Admin.Controllers
 
         public IActionResult BlogDetail(int Id)
         {
-            var result = _blogsRepository.GetById(Id); 
+            var result = _blogsRepository.GetById(Id);
             return View(result);
         }
     }
