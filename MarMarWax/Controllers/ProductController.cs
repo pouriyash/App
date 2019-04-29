@@ -28,6 +28,10 @@ namespace MarMarWax.Controllers
         public IActionResult ProductDetail(int Id)
         {
             var Product= _productRepository.GetById(Id);
+            Product.ProductGalleryImages.Add(new App.DomainModels.Dto.Product.ProductGalleryImageDTO {
+                Image = Product.Image,
+                ProductId = Id
+            });
             return View(Product);
         }
 

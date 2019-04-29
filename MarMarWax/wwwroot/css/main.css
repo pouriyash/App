@@ -39,47 +39,84 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 /*[ FONT ]
 ///////////////////////////////////////////////////////////
 */
-
 @font-face {
-  font-family: Montserrat-Regular;
-  src: url('../fonts/montserrat/Montserrat-Regular.ttf'); 
+  font-family: Samim;
+  src: url('Samim.eot');
+  src: url('Samim.eot?#iefix') format('embedded-opentype'),
+       url('Samim.woff') format('woff'),
+       url('Samim.ttf') format('truetype');
+  font-weight: normal;
 }
 
 @font-face {
-  font-family: Montserrat-Medium;
-  src: url('../fonts/montserrat/Montserrat-Medium.ttf'); 
+  font-family: Samim;
+  src: url('Samim-Bold.eot');
+  src: url('Samim-Bold.eot?#iefix') format('embedded-opentype'),
+       url('Samim-Bold.woff') format('woff'),
+       url('Samim-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url('Samim-Bold.eot');
+    src: url('Samim-Bold.eot?#iefix') format('embedded-opentype'), url('Samim-Bold.woff') format('woff'), url('Samim-Bold.ttf') format('truetype');
+    font-weight: bold;
 }
 
 @font-face {
-  font-family: Montserrat-Bold;
-  src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
+    font-family: Montserrat-Medium;
+    src: url('Samim-Bold.eot');
+    src: url('Samim-Bold.eot?#iefix') format('embedded-opentype'), url('Samim-Bold.woff') format('woff'), url('Samim-Bold.ttf') format('truetype');
+    font-weight: bold;
 }
 
 @font-face {
-  font-family: Montserrat-Italic;
-  src: url('../fonts/montserrat/Montserrat-Italic.ttf'); 
+    font-family: Montserrat-Bold;
+    src: url('Samim-Bold.eot');
+    src: url('Samim-Bold.eot?#iefix') format('embedded-opentype'), url('Samim-Bold.woff') format('woff'), url('Samim-Bold.ttf') format('truetype');
+    font-weight: bold;
 }
 
 @font-face {
-  font-family: Montserrat-Black;
-  src: url('../fonts/montserrat/Montserrat-Black.ttf'); 
+    font-family: Montserrat-Italic;
+    src: url('Samim-Bold.eot');
+    src: url('Samim-Bold.eot?#iefix') format('embedded-opentype'), url('Samim-Bold.woff') format('woff'), url('Samim-Bold.ttf') format('truetype');
+    font-weight: bold;
 }
 
 @font-face {
-  font-family: Linearicons;
-  src: url('../fonts/Linearicons-Free-v1.0.0/WebFont/Linearicons-Free.ttf'); 
+    font-family: Montserrat-Black;
+    src: url('Samim-Bold.eot');
+    src: url('Samim-Bold.eot?#iefix') format('embedded-opentype'), url('Samim-Bold.woff') format('woff'), url('Samim-Bold.ttf') format('truetype');
+    font-weight: bold;
 }
 
 @font-face {
-  font-family: Poppins-Bold;
-  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+    font-family: Linearicons;
+    src: url('Samim-Bold.eot');
+    src: url('Samim-Bold.eot?#iefix') format('embedded-opentype'), url('Samim-Bold.woff') format('woff'), url('Samim-Bold.ttf') format('truetype');
+    font-weight: bold;
 }
 
 @font-face {
-  font-family: Poppins-Black;
-  src: url('../fonts/poppins/Poppins-Black.ttf'); 
+    font-family: Poppins-Bold;
+    src: url('Samim-Bold.eot');
+    src: url('Samim-Bold.eot?#iefix') format('embedded-opentype'), url('Samim-Bold.woff') format('woff'), url('Samim-Bold.ttf') format('truetype');
+    font-weight: bold;
 }
 
+@font-face {
+    font-family: Poppins-Black;
+    src: url('Samim-Bold.eot');
+    src: url('Samim-Bold.eot?#iefix') format('embedded-opentype'), url('Samim-Bold.woff') format('woff'), url('Samim-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'w_parvaz';
+    src: url('Samim-Bold.eot');
+    src: url('Samim-Bold.eot?#iefix') format('embedded-opentype'), url('Samim-Bold.woff') format('woff'), url('Samim-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
 /*[ RESTYLE TAG ]
 ///////////////////////////////////////////////////////////
 */
@@ -666,13 +703,13 @@ iframe {
   padding-right: 15px;
 }
 
-.main_menu > li > a {
-  font-family: Montserrat-Regular;
-  font-size: 15px;
-  color: #333333;
-  padding: 0;
-  border-bottom: 1px solid transparent;
-}
+    .main_menu > li > a {
+        font-family: w_parvaz;
+        font-size: 15px;
+        color: #333333;
+        padding: 0;
+        border-bottom: 1px solid transparent;
+    }
 
 li.sale-noti > a {
   color: #e65540;

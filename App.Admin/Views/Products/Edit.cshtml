@@ -2,8 +2,7 @@
 @model ProductDTO
 @using App.Common.Toolkit
 @using App.DomainModels.SSOT
-@inject FileConfig config
-@Html.Raw(Styles.MakeLayoutBlank())
+@inject FileConfig config 
 @{
     ViewData["Title"] = "ویرایش مصول";
 }
@@ -33,11 +32,13 @@
                 <div class="col-lg-4 control-label">عکس اصلی محصول</div>
                 <div class="col-lg-8">
                     <input type="file" name="NewImage" value="@Model.Image" class="form-control form-control-sm" placeholder="عکس اصلی محصول ">
-
+                    @if (Model.Image != null)
+                    { 
+                        <img style="height:100px;width:100px" src="@config.WebAddress@Model.Image">
+ 
+                    }
                 </div>
             </div>
-
-
             <div class="col-md-12 col-xs-12 col-sm-4">
                 <div class="form-group">
                     <label for="Description">توضیحات </label>
@@ -50,7 +51,7 @@
             <div class="col-md-12 col-xs-12 col-sm-4">
                 <div class="form-group">
                     <label for="ShortDescription">توضیحات مختصر</label>
-                    <textarea class="form-control form-control-lg" asp-for="ShortDescription" rows="8" placeholder="توضیحات مختصر را وارد کنید "></textarea>
+                    <textarea class="form-control form-control-lg" style="direction:rtl" asp-for="ShortDescription" rows="8" placeholder="توضیحات مختصر را وارد کنید "></textarea>
                     <i class="form-group__bar"></i>
                 </div>
             </div>

@@ -91,15 +91,15 @@
 
 
 
-            <form class="header__form col-md-4">
+            @*<form class="header__form col-md-4">
                 <div class="input-group">
                     <input id="email" type="text" class="form-control header__form__txt" name="email" placeholder="جستجو">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
                 </div>
-            </form>
+            </form>*@
 
             <div class="header__notify">
-                <a href="#" class="header__notify__item">
+                @*<a href="#" class="header__notify__item">
                     <i class="pe-7s-mail"></i>
                     <span class="badge header__notify__item__badge wow flash">5</span>
                 </a>
@@ -107,7 +107,7 @@
 
                 <a href="#" class="header__notify__item">
                     <i class="pe-7s-keypad"></i>
-                </a>
+                </a>*@
                 @{
                     if (User.Identity.IsAuthenticated)
                     {
@@ -120,7 +120,7 @@
         </header>
 
         <aside class="sidebar">
-            <div class="sidebar__user">
+            @*<div class="sidebar__user">
                 <div class="sidebar__user__profile">
                     <img src="~/docs/images/user.jpg" class="sidebar__user__profile__img">
                     <div>
@@ -132,7 +132,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*@
 
             <ul class="sidebar__navigation scroll-panel">
                 <li class="sidebar__navigation__item">
@@ -147,12 +147,12 @@
                         مدیریت محصولات
                     </a>
                 </li>
-                <li class="sidebar__navigation__item">
+                @*<li class="sidebar__navigation__item">
                     <a asp-action="Index" asp-controller="Slider" class="sidebar__navigation__item__link ">
                         <i class="pe-7s-home"></i>
                         مدیریت اسلایدر
                     </a>
-                </li>
+                </li>*@
                 <li class="sidebar__navigation__item">
                     <a asp-action="Index" asp-controller="Blogs" class="sidebar__navigation__item__link ">
                         <i class="pe-7s-home"></i>
@@ -173,7 +173,7 @@
                 مدیریت کامنت ها
             </a>
         </li>*@
-                <li class="sidebar__navigation__item">
+                @*<li class="sidebar__navigation__item">
                     <a asp-action="Index" asp-controller="RolesManager" class="sidebar__navigation__item__link ">
                         <i class="pe-7s-home"></i>
                         مدیریت نقش ها
@@ -184,7 +184,7 @@
                         <i class="pe-7s-home"></i>
                         مدیریت کاربران
                     </a>
-                </li>
+                </li>*@
                 <li class="sidebar__navigation__item">
                     <a asp-action="Index" asp-controller="ContactUsManagement" class="sidebar__navigation__item__link  ">
                         <i class="pe-7s-home"></i>

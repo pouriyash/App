@@ -15,16 +15,20 @@
                 <div class="wrap-slick3-dots"></div>
 
                 <div class="slick3">
-                    @foreach (var item in Model.ProductGalleryImages)
+                    @if (Model.ProductGalleryImages.Count>0)
                     {
-                        <div class="item-slick3" data-thumb="@fileConfig.WebAddress@item.Image">
-                            <div class="wrap-pic-w">
-                                <img src="@fileConfig.WebAddress@item.Image" alt="IMG-PRODUCT">
+                        @foreach (var item in Model.ProductGalleryImages.OrderBy(p=>p.Id))
+                        {
+                            <div class="item-slick3" data-thumb="@fileConfig.WebAddress@item.Image">
+                                <div class="wrap-pic-w">
+                                    <img src="@fileConfig.WebAddress@item.Image" alt="IMG-PRODUCT">
+                                </div>
                             </div>
-                        </div>
+                        }
                     }
 
                 </div>
+               
             </div>
         </div>
 
