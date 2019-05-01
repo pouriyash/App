@@ -2381,6 +2381,7 @@
 .hov-img-zoom {
 	display: block;
 	overflow: hidden;
+    box-shadow:0px 0px 2px #ccc;
 }
 .hov-img-zoom img{
 	width: 100%;
@@ -3030,14 +3031,13 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 
 .s-text3 {
-	font-family: Montserrat-Regular;
 	font-size: 15px;
 	color: #555555;
 	line-height: 1.5;
 }
 
 .s-text4 {
-	font-family: Montserrat-Regular;
+	
 	font-size: 15px;
 	color: white;
 	text-transform: uppercase;
@@ -3059,7 +3059,7 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 
 .s-text7 {
-	font-family: Montserrat-Regular;
+	
 	font-size: 13px;
 	color: #555555;
 	line-height: 1.8;
@@ -3185,14 +3185,12 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 
 .m-text2 {
-	font-family: Montserrat-Regular;
 	font-size: 16px;
 	color: #333333;
 	text-transform: uppercase;
 }
 
 .m-text3 {
-	font-family: Montserrat-Regular;
 	font-size: 16px;
 	color: white;
 	text-transform: uppercase;
@@ -3359,7 +3357,7 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 
 .m-text26 {
-	font-family: Montserrat-Regular;
+	
 	font-size: 25px;
 	color: #333333;
 	line-height: 1.2;

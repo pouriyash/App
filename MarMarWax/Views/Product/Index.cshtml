@@ -62,17 +62,17 @@
                         {
                             <div class="col-sm-12 col-md-12 col-lg-4 p-b-50">
                                 <!-- Block2 -->
-                                <div class="block2">
+                                <div class="block2 box">
                                     <div class="block2-img wrap-pic-w of-hidden pos-relative ">
                                         <a asp-controller="Product" asp-action="ProductDetail" asp-route-Id="@item.Id" class="block2-name dis-block s-text3 p-b-5">
 
-                                            <img style="width:500px;height:500px" src="@config.WebAddress@item.Image" alt="IMG-PRODUCT">
+                                            <img src="@config.WebAddress@item.Image" alt="IMG-PRODUCT">
 
                                         </a>
                                     </div>
 
                                     <div class="block2-txt p-t-20">
-                                        <a asp-controller="Product" asp-action="ProductDetail" asp-route-Id="@item.Id" class="block2-name dis-block s-text3 p-b-5">
+                                        <a asp-controller="Product" asp-action="ProductDetail" asp-route-Id="@item.Id" class="block2-name text-center dis-block s-text3 p-b-5">
                                             @item.Name
                                         </a>
 
