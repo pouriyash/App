@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.DomainModels.Dto.Product
+namespace App.DomainModels.ViewModels.Product
 {
-    public class ProductColorSummaryDTO
-    {
-        public int Id { get; set; }
-
+    public class ProductColorEditViewModel
+    { 
         /// <summary>
         /// عنوان
         /// </summary>

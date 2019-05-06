@@ -48,6 +48,9 @@
                                      <div class="form-group">
                                          <a asp-action="Index" asp-controller="ProductGalleryImage" asp-route-ProductId="@item.Id" class="btn btn-lg btn-outline-info">مدیریت گالری</a>
                                      </div>
+                                     <div class="form-group">
+                                         <a asp-action="Index" asp-controller="ProductColor" asp-route-ProductId="@item.Id" class="btn btn-lg btn-outline-warning">مدیریت رنگ</a>
+                                     </div>
                                  </td>
                                 <td>
                                     <a  asp-action="Edit" asp-controller="Products" asp-route-Id="@item.Id" class="action">

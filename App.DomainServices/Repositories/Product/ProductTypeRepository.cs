@@ -14,7 +14,7 @@ using System.Text;
 
 namespace App.DomainServices.Repositories
 {
-    public class ProductTypeRepository : BaseRepository<Person>
+    public class ProductTypeRepository : BaseRepository<ProductType>
     {
         private readonly IUnitOfWork _Context;
         private readonly DbSet<ProductType> _productType;

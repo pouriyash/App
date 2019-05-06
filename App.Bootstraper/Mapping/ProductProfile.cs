@@ -21,6 +21,8 @@ namespace App.Bootstraper.Mapping
 
             CreateMap<ProductGalleryImageDTO, ProductGalleryImage>().ReverseMap();
             CreateMap<ProductGalleryImageViewModel, ProductGalleryImage>().ReverseMap();
+            CreateMap<ProductColorEditViewModel, ProductColor>().ReverseMap();
+            CreateMap<ProductColorSummaryDTO, ProductColor>().ReverseMap();
         }
     }
 }

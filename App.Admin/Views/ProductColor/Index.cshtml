@@ -1,0 +1,89 @@
+﻿@using App.DomainModels.Dto.Product
+@model IEnumerable<ProductColorSummaryDTO>
+@{
+    ViewData["Title"] = "رنگ محصولات";
+}
+@{
+    int counter = 0;
+}
+<div class="content__inner">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="content__inner__card wow zoomIn">
+                <div class="content__inner__card__title">
+                    رنگ محصولات
+                </div>
+                <div class="content__inner__card__desc">
+                    افزودن رنگ جدید
+                </div>
+
+                <div style="display:grid">
+                    <form asp-action="Create" asp-controller="ProductColor" method="post">
+                        <input type="hidden" name="productId" value="@ViewBag.productId" />
+                        <div class="col-md-4 col-xs-12 col-sm-4">
+                            <div class="form-group">
+                                <input type="text" name="Title" required class="form-control form-control-sm" placeholder="نام رنگ ">
+                                <i class="form-group__bar"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12 col-sm-4">
+                            <div class="form-group">
+                                <input type="text" name="colorCode" required class="form-control form-control-sm" placeholder="کد رنگ ">
+                                <i class="form-group__bar"></i>
+                            </div>
+                        </div>
+                        <input type="submit" value="ایجاد" class="btn btn-success" />
+                    </form>
+                </div>
+
+                <hr />
+
+                <div class="table-responsive">
+                    <table class="table  table-striped">
+                        <thead>
+                            <tr>
+                                <th>ردیف</th>
+                                <th>نام رنگ</th>
+                                <th>کد رنگ</th>
+                                <th>اقدامات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@(++counter)</td>
+                                    <td>@item.Title</td>
+                                    <td>@item.colorCode</td>
+                                    <td>
+                                        <a data-fancybox data-type="iframe" asp-action="Edit" asp-controller="ProductColor" asp-route-Id="@item.Id" class="action">
+                                            <i class="pe-7s-edit"></i>
+                                        </a>
+                                        <a asp-action="Delete" asp-controller="ProductColor" asp-route-Id="@item.Id" class="action">
+                                            <i class="pe-7s-trash"></i>
+                                        </a>
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                @*<div class="text-center font-size-12 margin-top-20">
+            نمایش 1 تا 2 از 17 مورد
+        </div>
+
+        <div class="pagination">
+            <a class="pagination__btn"><i class="pe-7s-angle-left"></i></a>
+            <a href="#" class="pagination__btn active">1</a>
+            <a href="#" class="pagination__btn">2</a>
+            <a href="#" class="pagination__btn">3</a>
+            <a href="#" class="pagination__btn">4</a>
+            <a class="pagination__btn disabled"><i class="pe-7s-angle-right"></i></a>
+        </div>*@
+
+            </div>
+        </div>
+    </div>
+</div>

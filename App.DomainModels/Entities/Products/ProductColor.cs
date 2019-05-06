@@ -23,7 +23,12 @@ namespace App.DomainModels.Entities.Products
         /// تصویر رنگ
         /// </summary>
         public string Image { get; set; }
-        
+
+        /// <summary>
+        /// کد رنگ
+        /// </summary>
+        public string colorCode { get; set; }
+
         /// <summary>
         /// شناسه محصول
         /// </summary>

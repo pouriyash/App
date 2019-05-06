@@ -1,0 +1,26 @@
+﻿@using App.DomainModels.Dto.Product
+@model ProductColorSummaryDTO
+@using App.Common.Toolkit
+@Html.Raw(Styles.MakeLayoutBlank())
+@{
+    ViewData["Title"] = "خانه";
+}
+
+<form asp-action="Edit" asp-controller="ProductColor" method="post">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="ProductId" />
+
+    <div class="col-md-4 col-xs-12 col-sm-4">
+        <div class="form-group">
+            <input type="text" asp-for="Title" required class="form-control form-control-sm" placeholder="نام رنگ ">
+            <i class="form-group__bar"></i>
+        </div>
+    </div>
+    <div class="col-md-4 col-xs-12 col-sm-4">
+        <div class="form-group">
+            <input type="text" asp-for="colorCode" required class="form-control form-control-sm" placeholder="کد رنگ ">
+            <i class="form-group__bar"></i>
+        </div>
+    </div>
+    <input type="submit" value="ویرایش" class="btn btn-success" />
+</form>

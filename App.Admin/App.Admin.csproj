@@ -786,6 +786,12 @@
     <Content Update="Views\ContactUsManagement\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\ProductColor\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\ProductColor\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Slider\Create.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
