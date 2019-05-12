@@ -22,9 +22,9 @@
                     {
                         @foreach (var item in Model.ProductGalleryImages.OrderBy(p => p.Id))
                         {
-                            <div class="item-slick3" data-thumb="@fileConfig.WebAddress@item.Image">
+                            <div class="item-slick3" data-thumb="http://admin.marmarwax.com/UploadFiles/@item.Image">
                                 <div class="wrap-pic-w">
-                                    <img src="@fileConfig.WebAddress@item.Image" alt="IMG-PRODUCT">
+                                    <img src="http://admin.marmarwax.com/UploadFiles/@item.Image" alt="IMG-PRODUCT">
                                 </div>
                             </div>
                         }
@@ -78,7 +78,7 @@
 
                                   @foreach (var item in colors)
                                 {
-                                    <div style="background-color:@item.colorCode;width:50px;height:50px;border-radius:50%;margin:10px"></div>
+                                    <div style="background-color:@item.colorCode;width:50px;height:50px;border-radius:50%;margin:10px;border:2px solid gray"></div>
                                 }
 
                      </div>

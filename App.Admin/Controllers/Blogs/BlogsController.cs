@@ -6,6 +6,7 @@ using App.DomainModels.SSOT;
 using App.DomainModels.ViewModels.Blogs;
 using App.DomainServices.Repositories;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -16,12 +17,18 @@ namespace App.Admin.Controllers
     public class BlogsController : Controller
     {
         private readonly BlogsRepository _blogsRepository;
+        private readonly BlogGalleryRepository _blogGalleryRepository;
         private readonly FileConfig _fileConfig;
+        private readonly IHostingEnvironment _environment;
 
         public BlogsController(BlogsRepository blogsRepository
+            , BlogGalleryRepository blogGalleryRepository
+            , IHostingEnvironment environment
             , FileConfig fileConfig)
         {
             _fileConfig = fileConfig;
+            _blogGalleryRepository = blogGalleryRepository;
+            _environment = environment;
             _blogsRepository = blogsRepository;
         }
 
@@ -39,7 +46,7 @@ namespace App.Admin.Controllers
         [HttpPost]
         public IActionResult Create(BlogsDTO model, IFormFile Image)
         {
-            var imageName = FileHelper.SaveFile(Image, _fileConfig, FileType.Image);
+            var imageName = FileHelper.SaveFile(Image, _fileConfig, FileType.Image,_environment.WebRootPath);
             if (imageName != null)
                 model.Image = imageName;
             var result = _blogsRepository.Create(model);
@@ -65,8 +72,8 @@ namespace App.Admin.Controllers
 
             if (NewImage != null)
             {
-                var imageName = FileHelper.SaveFile(NewImage, _fileConfig, FileType.Image);
-                FileHelper.DeleteFile(model.Image, _fileConfig, FileType.Image);
+                var imageName = FileHelper.SaveFile(NewImage, _fileConfig, FileType.Image, _environment.WebRootPath);
+                //FileHelper.DeleteFile(model.Image, _fileConfig, FileType.Image, _environment.WebRootPath);
                 model.Image = imageName;
             }
 
@@ -79,7 +86,8 @@ namespace App.Admin.Controllers
         {
             var result = _blogsRepository.Delete(Id);
             if (result.Succeed)
-                FileHelper.DeleteFile(ImagePath, _fileConfig, FileType.Image);
+                _blogGalleryRepository.DeleteByBlogId(Id);
+                //FileHelper.DeleteFile(ImagePath, _fileConfig, FileType.Image, _environment.WebRootPath);
 
             TempData.AddResult(result);
             return RedirectToAction(nameof(Index));

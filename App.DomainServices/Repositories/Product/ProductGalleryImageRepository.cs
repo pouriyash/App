@@ -61,5 +61,16 @@ namespace App.DomainServices.Repositories
                 return ServiceResult<int>.Okay(entity.ProductId.Value);
             return ServiceResult<int>.Error("خطا در انجام عملیات");
         }
+
+        public ServiceResult<int> DeleteByProductId(int productId)
+        {
+            var list = _ProductGalleryImage.Where(p=>p.ProductId== productId).ToList();
+
+            _ProductGalleryImage.RemoveRange(list);
+            var result = _Context.SaveChanges();
+            if (result > 0)
+                return ServiceResult<int>.Okay(productId);
+            return ServiceResult<int>.Error("خطا در انجام عملیات");
+        }
     }
 }

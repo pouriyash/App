@@ -121,10 +121,10 @@
     position: absolute;
     align-self: center;
     text-align: center;
-    font-size: 100px;
+    font-size: 180px;
     opacity: 0;
     color: #e65540;
-    font-family: sofia-regular;
+    font-family: IRANSans !important;
 }
 
 .brand-heading__img {

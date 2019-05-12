@@ -6,6 +6,7 @@ using App.DomainModels.SSOT;
 using App.DomainModels.ViewModels.Blogs;
 using App.DomainServices.Repositories;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,11 +17,15 @@ namespace App.Admin.Controllers
     {
         private readonly BlogGalleryRepository _blogGalleryRepository;
         private readonly FileConfig _fileConfig;
+        private readonly IHostingEnvironment _environment;
+
 
         public BlogGalleryController(BlogGalleryRepository blogGalleryRepository
+            , IHostingEnvironment environment
             , FileConfig fileConfig)
         {
             _fileConfig = fileConfig;
+            _environment = environment;
             _blogGalleryRepository = blogGalleryRepository;
         }
 
@@ -40,7 +45,7 @@ namespace App.Admin.Controllers
         [HttpPost]
         public IActionResult Create(BlogGalleryDTO model, IFormFile Image)
         {
-            var imageName = FileHelper.SaveFile(Image, _fileConfig, FileType.Image);
+            var imageName = FileHelper.SaveFile(Image, _fileConfig, FileType.Image, _environment.WebRootPath);
             if (imageName != null)
                 model.Image = imageName;
             var result = _blogGalleryRepository.Create(model);
@@ -52,7 +57,7 @@ namespace App.Admin.Controllers
         {
             var result = _blogGalleryRepository.Delete(Id);
             if (result.Succeed)
-                FileHelper.DeleteFile(ImagePath, _fileConfig, FileType.Image);
+                //FileHelper.DeleteFile(ImagePath, _fileConfig, FileType.Image, _environment.WebRootPath);
 
             TempData.AddResult(result);
             return RedirectToAction(nameof(Index), new { result.Data });

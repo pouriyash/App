@@ -9,6 +9,7 @@ using App.DomainModels.SSOT;
 using App.DomainModels.ViewModels;
 using App.DomainServices.Repositories;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -20,17 +21,23 @@ namespace App.Admin.Controllers
     public class ProductsController : Controller
     {
         private readonly ProductRepository _productRepository;
+        private readonly ProductGalleryImageRepository _productGalleryImageRepository;
         private readonly ProductTypeRepository _productTypeRepository;
         private readonly FileConfig _fileConfig;
+        private readonly IHostingEnvironment _environment;
 
         public ProductsController
             (ProductRepository productRepository
+            , ProductGalleryImageRepository productGalleryImageRepository
             , FileConfig fileConfig
+            , IHostingEnvironment environment
             , ProductTypeRepository productTypeRepository)
 
         {
+            _productGalleryImageRepository = productGalleryImageRepository;
             _productRepository = productRepository;
             _fileConfig = fileConfig;
+            _environment = environment;
             _productTypeRepository = productTypeRepository;
         }
 
@@ -52,7 +59,7 @@ namespace App.Admin.Controllers
         [HttpPost]
         public IActionResult Create(ProductDTO model, IFormFile Image)
         {
-            var imageName = FileHelper.SaveFile(Image, _fileConfig, FileType.Image);
+            var imageName = FileHelper.SaveFile(Image, _fileConfig, FileType.Image, _environment.WebRootPath);
             if (imageName != null)
                 model.Image = imageName;
             var result = _productRepository.Create(model);
@@ -80,8 +87,8 @@ namespace App.Admin.Controllers
         {
             if (NewImage != null)
             {
-                var imageName = FileHelper.SaveFile(NewImage, _fileConfig, FileType.Image);
-                FileHelper.DeleteFile(model.Image, _fileConfig, FileType.Image);
+                var imageName = FileHelper.SaveFile(NewImage, _fileConfig, FileType.Image, _environment.WebRootPath);
+                FileHelper.DeleteFile(model.Image, _fileConfig, FileType.Image, _environment.WebRootPath);
                 model.Image = imageName;
             }
 
@@ -95,7 +102,9 @@ namespace App.Admin.Controllers
         {
             var result = _productRepository.Delete(Id);
             if (result.Succeed)
-                FileHelper.DeleteFile(ImagePath, _fileConfig, FileType.Image);
+            { 
+                _productGalleryImageRepository.DeleteByProductId(Id); 
+            }
 
             TempData.AddResult(result);
             return RedirectToAction(nameof(Index));

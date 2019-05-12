@@ -6,9 +6,12 @@ using App.DomainModels.Entities.Products;
 using App.DomainModels.ViewModels;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -18,15 +21,21 @@ namespace App.DomainServices.Repositories
     {
         private readonly IUnitOfWork _Context;
         private readonly DbSet<Product> _Product;
-        public ProductRepository(IUnitOfWork Context) :base(Context)
+        private readonly IHostingEnvironment _environment;
+
+        public IConfiguration _Configuration { get; }
+
+        public ProductRepository(IUnitOfWork Context, IHostingEnvironment environment) :base(Context)
         {
             _Context = Context;
             _Product = Context.Set<Product>();
+            _environment = environment;
         }
 
         public List<ProductDTO> GetAll()
         {
             var model= _Product.ProjectTo<ProductDTO>().ToList();
+            //model.ForEach(p => p.Image = Path.Combine(_environment.WebRootPath, p.Image));
             return model;
         }
 

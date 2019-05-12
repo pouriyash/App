@@ -21,10 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="NewFolder\" />
     <Folder Include="Scripts\" />
     <Folder Include="ViewComponents\" />
     <Folder Include="Views\Home\" />
+    <Folder Include="wwwroot\UploadFiles\" />
   </ItemGroup>
 
   <ItemGroup>

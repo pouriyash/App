@@ -2,6 +2,7 @@
 @model IEnumerable<ProductDTO>
 @using App.DomainModels.SSOT
 @inject FileConfig config
+
 @{
     ViewData["Title"] = "انواع محصولات";
 }
@@ -42,7 +43,7 @@
                                 <td>@item.Name</td>
                                 <td>@item.ProductType.Title</td>
                                 <td>
-                                <img  src="@config.WebAddress@item.Image" width="100" height="100" />
+                                <img src="@Url.Content("~/UploadFiles")/@item.Image" width="100" height="100" />
                                  <td>@item.ShortDescription</td>
                                  <td>
                                      <div class="form-group">

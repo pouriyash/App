@@ -8,6 +8,7 @@ using App.DomainModels.Entities.Models;
 using App.DomainModels.SSOT;
 using App.DomainServices.Repositories;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,9 +20,11 @@ namespace App.Admin.Controllers
     public class FileController : Controller
     {
         private readonly FileConfig _fileConfig;
+        private readonly IHostingEnvironment _environment;
 
-        public FileController(FileConfig fileConfig)
+        public FileController(FileConfig fileConfig, IHostingEnvironment environment)
         {
+            _environment = environment;
             _fileConfig = fileConfig;
         }
 
@@ -38,7 +41,7 @@ namespace App.Admin.Controllers
 
             try
             {
-                ViewBag.FileName = FileHelper.SaveFile(image, _fileConfig, FileType.Image);
+                ViewBag.FileName = FileHelper.SaveFile(image, _fileConfig, FileType.Image, _environment.WebRootPath);
             }
             catch (Exception e)
             {

@@ -12,7 +12,8 @@ namespace App.Admin.Helpers
 {
     public static class FileHelper
     {
-        public static string SaveFile(IFormFile file, FileConfig config, DomainModels.SSOT.FileType type)
+
+        public static string SaveFile(IFormFile file, FileConfig config, DomainModels.SSOT.FileType type,string relativePath)
         {
             if (file.Length <= 0)
             {
@@ -20,8 +21,8 @@ namespace App.Admin.Helpers
             }
 
             var date = DateTime.Now;
-            var relativePath = $"{type}/{date.Year}/{date.Month}/{date.Day}";
-            var folderPath = Path.Combine(config.PhysicalAddress, relativePath);
+            //var relativePath = $"{type}/{date.Year}/{date.Month}/{date.Day}";
+            var folderPath = Path.Combine(relativePath, "UploadFiles");
 
             var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
 
@@ -59,7 +60,7 @@ namespace App.Admin.Helpers
             var mimeType = MimeGuesser.GuessMimeType(filepath);
 
             if (allowedExtensions.Contains(mimeType))
-                return Path.Combine(relativePath, fileName);
+                return fileName;
 
 
             try
@@ -74,9 +75,11 @@ namespace App.Admin.Helpers
             throw new Exception("فایل مورد نظر غیر مجاز می‌باشد");
         }
 
-        public static void DeleteFile(string Image, FileConfig config, DomainModels.SSOT.FileType fileType)
+        public static void DeleteFile(string Image, FileConfig config, DomainModels.SSOT.FileType fileType, string relativePath)
         {
-            File.Delete(config.PhysicalAddress + Image);
+            var folderPath = Path.Combine(relativePath, "UploadFiles");
+
+            File.Delete(folderPath + Image);
         }
     }
 }

@@ -3,9 +3,8 @@
 @{
     ViewData["Title"] = "About";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
+} 
  
-<h3>@ViewData["Message"]</h3>
 
 <body class="animsition">
 
@@ -13,36 +12,36 @@
     <section class="bgwhite p-t-66 p-b-38">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 p-b-30 text-right">
+                <div style="padding:80px 40px"class="col-md-6 p-b-30 text-right">
                     <h3 class="m-text26 p-t-15 p-b-16">
                         درباره ما
                     </h3>
 
                     <p class="p-b-28" style="font-size:20px">
-                        @Html.Raw(Model.OurStory)
+                        @Html.Raw(Model?.OurStory)
                     </p>
 
                     <div class="p-l-29 m-l-9 p-b-10" style="font-size:20px">
                         <p style="font-size:20px" class="p-b-15">
-                            @Model.Address
+                            @Model?.Address
                         </p>
                         <p style="font-size:20px" class="p-b-11">
-                            @Model.Email
+                            @Model?.Email
                         </p>
                         <p style="font-size:20px" class="p-b-11">
-                            @Model.fax
+                            @Model?.fax
                         </p>
                         <p style="font-size:20px" class="p-b-11">
-                            @Model.Mobile
+                            @Model?.Mobile
                         </p>
                         <span style="font-size:20px" class="s-text7">
-                            @Model.Tell
+                            @Model?.Tell
                         </span>
                     </div>
                 </div>
-                <div class="col-md-4 p-b-30">
-                    <div class="hov-img-zoom">
-                        <img src="../../images/banner-14.jpg" alt="IMG-ABOUT">
+                <div class="col-md-6 p-b-30">
+                    <div class="hov-img-zoom"> 
+                        <img src="http://marmarwax.com/images/e0012055-6e87-4396-a35a-d5ffb14923f5.jpg"  height="550" />
                     </div>
                 </div>
 

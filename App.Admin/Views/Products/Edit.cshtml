@@ -34,7 +34,7 @@
                     <input type="file" name="NewImage" value="@Model.Image" class="form-control form-control-sm" placeholder="عکس اصلی محصول ">
                     @if (Model.Image != null)
                     { 
-                        <img style="height:100px;width:100px" src="@config.WebAddress@Model.Image">
+                        <img style="height:100px;width:100px" src="@Url.Content("~/UploadFiles")/@Model.Image">
  
                     }
                 </div>

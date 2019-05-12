@@ -21,8 +21,8 @@
         @foreach (var item in Model)
         { 
             <div class="col-md-2 col-xs-6 col-sm-4 photo__item">
-                <a href="@config.WebAddress@item.Image" data-fancybox="images" data-caption="@item.Alt ">
-                    <img src="@config.WebAddress@item.Image" style="height:250px;width:250px"  />
+                <a href="@Url.Content("~/UploadFiles")/@item.Image" data-fancybox="images" data-caption="@item.Alt ">
+                    <img src="@Url.Content("~/UploadFiles")/@item.Image" style="height:250px;width:250px"  />
                 </a>
             </div>
         }

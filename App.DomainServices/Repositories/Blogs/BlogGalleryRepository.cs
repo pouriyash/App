@@ -61,6 +61,17 @@ namespace App.DomainServices.Repositories
                 return ServiceResult<int>.Okay(entity.BlogId);
             return ServiceResult<int>.Error("خطا در انجام عملیات");
         }
-           
+
+        public ServiceResult<int> DeleteByBlogId(int blogId)
+        {
+            var list = _blogGallery.Where(p=>p.BlogId== blogId).ToList();
+
+            _blogGallery.RemoveRange(list);
+            var result = _Context.SaveChanges();
+            if (result > 0)
+                return ServiceResult<int>.Okay(blogId);
+            return ServiceResult<int>.Error("خطا در انجام عملیات");
+        }
+
     }
 }

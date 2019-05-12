@@ -12,6 +12,7 @@ using App.DomainModels.SSOT;
 using App.DomainModels.ViewModels;
 using App.DomainServices.Repositories;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,12 +24,15 @@ namespace App.Admin.Controllers
     {
         private readonly sliderRepository _sliderRepository;
         private readonly FileConfig _fileConfig;
+        private readonly IHostingEnvironment _environment;
 
         public SliderController(sliderRepository sliderRepository
+            , IHostingEnvironment environment
             , FileConfig fileConfig)
         {
             _fileConfig = fileConfig;
             _sliderRepository = sliderRepository;
+            _environment = environment;
         }
 
         public IActionResult Index()
@@ -45,7 +49,7 @@ namespace App.Admin.Controllers
         [HttpPost]
         public IActionResult Create(sliderDTO model, IFormFile Image)
         {
-            var imageName = FileHelper.SaveFile(Image, _fileConfig, FileType.Image);
+            var imageName = FileHelper.SaveFile(Image, _fileConfig, FileType.Image, _environment.WebRootPath);
             if (imageName != null)
                 model.Image = imageName;
             var result = _sliderRepository.Create(model);
@@ -71,8 +75,8 @@ namespace App.Admin.Controllers
 
             if (NewImage != null)
             {
-                var imageName = FileHelper.SaveFile(NewImage, _fileConfig, FileType.Image);
-                FileHelper.DeleteFile(model.Image, _fileConfig, FileType.Image);
+                var imageName = FileHelper.SaveFile(NewImage, _fileConfig, FileType.Image, _environment.WebRootPath);
+                //FileHelper.DeleteFile(model.Image, _fileConfig, FileType.Image, _environment.WebRootPath);
                 model.Image = imageName;
             }
 
@@ -85,7 +89,7 @@ namespace App.Admin.Controllers
         {
             var result = _sliderRepository.Delete(Id);
             if (result.Succeed)
-                FileHelper.DeleteFile(ImagePath, _fileConfig, FileType.Image);
+                //FileHelper.DeleteFile(ImagePath, _fileConfig, FileType.Image, _environment.WebRootPath);
 
             TempData.AddResult(result);
             return RedirectToAction(nameof(Index));
