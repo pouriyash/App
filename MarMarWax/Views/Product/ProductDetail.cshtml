@@ -9,6 +9,9 @@
 @{
     List<ProductColorSummaryDTO> colors = ViewBag.colors;
 }
+<style>
+     
+</style>
 <!-- Product Detail -->
 
 <div class="container bgwhite p-t-35 p-b-80">
@@ -23,7 +26,7 @@
                         @foreach (var item in Model.ProductGalleryImages.OrderBy(p => p.Id))
                         {
                             <div class="item-slick3" data-thumb="http://admin.marmarwax.com/UploadFiles/@item.Image">
-                                <div class="wrap-pic-w">
+                                <div class="wrap-pic-w ">
                                     <img src="http://admin.marmarwax.com/UploadFiles/@item.Image" alt="IMG-PRODUCT">
                                 </div>
                             </div>
@@ -41,8 +44,8 @@
             </h3>
             <hr />
             @*<span class="m-text17">
-                    $22
-                </span>*@
+            $22
+        </span>*@
 
             <p class="s-text8 p-t-10">
                 <h4>
@@ -54,54 +57,51 @@
             <!--  -->
             <div class="p-t-33 p-b-60">
                 @*<div class="flex-m flex-w p-b-10">
-            <div class="s-text15 w-size15 t-center">
-                Size
-            </div>
+                <div class="s-text15 w-size15 t-center">
+                    Size
+                </div>
 
-            <div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
-                <select class="selection-2" name="size">
-                    <option>Choose an option</option>
-                    <option>Size S</option>
-                    <option>Size M</option>
-                    <option>Size L</option>
-                    <option>Size XL</option>
-                </select>
-            </div>
-        </div>*@
+                <div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
+                    <select class="selection-2" name="size">
+                        <option>Choose an option</option>
+                        <option>Size S</option>
+                        <option>Size M</option>
+                        <option>Size L</option>
+                        <option>Size XL</option>
+                    </select>
+                </div>
+            </div>*@
 
-                @if (colors.Count>0)
+                @if (colors.Count > 0)
                 {
                     <div class="flex-m flex-w">
                         <div class="s-text15 w-size15 t-center">
-                            تنوع رنگ : 
+                            تنوع رنگ :
                         </div>
 
-                                  @foreach (var item in colors)
-                                {
-                                    <div style="background-color:@item.colorCode;width:50px;height:50px;border-radius:50%;margin:10px;border:2px solid gray"></div>
-                                }
+                        @foreach (var item in colors)
+                        {
+                            <div style="background-color:@item.colorCode;width:50px;height:50px;border-radius:50%;margin:10px;border:2px solid gray"></div>
+                        }
 
-                     </div>
+                    </div>
                 }
 
             </div>
 
 
             <!--  -->
-            <div class="wrap-dropdown-content bo6 p-t-15 p-b-14 active-dropdown-content">
-                <h5 class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
-                    توضیحات
-                    <i class="down-mark fs-12 color1 fa fa-minus dis-none" aria-hidden="true"></i>
+           <h5 class="flex-sb-m cs-pointer m-text19 color0-hov trans-0-4" data-toggle="collapse" data-target="#demo">
+                    توضیحات                  
                     <i class="up-mark fs-12 color1 fa fa-plus" aria-hidden="true"></i>
                 </h5>
 
-                <div class="dropdown-content dis-none p-t-15 p-b-23">
+                <div class=" collapse" id="demo" style="margin-top:20px;">
                     <p class="s-text8">
                         @Html.Raw(Model.Description)
                     </p>
                 </div>
-            </div>
-
+          
         </div>
     </div>
 </div>
