@@ -6,15 +6,68 @@
 @{
     List<BlogsDTO> BlogList = ViewBag.BlogList;
 }
-
+<style>
+    .fa {
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+    }
+    .h2 {
+        font-family: 'iran', 'Raleway', sans-serif;
+        color: #4e002d;
+        margin-top: 20px;
+        margin-bottom: 10px; 
+    }
+</style>
 <!-- Slide1 -->
 @Html.Partial("_Slider.cshtml")
 
+<div class=" ptb-70 bg-3" style="padding: 90px 0px;background-color:whitesmoke">
+    <div class="container"style="padding-left:0px;padding-right:0px">
+        <div class="row"style="margin:0px">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="quick-service-wrap clear">
+                    <div style="float: right;">
+                        <i style="font-size:80px;color: tomato;" class="fa fa-diamond "></i>
+                    </div>
+                    <div style="margin-right: 95px;text-align:right">
+                        <h2>ضمانت محصول</h2>
+                        <p>واکس مرمر دارای ضمانت محصول است</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="quick-service-wrap clear">
+                    <div style="float: right;">
+                        <i style="font-size: 80px;color: tomato;" class="fa fa-briefcase"></i>
+                    </div>
+                    <div style="margin-right: 95px;text-align:right">
+                        <h2>مواد اولیه مرغوب</h2>
+                        <p>واکس مرمر از مواد اولیه مرغوب تولید می شود </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="quick-service-wrap clear">
+                    <div style="float: right;">
+                        <i style="font-size: 80px;color: tomato;" class="fa fa-life-ring"></i>
+                    </div>
+                    <div style="margin-right: 95px;text-align:right">
+                        <h2>کیفیت بالا</h2>
+                        <p>واکس مرمر بسیار با کیفیت است</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Banner -->
 @Html.Partial("_Banner.cshtml")
 
 <!-- Blog -->
-@if (BlogList.Count>0)
+@if (BlogList.Count > 0)
 {
     @Html.Partial("_Blog.cshtml")
 }

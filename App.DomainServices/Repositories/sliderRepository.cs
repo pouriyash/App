@@ -27,6 +27,7 @@ namespace App.DomainServices.Repositories
         {
             var model = _slider
                 .OrderBy(p => p.Order)
+                .Where(p=>p.IsActive)
                 .ProjectTo<sliderDTO>()
                 .ToList();
             return model;
