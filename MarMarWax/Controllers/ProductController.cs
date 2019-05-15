@@ -20,9 +20,9 @@ namespace MarMarWax.Controllers
             _productColorRepository = productColorRepository;
             _productTypeRepository = productTypeRepository;
         }
-        public IActionResult Index()
+        public IActionResult Index(int ProductTypeId)
         {
-            var ProductList = _productRepository.GetAll();
+            var ProductList = _productRepository.GetAllWithProductTypeId(ProductTypeId);
             ViewBag.ProductTypes = _productTypeRepository.GetAll();
             return View(ProductList);
         }

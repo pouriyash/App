@@ -1,5 +1,10 @@
-﻿<style>
-    .dropbtn { 
+﻿@using App.DomainModels.Dto.Product
+@{
+    List<ProductTypeDTO> productTypes = ViewBag.productTypes;
+}
+
+<style>
+    .dropbtn {
         color: black;
         padding: 16px;
         font-size: 16px;
@@ -52,9 +57,11 @@
                 <div class="dropdown">
                     <button class="dropbtn">محصولات</button>
                     <div class="dropdown-content">
-                        <a href="#">واکس چرمی</a>
-                        <a href="#">واکس برسی</a>
-                        <a href="#">واکس رولی</a>
+                        @foreach (var item in productTypes)
+                        {
+                            <a asp-action="Index" asp-controller="product" asp-route-ProductTypeId="@item.Id">@item.Title</a>
+
+                        }
                     </div>
                 </div>
             </li>

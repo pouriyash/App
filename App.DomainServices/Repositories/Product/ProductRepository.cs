@@ -32,9 +32,16 @@ namespace App.DomainServices.Repositories
             _environment = environment;
         }
 
+        public List<ProductDTO> GetAllWithProductTypeId(int ProductTypeId)
+        {
+            var model= _Product.ProjectTo<ProductDTO>().Where(p=>p.ProductTypeId== ProductTypeId).ToList();
+            //model.ForEach(p => p.Image = Path.Combine(_environment.WebRootPath, p.Image));
+            return model;
+        }
+
         public List<ProductDTO> GetAll()
         {
-            var model= _Product.ProjectTo<ProductDTO>().ToList();
+            var model = _Product.ProjectTo<ProductDTO>().ToList();
             //model.ForEach(p => p.Image = Path.Combine(_environment.WebRootPath, p.Image));
             return model;
         }

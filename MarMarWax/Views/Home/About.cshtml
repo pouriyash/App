@@ -3,16 +3,16 @@
 @{
     ViewData["Title"] = "About";
     Layout = "~/Views/Shared/_Layout.cshtml";
-} 
- 
+}
+
 
 <body class="animsition">
 
     <!-- content page -->
     <section class="bgwhite p-t-66 p-b-38">
         <div class="container">
-            <div class="row">
-                <div style="padding:80px 40px"class="col-md-6 p-b-30 text-right">
+            <div class="row" dir="rtl">
+                <div style="padding:30px 40px" class="col-md-6 p-b-30 text-right">
                     <h3 class="m-text26 p-t-15 p-b-16">
                         درباره ما
                     </h3>
@@ -22,26 +22,41 @@
                     </p>
 
                     <div class="p-l-29 m-l-9 p-b-10" style="font-size:20px">
-                        <p style="font-size:20px" class="p-b-15">
-                            @Model?.Address
-                        </p>
-                        <p style="font-size:20px" class="p-b-11">
-                            @Model?.Email
-                        </p>
-                        <p style="font-size:20px" class="p-b-11">
-                            @Model?.fax
-                        </p>
-                        <p style="font-size:20px" class="p-b-11">
-                            @Model?.Mobile
-                        </p>
-                        <span style="font-size:20px" class="s-text7">
-                            @Model?.Tell
-                        </span>
+                        @if (Model.Address != null)
+                        {
+                            <p style="font-size:20px" class="p-b-15">
+                                <span style="color:black">آدرس : </span> @Model?.Address
+                            </p>
+                        }
+                        @if (Model.Email != null)
+                        {
+                            <p style="font-size:20px" class="p-b-11">
+                                <span style="color:black">ایمیل : </span> @Model?.Email
+                            </p>
+                        }
+                        @if (Model.fax != null)
+                        {
+                            <p style="font-size:20px" class="p-b-11">
+                                <span style="color:black">فکس : </span>@Model?.fax
+                            </p>
+                        }
+                        @if (Model.Mobile != null)
+                        {
+                            <p style="font-size:20px" class="p-b-11">
+                                <span style="color:black">تلفن همراه : </span> @Model?.Mobile
+                            </p>
+                        }
+                        @if (Model.Tell != null)
+                        {
+                            <span style="font-size:20px" class="s-text7">
+                                <span style="color:black">تلفن دفتر : </span> @Model?.Tell
+                            </span>
+                        }
                     </div>
                 </div>
-                <div class="col-md-6 p-b-30">
-                    <div class="hov-img-zoom"> 
-                        <img src="http://marmarwax.com/images/e0012055-6e87-4396-a35a-d5ffb14923f5.jpg"  height="550" />
+                <div class="col-md-6">
+                    <div class="hov-img-zoom">
+                        <img src="http://marmarwax.com/images/e0012055-6e87-4396-a35a-d5ffb14923f5.jpg" height="510" />
                     </div>
                 </div>
 

@@ -5,12 +5,15 @@
 
         <div class="wrap_header">
             <!-- Logo -->
-            <a href="~/Home/Index" class="logo" >
+            <a href="~/Home/Index" class="logo">
                 <img src="~/Statics/photo_2019-02-24_01-04-26.jpg" style="max-height: 80px!important">
             </a>
-
             <!-- Menu -->
-            @Html.Partial("~/Views/Shared/_Menu.cshtml") 
+            @*@Html.Partial("~/Views/Shared/_Menu.cshtml")*@
+            @await Component.InvokeAsync("MenuComponents")
+
+
+
             <!-- Header Icon -->
             <div class="header-icons">
                 @*<a href="~/#" class="header-wrapicon1 dis-block">
@@ -28,11 +31,11 @@
                                     <img src="~/images/item-cart-01.jpg" alt="IMG">
                                 </div>
 
-                                
+
                             </li>
-  
+
                         </ul>
-                     </div>
+                    </div>
                 </div>
             </div>
         </div>

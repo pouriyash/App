@@ -38,38 +38,33 @@
         </div>
 
         <div class="w-size14 p-t-30 respon5" dir="rtl">
-            <h3 style="text-align:center;color:#e65540;font-weight:bold;font-size:22px" class="product-detail-name m-text16 p-b-13">
-                @Model.Name
-            </h3>
+            <div style="text-align:center;font-weight:bold;font-size:22px" class="product-detail-name m-text16 p-b-13">
+                نام محصول : <h3 style="color:#e65540;display:inline">
+                    @Model.Name
+                </h3>
+            </div>
+
             <hr />
             @*<span class="m-text17">
-                    $22
-                </span>*@
+            $22
+        </span>*@
+            <div>
+                دسته بندی محصول :
+                <h3 style="display:inline">
+                    @Model.ProductType.Title
+                </h3>
+            </div>
 
-            <p class="s-text8 p-t-10">
-                <h4>
-                    @Html.Raw(Model.ShortDescription)
-
-                </h4>
-            </p>
             <hr />
-            <!--  -->
-            <div class="p-t-33 p-b-60">
-                @*<div class="flex-m flex-w p-b-10">
-                        <div class="s-text15 w-size15 t-center">
-                            Size
-                        </div>
+            <h4>
+                @Html.Raw(Model.ShortDescription)
 
-                        <div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
-                            <select class="selection-2" name="size">
-                                <option>Choose an option</option>
-                                <option>Size S</option>
-                                <option>Size M</option>
-                                <option>Size L</option>
-                                <option>Size XL</option>
-                            </select>
-                        </div>
-                    </div>*@
+            </h4>
+
+            <hr />
+
+            <!--  -->
+            <div class="p-t-33 p-b-30">
 
                 @if (colors.Count > 0)
                 {
@@ -87,7 +82,7 @@
                 }
 
             </div>
-
+            <hr />
 
             <!--  -->
             <h5 class="flex-sb-m cs-pointer m-text19 color0-hov trans-0-4" data-toggle="collapse" data-target="#demo">
