@@ -23,7 +23,7 @@ namespace MarMarWax.Controllers
         public IActionResult Index(int ProductTypeId)
         {
             var ProductList = _productRepository.GetAllWithProductTypeId(ProductTypeId);
-            ViewBag.ProductTypes = _productTypeRepository.GetAll();
+            ViewBag.ProductTypes = _productTypeRepository.GetAll(null);
             return View(ProductList);
         }
 

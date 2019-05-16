@@ -18,21 +18,35 @@ namespace App.DomainServices.Repositories
     {
         private readonly IUnitOfWork _Context;
         private readonly DbSet<ProductType> _productType;
-        public ProductTypeRepository(IUnitOfWork Context) :base(Context)
+        public ProductTypeRepository(IUnitOfWork Context) : base(Context)
         {
             _Context = Context;
             _productType = Context.Set<ProductType>();
         }
 
-        public List<ProductTypeDTO> GetAll()
+        public List<ProductTypeDTO> GetAll(int? parentId)
         {
-            var model= _productType
-                .OrderBy(p=>p.Title)
-                .ProjectTo<ProductTypeDTO>()
-                .ToList();
+            var model = new List<ProductTypeDTO>();
+
+            if (parentId == null)
+            {
+                model = _productType
+                  .OrderBy(p => p.Title)
+                  .ProjectTo<ProductTypeDTO>()
+                  .ToList();
+            }
+            else
+            {
+                model = _productType
+                 .OrderBy(p => p.Title)
+                 .Where(p=>p.ParentId==parentId)
+                 .ProjectTo<ProductTypeDTO>()
+                 .ToList();
+            }
+
             return model;
         }
-        
+
         public ServiceResult Create(ProductTypeDTO model)
         {
             var entity = new ProductType();
@@ -53,7 +67,7 @@ namespace App.DomainServices.Repositories
                 .FirstOrDefault();
         }
 
-        public ServiceResult Edit(ProductTypeEditViewModel model,int Id)
+        public ServiceResult Edit(ProductTypeEditViewModel model, int Id)
         {
             var entity = _productType.Find(Id);
             Mapper.Map(model, entity);
@@ -63,13 +77,20 @@ namespace App.DomainServices.Repositories
             return ServiceResult.Okay();
         }
 
-        public ServiceResult Delete(int Id)
+        public ServiceResult<int?> Delete(int Id)
         {
-            var entity = _productType.Find(Id);
+            try
+            {
+                var entity = _productType.Find(Id);
 
-            _productType.Remove(entity);
-            _Context.SaveChanges();
-            return ServiceResult.Okay();
+                _productType.Remove(entity);
+                _Context.SaveChanges();
+                return ServiceResult<int?>.Okay(entity.ParentId.Value);
+            }
+            catch (Exception)
+            {
+                return ServiceResult<int?>.Error("حطایی در انجام عملیات رخ داده است");
+            }
         }
 
     }

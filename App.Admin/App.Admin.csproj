@@ -792,6 +792,9 @@
     <Content Update="Views\ProductColor\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\ProductTypes\SubGroup.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Slider\Create.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

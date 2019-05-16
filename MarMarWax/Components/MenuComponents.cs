@@ -16,7 +16,7 @@ namespace MarMarWax.Components
         }
         public IViewComponentResult Invoke()
         {
-            ViewBag.productTypes = _productTypeRepository.GetAll();
+            ViewBag.productTypes = _productTypeRepository.GetAll(null);
             return View(viewName: "Menu");
         }
 

@@ -28,12 +28,20 @@ namespace App.Admin.Controllers
 
         public IActionResult Index()
         {
-           var model= _productTypeRepository.GetAll();
+           var model= _productTypeRepository.GetAll(null);
+            return View(model);
+        }
+        
+        public IActionResult SubGroup(int? parentId)
+        {
+            ViewBag.parentId = parentId;
+            var model = _productTypeRepository.GetAll(parentId);
             return View(model);
         }
 
-        public IActionResult Create()
+        public IActionResult Create(int? parentId)
         {
+            ViewBag.parentId = parentId;
             return View();
         }
 
@@ -42,7 +50,12 @@ namespace App.Admin.Controllers
         {
             var result = _productTypeRepository.Create(model);
             TempData.AddResult(result);
+            if (model.ParentId.HasValue)
+            {
+                return RedirectToAction(nameof(SubGroup), new { model.ParentId });
+            }
             return RedirectToAction(nameof(Index));
+
         }
 
         public IActionResult Edit(int Id)
@@ -60,8 +73,13 @@ namespace App.Admin.Controllers
         public IActionResult Edit(ProductTypeEditViewModel model,int Id)
         {
             var result = _productTypeRepository.Edit(model,Id);
-            TempData.AddResult(result);
-            return RedirectToAction(nameof(Edit),new { Id });
+            TempData.AddResult(result); 
+
+            if (model.ParentId.HasValue)
+            {
+                return RedirectToAction(nameof(SubGroup), new { model.ParentId });
+            }
+            return RedirectToAction(nameof(Index));
         }
 
    
@@ -69,6 +87,10 @@ namespace App.Admin.Controllers
         {
             var result = _productTypeRepository.Delete(Id);
             TempData.AddResult(result);
+            if (result.Data.HasValue)
+            {
+                return RedirectToAction(nameof(SubGroup), new { result.Data });
+            }
             return RedirectToAction(nameof(Index));
         }
     }

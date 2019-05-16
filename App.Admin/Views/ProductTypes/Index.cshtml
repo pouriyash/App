@@ -1,5 +1,5 @@
 ﻿@using App.DomainModels.Dto.Product
-@model IEnumerable<ProductTypeDTO>
+@model List<ProductTypeDTO>
 @{
     ViewData["Title"] = "انواع محصولات";
 }
@@ -41,15 +41,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.Where(p=>p.ParentId==null))
                             {
                                 <tr>
                                     <td>@(++counter)</td>
                                     <td>@item.Title</td>
                                     <td>
+                                        <a data-fancybox data-type="iframe" title="زیرگروه" asp-action="SubGroup" asp-controller="ProductTypes" asp-route-parentId="@item.Id" class="action">
+                                            <i class="pe-7s-plus"></i>
+                                        </a>
                                         <a data-fancybox data-type="iframe" asp-action="Edit" asp-controller="ProductTypes" asp-route-Id="@item.Id" class="action">
                                             <i class="pe-7s-edit"></i>
                                         </a>
+                                        
                                         <a asp-action="Delete" asp-controller="ProductTypes" asp-route-Id="@item.Id" class="action">
                                             <i class="pe-7s-trash"></i>
                                         </a>

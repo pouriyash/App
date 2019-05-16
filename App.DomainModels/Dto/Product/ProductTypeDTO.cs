@@ -12,5 +12,8 @@ namespace App.DomainModels.Dto.Product
         /// عنوان
         /// </summary>
         public string Title { get; set; }
+
+        public int? ParentId { get; set; }
+
     }
 }

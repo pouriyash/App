@@ -4,14 +4,16 @@ using App.Data.Sql.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace App.Data.Sql.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("13980226134823_Update_ProductType_ParentId")]
+    partial class Update_ProductType_ParentId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -595,8 +597,6 @@ namespace App.Data.Sql.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ParentId");
-
                     b.ToTable("ProductType");
                 });
 
@@ -701,13 +701,6 @@ namespace App.Data.Sql.Migrations
                     b.HasOne("App.DomainModels.Entities.Products.Product", "Product")
                         .WithMany("ProductGalleryImages")
                         .HasForeignKey("ProductId");
-                });
-
-            modelBuilder.Entity("App.DomainModels.Entities.Products.ProductType", b =>
-                {
-                    b.HasOne("App.DomainModels.Entities.Products.ProductType", "Parent")
-                        .WithMany()
-                        .HasForeignKey("ParentId");
                 });
 #pragma warning restore 612, 618
         }
