@@ -49,7 +49,7 @@ namespace App.Admin.Controllers
 
         public IActionResult Create()
         {
-            var ProductTypes = _productTypeRepository.GetAll(null).Select(x => new { x.Id, Value = x.Title });
+            var ProductTypes = _productTypeRepository.GetList().Select(x => new { x.Id, Value = x.Title });
 
             ViewBag.ProductTypes = new SelectList(ProductTypes, "Id", "Value");
 
@@ -75,7 +75,7 @@ namespace App.Admin.Controllers
                 TempData.AddResult(ServiceResult.Error("نوعی یافت نشد!"));
                 return View(nameof(Index));
             }
-            var ProductTypes = _productTypeRepository.GetAll(null).Select(x => new { x.Id, Value = x.Title });
+            var ProductTypes = _productTypeRepository.GetList().Select(x => new { x.Id, Value = x.Title });
 
             ViewBag.ProductTypes = new SelectList(ProductTypes, "Id", "Value");
 

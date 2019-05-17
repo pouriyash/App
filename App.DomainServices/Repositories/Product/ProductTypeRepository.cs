@@ -47,6 +47,15 @@ namespace App.DomainServices.Repositories
             return model;
         }
 
+        public List<ProductTypeDTO> GetList()
+        {
+            return _productType
+                  .OrderBy(p => p.Title)
+                  .Where(p=>p.ParentId!=null)
+                  .ProjectTo<ProductTypeDTO>()
+                  .ToList();
+        }
+
         public ServiceResult Create(ProductTypeDTO model)
         {
             var entity = new ProductType();

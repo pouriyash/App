@@ -83,6 +83,5 @@ namespace App.DomainServices.Repositories
                 return ServiceResult.Okay();
             return ServiceResult.Error();
         }
-
     }
 }
