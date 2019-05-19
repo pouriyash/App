@@ -3115,8 +3115,7 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 	text-transform: uppercase;
 }
 
-.s-text15 {
-	font-family: Montserrat-Regular;
+.s-text15 {	
 	font-size: 13px;
 	color: #666666;
 	line-height: 1.8;
@@ -3278,78 +3277,68 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 }
 
 .m-text15 {
-	font-family: Montserrat-Medium;
 	font-size: 18px;
 	color: #555555;
 	line-height: 1.5;
 }
 
 .m-text16 {
-	font-family: Montserrat-Regular;
 	font-size: 24px;
 	color: #222222;
 	line-height: 1.5;
 }
 
 .m-text17 {
-	font-family: Montserrat-Regular;
 	font-size: 30px;
 	color: #555555;
 	line-height: 1.2;
 }
 
 .m-text18 {
-	font-family: Montserrat-Regular;
 	font-size: 16px;
 	color: #666666;
 	line-height: 1.2;
 }
 
-.m-text19 {
-	font-family: Montserrat-Medium;
+.m-text19 {	
 	font-size: 16px;
 	color: #222222;
 	line-height: 1.5;
 }
 
 .m-text20 {
-	font-family: Montserrat-Bold;
+
 	font-size: 20px;
 	color: #333333;
 	line-height: 1.5;
 	text-transform: uppercase;
 }
 
-.m-text21 {
-	font-family: Montserrat-Regular;
+.m-text21 {	
 	font-size: 18px;
 	color: #888888;
 	line-height: 1.5;
 }
 
-.m-text22 {
-	font-family: Montserrat-Bold;
+.m-text22 {	
 	font-size: 18px;
 	color: #555555;
 	line-height: 1.5;
 }
 
-.m-text23 {
-	font-family: Montserrat-Black;
+.m-text23 {	
 	font-size: 22px;
 	color: #333333;
 	line-height: 1.2;
 }
 
-.m-text24 {
-	font-family: Montserrat-Medium;
+.m-text24 {	
 	font-size: 26px;
 	color: #333333;
 	line-height: 1.3;
 }
 
-.m-text25 {
-	font-family: Montserrat-Bold;
+.m-text25 {	
 	font-size: 21px;
 	color: #333333;
 	line-height: 1.3;
