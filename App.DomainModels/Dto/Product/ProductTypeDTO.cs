@@ -14,6 +14,6 @@ namespace App.DomainModels.Dto.Product
         public string Title { get; set; }
 
         public int? ParentId { get; set; }
-
+         
     }
 }

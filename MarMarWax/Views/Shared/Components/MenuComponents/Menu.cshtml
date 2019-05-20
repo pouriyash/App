@@ -4,80 +4,171 @@
 }
 
 <style>
-    .dropbtn {
-        color: black;
-        padding: 16px;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
+    
+    /*General Menu Styling*/
+    .mainnav {
+        margin: 0 auto
     }
 
-    .dropdown {
-        position: relative;
-        display: inline-block;
+    li {
+        list-style: none;
     }
 
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-    }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
+        li a {
             text-decoration: none;
-            display: block;
         }
 
-            .dropdown-content a:hover {
-                background-color: #f1f1f1
-            }
-
-    .dropdown:hover .dropdown-content {
-        display: block;
+    .dropdown {
+        position: absolute;
+        width: 150px;
+        top: 41px;
+        opacity: 0;
+        visibility: hidden;
+        transition: ease-out .35s;
+        -moz-transition: ease-out .35s;
+        -webkit-transition: ease-out .35s;
     }
 
-    .dropdown:hover .dropbtn {
-        background-color: tomato;
+    .mainnav li {
+        float: left;
+        padding: 5px;
+        background: maroon;
+        border-left: 1px dotted #fff;
+    }
+
+        .mainnav li:first-child {
+            border: none;
+        }
+
+        .mainnav li a {
+            display: block;
+            padding: 2px 20px;
+            color: #fff;
+            font-family: arial;
+        }
+
+        .mainnav li:hover {
+            background: #fff;
+            transition: ease-in .35s;
+            -moz-transition: ease-in .35s;
+            -webkit-transition: ease-in .35s;
+        }
+
+            .mainnav li:hover a {
+                color: maroon;
+                transition: ease-in .35s;
+                -moz-transition: ease-in .35s;
+                -webkit-transition: ease-in .35s;
+            }
+    /*First Level*/
+    .subs {
+        left: -45px;
+        position: relative;
+        top: 0px;
+        width: 175px;
+        border-left: none !important;
+        border-bottom: 1px dotted #fff !important;
+    }
+
+        .subs:last-child {
+            border: none !important;
+        }
+
+    .hassubs:hover .dropdown, .hassubs .hassubs:hover .dropdown {
+        opacity: 1;
+        visibility: visible;
+        transition: ease-in .35s;
+        -moz-transition: ease-in .35s;
+        -webkit-transition: ease-in .35s;
+    }
+
+    .mainnav li:hover ul a, .mainnav li:hover ul li ul li a {
+        color: white;
+    }
+
+    .mainnav li ul li:hover, .mainnav li ul li ul li:hover {
+        background: #fff;
+        transition: ease-in-out .35s;
+        -moz-transition: ease-in-out .35s;
+        -webkit-transition: ease-in-out .35s;
+    }
+
+        .mainnav li ul li:hover a, .mainnav li ul li ul li:hover a {
+            color: maroon;
+            transition: ease-in-out .35s;
+            -moz-transition: ease-in-out .35s;
+            -webkit-transition: ease-in-out .35s;
+        }
+    /*Second Level*/
+    .hassubs .hassubs .dropdown .subs {
+        left: 25px;
+        position: relative;
+        width: 165px;
+        top: 0px;
+    }
+
+    .hassubs .hassubs .dropdown {
+        position: absolute;
+        width: 150px;
+        left: 120px;
+        top: 0px;
+        opacity: 0;
+        visibility: hidden;
+        transition: ease-out .35s;
+        -moz-transition: ease-out .35s;
+        -webkit-transition: ease-out .35s;
     }
 </style>
-<div class="wrap_menu">
-    <nav class="menu">
-        <ul class="main_menu" style="direction:rtl">
-            <li>
-                <a href="~/Home/Index">صفحه اصلی</a>
-            </li>
 
-            <li>
-                @*<a href="~/product/Index">محصولات</a>*@
-                <div class="dropdown">
 
-                    <button class="dropbtn">محصولات</button>
-                    <div class="dropdown-content">
-                        @foreach (var item in productTypes)
+<div class="main">
+    <ul class="mainnav">
+        <li class="hassubs">
+            <a href="~/Home/Index">صفحه اصلی</a>
+        </li>
+        <li class="hassubs">
+            <a href="~/Home/About">مقالات</a>
+        </li>
+
+        <li class="hassubs">
+            <a href="~/Home/about">درباره ما</a>
+        </li>
+
+        <li class="hassubs">
+            <a href="~/ContactUs/Index">ارتباط با ما</a>
+        </li>
+        <li class="hassubs">
+            <a href="#">محصولات</a>
+            <ul class="dropdown">
+                @foreach (var item in productTypes.Where(p => p.ParentId == null))
+                {
+                    <li class="subs hassubs">
+                        <a asp-action="Index" asp-controller="product" asp-route-ProductTypeId="@item.Id">@item.Title</a>
+                        @if (productTypes.Any(p => p.ParentId.HasValue && p.ParentId.Value == item.Id))
                         {
-                            <a asp-action="Index" asp-controller="product" asp-route-ProductTypeId="@item.Id">@item.Title</a>
+
+                            <ul class="dropdown">
+                                @foreach (var item2 in productTypes.Where(p => p.ParentId.HasValue && p.ParentId.Value == item.Id))
+                                {
+                                    <li class="subs"><a asp-action="Index" asp-controller="product" asp-route-ProductTypeId="@item2.Id">@item2.Title</a></li>
+                                }
+                            </ul>
 
                         }
-                    </div>
-                </div>
-            </li>
-
-            @*<li>
-                    <a href="~/Home/About">مقالات</a>
-                </li>*@
-
-            <li>
-                <a href="~/Home/about">درباره ما</a>
-            </li>
-
-            <li>
-                <a href="~/ContactUs/Index">ارتباط با ما</a>
-            </li>
-        </ul>
-    </nav>
+                    </li>
+                }
+            </ul>
+        </li>
+    </ul>
+    <br style="clear: both;">
 </div>
+
+
+
+
+
+
+
+
+
+ 
