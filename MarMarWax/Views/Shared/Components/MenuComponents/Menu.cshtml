@@ -32,7 +32,8 @@
     .mainnav li {
         float: right;
         padding: 5px;
-        border-left: 1px solid tomato;
+        width: 220px;
+        border-left: 2px solid tomato;
     }
 
         .mainnav li:last-child {
@@ -43,7 +44,7 @@
             display: block;
             padding: 2px 60px;
             color: black;
-            font-family: arial;
+            font-family: IRANSans !important;
         }
 
         .mainnav li:hover {
@@ -55,18 +56,22 @@
 
             .mainnav li:hover a {
                 color: white;
-                transition: ease-in .35s;
-                -moz-transition: ease-in .35s;
-                -webkit-transition: ease-in .35s;
+                font-weight:bold;
+                    /*transition: ease-in .35s;
+                    -moz-transition: ease-in .35s;
+                    -webkit-transition: ease-in .35s;*/
             }
     /*First Level*/
     .subs {
-        left: -57px;
+        left: 65px;
         position: relative;
         top: 5px;
-        width: 175px;
+        width: 220px;
+        padding: 5px;
         border-right: none !important;
-        border-bottom: 1px dotted #fff !important;
+        border-left: none !important;
+        padding: 5px !important;
+        /*border-bottom: 1px dotted #fff !important;*/
     }
 
         .subs:last-child {
@@ -82,8 +87,8 @@
     }
 
     .mainnav li:hover ul a, .mainnav li:hover ul li ul li a {
-        color: tomato; 
-        background-color:whitesmoke;
+        color: tomato;
+        background-color: #FBE9E7;
     }
 
     .mainnav li ul li:hover, .mainnav li ul li ul li:hover {
@@ -103,10 +108,11 @@
         }
     /*Second Level*/
     .hassubs .hassubs .dropdown .subs {
-        right: 20px;
+        left: -105px;
         position: relative;
+        top: 5px;
+        width: 200px;
         border-right: 2px solid white;
-        width: 195px;
         top: 0px;
     }
 
@@ -121,6 +127,9 @@
         -moz-transition: ease-out .35s;
         -webkit-transition: ease-out .35s;
     }
+
+    
+
 </style>
 
 
@@ -162,9 +171,9 @@
             <a href="~/Home/about">درباره ما</a>
         </li>
 
-        <li class="hassubs">
+        @*<li class="hassubs">
             <a href="~/Home/About">مقالات</a>
-        </li>
+        </li>*@
         <li class="hassubs">
             <a href="~/ContactUs/Index">ارتباط با ما</a>
         </li>
