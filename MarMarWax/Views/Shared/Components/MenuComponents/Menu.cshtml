@@ -30,12 +30,12 @@
     }
 
     .mainnav li {
-        float: left;
+        float: right;
         padding: 5px;
         border-left: 1px solid tomato;
     }
 
-        .mainnav li:first-child {
+        .mainnav li:last-child {
             border: none;
         }
 
@@ -61,11 +61,11 @@
             }
     /*First Level*/
     .subs {
-        left: -46px;
+        left: -57px;
         position: relative;
-        top: 0px;
+        top: 5px;
         width: 175px;
-        border-left: none !important;
+        border-right: none !important;
         border-bottom: 1px dotted #fff !important;
     }
 
@@ -103,9 +103,9 @@
         }
     /*Second Level*/
     .hassubs .hassubs .dropdown .subs {
-        left: 20px;
+        right: 20px;
         position: relative;
-        border-left:2px solid white;
+        border-right: 2px solid white;
         width: 195px;
         top: 0px;
     }
@@ -113,7 +113,7 @@
     .hassubs .hassubs .dropdown {
         position: absolute;
         width: 150px;
-        left: 120px;
+        right: 120px;
         top: 0px;
         opacity: 0;
         visibility: hidden;
@@ -128,6 +128,37 @@
     <ul class="mainnav">
 
         <li class="hassubs">
+            <a href="~/Home/Index">صفحه اصلی</a>
+        </li>
+        <li class="hassubs">
+            <a href="#">محصولات</a>
+            <ul class="dropdown">
+                @foreach (var item in productTypes.Where(p => p.ParentId == null))
+                {
+                    <li class="subs hassubs">
+                        @if (productTypes.Any(p => p.ParentId.HasValue && p.ParentId.Value == item.Id))
+                        {
+                            <a>@item.Title</a>
+                            <ul class="dropdown">
+                                @foreach (var item2 in productTypes.Where(p => p.ParentId.HasValue && p.ParentId.Value == item.Id))
+                                {
+                                    <li class="subs"><a asp-action="Index" asp-controller="product" asp-route-ProductTypeId="@item2.Id">@item2.Title</a></li>
+                                }
+                            </ul>
+
+                        }
+                        else
+                        {
+
+                            <a asp-action="Index" asp-controller="product" asp-route-ProductTypeId="@item.Id">@item.Title</a>
+
+                        }
+                    </li>
+                }
+            </ul>
+        </li>
+
+        <li class="hassubs">
             <a href="~/Home/about">درباره ما</a>
         </li>
 
@@ -138,37 +169,7 @@
             <a href="~/ContactUs/Index">ارتباط با ما</a>
         </li>
 
-        <li class="hassubs">
-            <a href="#">محصولات</a>
-            <ul class="dropdown">
-                @foreach (var item in productTypes.Where(p => p.ParentId == null))
-                {
-                <li class="subs hassubs">
-                    @if (productTypes.Any(p => p.ParentId.HasValue && p.ParentId.Value == item.Id))
-                    {
-                        <a>@item.Title</a>
-                        <ul class="dropdown">
-                            @foreach (var item2 in productTypes.Where(p => p.ParentId.HasValue && p.ParentId.Value == item.Id))
-                            {
-                                <li class="subs"><a asp-action="Index" asp-controller="product" asp-route-ProductTypeId="@item2.Id">@item2.Title</a></li>
-                            }
-                        </ul>
 
-                    }
-                    else
-                    {
-
-                        <a asp-action="Index" asp-controller="product" asp-route-ProductTypeId="@item.Id">@item.Title</a>
-
-                    }
-                </li>
-                }
-            </ul>
-        </li>
-
-        <li class="hassubs">
-            <a href="~/Home/Index">صفحه اصلی</a>
-        </li>
     </ul>
     <br style="clear: both;">
 </div>
