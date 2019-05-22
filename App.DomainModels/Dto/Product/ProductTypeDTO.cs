@@ -14,6 +14,7 @@ namespace App.DomainModels.Dto.Product
         public string Title { get; set; }
 
         public int? ParentId { get; set; }
-         
+
+        public virtual ICollection<ProductTypeDTO> children { get; set; }
     }
 }

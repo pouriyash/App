@@ -51,7 +51,7 @@ namespace App.DomainServices.Repositories
         {
             return _productType
                   .OrderBy(p => p.Title)
-                  .Where(p=>p.ParentId!=null)
+                  .Where(p=>p.ParentId!=null||(p.ParentId==null&&!p.Children.Any()))
                   .ProjectTo<ProductTypeDTO>()
                   .ToList();
         }

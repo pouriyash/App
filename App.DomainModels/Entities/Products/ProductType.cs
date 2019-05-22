@@ -24,5 +24,7 @@ namespace App.DomainModels.Entities.Products
         [ForeignKey(nameof(ParentId))]
         public ProductType Parent { get; set; }
 
+        public virtual ICollection<ProductType> Children{ get; set; }
+
     }
 }
