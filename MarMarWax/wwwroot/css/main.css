@@ -1668,7 +1668,7 @@ li.sale-noti > a {
     margin-top: 0;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 850px) {
     footer p.title {
         font-size: 50px !important;
     }
@@ -1699,10 +1699,15 @@ li.sale-noti > a {
     }
 
     div.brand-heading-sm {
-        display: inline;
+        display: inline-block;
         margin: auto;
-        color:tomato;
-        font-weight:bold;
+        color: tomato;
+        font-weight: bold;
+        text-align: center;
+        width: 100%;
+    }
+    .imgAbout{
+        height:400px;
     }
 }
 
