@@ -41,7 +41,9 @@
         opacity: 1;
     }
 }
-
+.brand-heading-sm {
+    display: none;
+}
 .brand-heading__part {
     padding: 0;
     display: flex;
