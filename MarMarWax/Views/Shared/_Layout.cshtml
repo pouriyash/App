@@ -48,8 +48,8 @@
     <!-- Header -->
     @Html.Partial("~/Views/Shared/_Header.cshtml")
 
-  
-     @RenderBody()
+
+    @RenderBody()
 
     <!-- Footer -->
     @Html.Partial("~/Views/Shared/_Footer.cshtml")
@@ -57,7 +57,7 @@
         <section class="newproduct bgwhite p-t-45 p-b-105">
             <div class="container">
                 <div class="sec-title p-b-60">
-                    <h3 class="m-text5 t-center">                                                  
+                    <h3 class="m-text5 t-center">
                         Featured Products
                     </h3>
                 </div>
@@ -411,11 +411,19 @@
         });
     </script>
     <!--===============================================================================================-->
-   
     <!--===============================================================================================-->
     <script src="~/js/main.js"></script>
     <script type="text/javascript" src="~/vendor/noui/nouislider.min.js"></script>
-    @RenderSection("script",false)
+    @RenderSection("script", false)
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140868949-1"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-140868949-1');
+    </script>
 
 </body>
 
