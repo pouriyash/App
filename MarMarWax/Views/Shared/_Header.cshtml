@@ -1,7 +1,7 @@
 ﻿<header class="header1" style="height:80px">
     <!-- Header desktop -->
     <div class="container-menu-header">
-      
+
 
         <div class="wrap_header">
             <!-- Logo -->
@@ -17,8 +17,8 @@
             <!-- Header Icon -->
             <div class="header-icons">
                 @*<a href="~/#" class="header-wrapicon1 dis-block">
-                <img src="~/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
-            </a>*@
+                        <img src="~/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+                    </a>*@
 
 
                 <div class="header-wrapicon2" style="max-height: 100px!important">
@@ -44,45 +44,127 @@
     <!-- Header Mobile -->
     <div class="wrap_header_mobile">
         <!-- Logo moblie -->
-        <a href="~/index.html" class="logo-mobile">
-            <img src="~/Statics/photo_2019-02-24_01-04-26.jpg" alt="IMG-LOGO" style="max-height: 70px!important">
-        </a>
-
+        
         <!-- Button show menu -->
         <div class="btn-show-menu">
             <!-- Header Icon mobile -->
-             
 
-            <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-                <span class="hamburger-box">
-                    <span class="hamburger-inner"></span>
-                </span>
+            <div class="mobile-container">
+
+                <!-- Top Navigation Menu -->
+                <div class="topnav" style="width:100%">
+                    <a href="~/index.html" class="logo-mobile" style="background-color: white;padding-top:7px;padding-bottom:0px">
+                        <img src="~/Statics/photo_2019-02-24_01-04-26.jpg" alt="IMG-LOGO" style="max-height: 70px!important">
+                    </a>
+                    <div style="float:right" id="myLinks">
+                        <a href="~/Home/Index">صفحه اصلی</a>
+                        <a href="~/product/Index">محصولات</a>
+                        <a href="~/Home/about">درباره ما</a>
+                        <a href="~/ContactUs/Index">ارتباط با ما</a>
+
+                    </div>
+                    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+                @*<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </div>*@
             </div>
         </div>
-    </div>
 
-    <!-- Menu Mobile -->
-    <div class="wrap-side-menu">
-        <nav class="side-menu">
-            <ul class="main-menu">
-                 
-                <li class="item-menu-mobile">
-                    <a href="~/Home/Index">صفحه اصلی</a>
-                </li>
+        <!-- Menu Mobile -->
+        @*<div class="wrap-side-menu">
+                <nav class="side-menu">
+                    <ul class="main-menu">
 
-                <li class="item-menu-mobile">
-                    <a href="~/product/Index">محصولات</a>
-                </li>
-                 
-                <li class="item-menu-mobile">
-                    <a href="~/Home/about">درباره ما</a>
-                </li>
+                        <li class="item-menu-mobile">
+                            <a href="~/Home/Index">صفحه اصلی</a>
+                        </li>
 
-                <li class="item-menu-mobile">
-                    <a href="~/ContactUs/Index">ارتباط با ما</a>
-                </li>
-                 
-            </ul>
-        </nav>
-    </div>
+                        <li class="item-menu-mobile">
+                            <a href="~/product/Index">محصولات</a>
+                        </li>
+
+                        <li class="item-menu-mobile">
+                            <a href="~/Home/about">درباره ما</a>
+                        </li>
+
+                        <li class="item-menu-mobile">
+                            <a href="~/ContactUs/Index">ارتباط با ما</a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>*@
 </header>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .btn-show-menu{
+        width:100%;
+        background-color:white;
+    }
+    .mobile-container {
+        width: 100%;
+        /*max-width: 480px;*/
+        margin: auto;
+        background-color: white !important;
+        /*height: 500px;*/
+        color: white;
+        border-radius: 10px;
+        font-size: 15px;
+    }
+
+    .topnav {
+        overflow: hidden;
+        background-color:tomato;
+        position: relative;
+    }
+
+        .topnav #myLinks {
+            text-align:right;
+            display: none;
+        }
+
+        .topnav a {
+            color: white;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            display: block;
+        }
+
+            .topnav a.icon {
+                background: black;
+                display: block;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            .topnav a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+
+    .active {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myLinks");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+</script>

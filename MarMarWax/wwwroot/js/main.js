@@ -129,7 +129,12 @@
     }
 
     $(window).resize(function(){
-        if($(window).width() >= 992){
+        if ($(window).width() >= 992) {
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
             if($('.wrap-side-menu').css('display') == 'block'){
                 $('.wrap-side-menu').css('display','none');
                 $('.btn-show-menu-mobile').toggleClass('is-active');
