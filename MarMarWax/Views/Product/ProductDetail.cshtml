@@ -47,17 +47,17 @@
 
                 @if (colors.Count > 0)
                 {
-                    <div class="flex-m flex-w">
-                        <div class="t-center">
-                            تنوع رنگ :
-                        </div>
-
-                        @foreach (var item in colors)
-                        {
-                            <div style="background-color:@item.colorCode;width:35px;height:35px;border-radius:20px;margin:0 10px;border:2px solid #BDBDBD;"></div>
-                        }
-
+                <div class="flex-m flex-w">
+                    <div class="t-center">
+                        تنوع رنگ :
                     </div>
+
+                    @foreach (var item in colors)
+                    {
+                        <img width="100px" src="http://admin.marmarwax.com/image/Image/@(item.colorCode).png" alt="محصول واکس مرمر">
+                    }
+
+                </div>
                 }
 
             </div>
