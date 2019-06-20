@@ -2,11 +2,10 @@
     <!-- Header desktop -->
     <div class="container-menu-header">
 
-
-        <div class="wrap_header">
+        <div class="wrap_header" style="background-color:black">
             <!-- Logo -->
             <a href="~/Home/Index" class="logo">
-                <img src="~/Statics/photo_2019-02-24_01-04-26.jpg" style="max-height: 80px!important" alt="واکس مرمر">
+                <img src="~/Statics/Top_logo.png" style="max-height: 60px!important" alt="واکس مرمر">
             </a>
             <!-- Menu -->
             @*@Html.Partial("~/Views/Shared/_Menu.cshtml")*@
@@ -42,9 +41,8 @@
     </div>
 
     <!-- Header Mobile -->
-    <div class="wrap_header_mobile">
+    <div class="wrap_header_mobile" >
         <!-- Logo moblie -->
-        
         <!-- Button show menu -->
         <div class="btn-show-menu">
             <!-- Header Icon mobile -->
@@ -52,11 +50,11 @@
             <div class="mobile-container">
 
                 <!-- Top Navigation Menu -->
-                <div class="topnav" style="width:100%">
-                    <a href="~/index.html" class="logo-mobile" style="background-color: white;padding-top:7px;padding-bottom:0px">
+                <div class="topnav" style="width:100%;">
+                    <a href="~/index.html" class="logo-mobile" style="padding-top:7px;padding-bottom:0px">
                         <img src="~/Statics/photo_2019-02-24_01-04-26.jpg" alt="IMG-LOGO" style="max-height: 70px!important">
                     </a>
-                    <div style="float:right" id="myLinks">
+                    <div style="float:right;color:white" id="myLinks">
                         <a href="~/Home/Index">صفحه اصلی</a>
                         <a href="~/product/Getall">محصولات</a>
                         <a href="~/Home/about">درباره ما</a>
@@ -74,31 +72,31 @@
                     </div>*@
             </div>
         </div>
+    </div>
+    <!-- Menu Mobile -->
+    @*<div class="wrap-side-menu">
+            <nav class="side-menu">
+                <ul class="main-menu">
 
-        <!-- Menu Mobile -->
-        @*<div class="wrap-side-menu">
-                <nav class="side-menu">
-                    <ul class="main-menu">
+                    <li class="item-menu-mobile">
+                        <a href="~/Home/Index">صفحه اصلی</a>
+                    </li>
 
-                        <li class="item-menu-mobile">
-                            <a href="~/Home/Index">صفحه اصلی</a>
-                        </li>
+                    <li class="item-menu-mobile">
+                        <a href="~/product/Index">محصولات</a>
+                    </li>
 
-                        <li class="item-menu-mobile">
-                            <a href="~/product/Index">محصولات</a>
-                        </li>
+                    <li class="item-menu-mobile">
+                        <a href="~/Home/about">درباره ما</a>
+                    </li>
 
-                        <li class="item-menu-mobile">
-                            <a href="~/Home/about">درباره ما</a>
-                        </li>
+                    <li class="item-menu-mobile">
+                        <a href="~/ContactUs/Index">ارتباط با ما</a>
+                    </li>
 
-                        <li class="item-menu-mobile">
-                            <a href="~/ContactUs/Index">ارتباط با ما</a>
-                        </li>
-
-                    </ul>
-                </nav>
-            </div>*@
+                </ul>
+            </nav>
+        </div>*@
 </header>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -106,10 +104,12 @@
     body {
         font-family: Arial, Helvetica, sans-serif;
     }
-    .btn-show-menu{
-        width:100%;
-        background-color:white;
+
+    .btn-show-menu {
+        width: 100%;
+        background-color: white;
     }
+
     .mobile-container {
         width: 100%;
         /*max-width: 480px;*/
@@ -123,12 +123,12 @@
 
     .topnav {
         overflow: hidden;
-        background-color:tomato;
+        background-color: #ba0000;
         position: relative;
     }
 
         .topnav #myLinks {
-            text-align:right;
+            text-align: right;
             display: none;
         }
 

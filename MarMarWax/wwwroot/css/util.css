@@ -2381,7 +2381,7 @@
 .hov-img-zoom {
 	display: block;
 	overflow: hidden;
-    box-shadow:0px 0px 2px #ccc;
+    /*box-shadow:0px 0px 2px #ccc;*/
 }
 .hov-img-zoom img{
 	width: 100%;
