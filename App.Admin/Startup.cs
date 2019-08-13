@@ -24,6 +24,7 @@ namespace App.Admin
         public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             _Configuration = configuration;
+
         }
 
 
