@@ -666,7 +666,7 @@ iframe {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    height: 80px;
+    height: 120px;
     background-color: white;
     justify-content: center;
     align-items: center;
@@ -1174,6 +1174,10 @@ li.sale-noti > a {
 }
 
 @media (min-width: 992px) {
+    .wrap-side-menu {
+        display: none;
+    }
+
     .wrap-side-menu {
         display: none;
     }
@@ -1701,17 +1705,28 @@ li.sale-noti > a {
     div.brand-heading-sm {
         display: inline-block;
         margin: auto;
-        color: #ba0000;
+        color: #0b30a5;
         font-weight: bold;
         text-align: center;
         width: 100%;
     }
-    .imgAbout{
-        height:400px;
+
+    .titlesmall {
+        display: block !important;
+    }
+
+    .titleBig {
+        display: none;
+    }
+
+    .imgAbout {
+        height: 400px;
     }
 }
 
-
+.wrap_header_mobile {
+    padding: 0px;
+}
 /*[ Block1 ]
 ///////////////////////////////////////////////////////////
 */

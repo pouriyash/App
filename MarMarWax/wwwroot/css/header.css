@@ -1,13 +1,16 @@
-﻿@-webkit-keyframes slideInFromTop {
-    0% {
-        -webkit-transform: translateY(-100%);
-        transform: translateY(-100%);
-    }
+﻿﻿@-webkit-keyframes slideInFromTop {
+    0%
 
-    100% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    }
+{
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+
+100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+
 }
 
 @keyframes slideInFromTop {
@@ -41,9 +44,11 @@
         opacity: 1;
     }
 }
+
 .brand-heading-sm {
     display: none;
 }
+
 .brand-heading__part {
     padding: 0;
     display: flex;
@@ -132,8 +137,8 @@
 .brand-heading__img {
     width: 100%;
     height: 300px;
-
 }
+
 @font-face {
     font-family: 'sofia-regular';
     src: url('../fonts/sofia/sofia-regular.otf') format('opentype');
