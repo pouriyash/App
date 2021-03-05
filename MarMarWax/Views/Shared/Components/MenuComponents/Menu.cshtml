@@ -3,12 +3,49 @@
     List<ProductTypeDTO> productTypes = ViewBag.productTypes;
 }
 
+<script>
+    $(() => {
+        console.log($('.hassubs'));
+        $('.mainnav .hassubs').on('mouseover', function(e) {
+            const width = $(this).outerWidth();
+            const left = $(this).offset().left;
+            $('.nav-item-hover').width(width);
+            $('.nav-item-hover').css('left' , left + (width/2));
+        }).on('mouseleave', function() {
+            $('.nav-item-hover').width(0);
+        })
+    })
+    
+</script>
 <style>
     
     /*General Menu Styling*/
+    .main {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        direction: rtl;
+    }
+    .nav-item-hover {
+        display: block;
+        width: 0;
+        height: 3px;
+        background: #ba0000;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        -webkit-transition: .5s;
+        transition: .5s;
+    }
     .mainnav {
-        margin: 0 auto;
-       
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100%;
     }
 
     li {
@@ -19,132 +56,89 @@
             text-decoration: none;
             text-align:center;
         }
-
+    .hassubs:hover .dropdown {
+        opacity: 1;
+        visibility: visible;
+    }
     .dropdown {
         position: absolute;
-        width: 150px;
-        top: 60px;
-        opacity: 0;
-        visibility: hidden;
+        top: 100%;
+        background-color: #fff;
+        padding-right: 0;
         transition: ease-out .35s;
         -moz-transition: ease-out .35s;
         -webkit-transition: ease-out .35s;
+        border-bottom: 2px solid #ba0000;
+        width: 100%;
+        opacity: 0;
+        visibility: hidden;
     }
-
-    .mainnav li {
-        float: right;
-        padding: 5px;
-        width: 220px;
-        border-left: 2px solid #ba0000;
-        text-align: center;
-        
-    }
-
-        .mainnav li:last-child {
-            border: none;
-        }
-
-        .mainnav li a {
-            display: block;
-            padding: 2px 60px;
-            color: white;
-            font-family: IRANSans !important;
-
-        }
-
-        .mainnav li:hover {
-            background: #ba0000;
-            transition: ease-in .35s;
-            -moz-transition: ease-in .35s;
-            -webkit-transition: ease-in .35s;
-        }
-
-            .mainnav li:hover a {
-                color: white;
-                font-weight:bold;
-
-                    /*transition: ease-in .35s;
-                    -moz-transition: ease-in .35s;
-                    -webkit-transition: ease-in .35s;*/
-            }
-    /*First Level*/
-    .subs {
-        left: 65px;
+    .dropdown .subs {
+        transition: .35s;
         position: relative;
-        top: 5px;
-        width: 220px;
-        padding: 5px;
+        width: 100%;
         border-right: none !important;
         border-left: none !important;
         padding: 5px !important;
-        text-align: center;
-        /*border-bottom: 1px dotted #fff !important;*/
+        text-align: right;
     }
-
-        .subs:last-child {
-            border: none !important;
-        }
-
-    .hassubs:hover .dropdown, .hassubs .hassubs:hover .dropdown {
-        opacity: 1;
-        visibility: visible;
-        transition: ease-in .35s;
-        -moz-transition: ease-in .35s;
-        -webkit-transition: ease-in .35s;
+    .dropdown .subs:hover {
 
     }
-
-    .mainnav li:hover ul a, .mainnav li:hover ul li ul li a {
-        color: #ba0000;
-        background-color: #FBE9E7;
-        text-align: center;
+    .dropdown .subs a {
+        padding-right: .5rem;
+        padding-right: .5rem;
+        width: 100%;
+        display: block;
+        color: #666;
+        text-align: right;
     }
-
-    .mainnav li ul li:hover, .mainnav li ul li ul li:hover {
-        color: white;
-        background: #ba0000;
-        transition: ease-in-out .35s;
-        -moz-transition: ease-in-out .35s;
-        -webkit-transition: ease-in-out .35s;
+    .dropdown .subs a:hover {
+        text-decoration: none;
+        color: #e65540;
+        cursor: pointer;
     }
-
-        .mainnav li ul li:hover a, .mainnav li ul li ul li:hover a {
-            color: white;
-            background: #ba0000;
-            transition: ease-in-out .35s;
-            -moz-transition: ease-in-out .35s;
-            -webkit-transition: ease-in-out .35s;
-        }
-    /*Second Level*/
-    .hassubs .hassubs .dropdown .subs {
-        left: -105px;
-        position: relative;
-        top: 5px;
-        width: 200px;
-        border-right: 2px solid white;
-        top: 0px;
-    }
-
-    .hassubs .hassubs .dropdown {
+    
+    .dropdown .subs .dropdown {
         position: absolute;
-        width: 150px;
-        right: 120px;
-        top: 0px;
+        right: 100%;
+        top: 0;
+        background: #fff;
         opacity: 0;
         visibility: hidden;
-        transition: ease-out .35s;
-        -moz-transition: ease-out .35s;
-        -webkit-transition: ease-out .35s;
+    }
+    .dropdown .subs:hover .dropdown {
+        opacity: 1;
+        visibility: visible;
+    }
+    .mainnav > li {
+        height: 100%;
+        text-align: center;
+        position: relative;
     }
 
-    
+        .mainnav > li:last-child {
+            border: none;
+        }
+
+        .mainnav > li > a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 0 3.5rem;
+            color: white;
+            font-family: IRANSans !important;
+            color: #fff;
+        }
+
 
 </style>
 
 
-<div class="main" style=" margin-left: auto;">
+<div class="main">
+    <span class="nav-item-hover"></span>
     <ul class="mainnav">
-
         <li class="hassubs">
             <a href="~/Home/Index">صفحه اصلی</a>
         </li>
@@ -189,7 +183,6 @@
 
 
     </ul>
-    <br style="clear: both;">
 </div>
 
 
