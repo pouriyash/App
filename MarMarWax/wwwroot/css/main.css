@@ -1063,7 +1063,7 @@ li.sale-noti > a {
 
 .wrap_header_mobile .dropdown-list li .expand-item-toggle {
     position: absolute;
-    width: 100px;
+    width: 100%;
     height: 45px;
     top: 0;
     left: 0;
