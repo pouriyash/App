@@ -1,8 +1,57 @@
-﻿<footer style="background-color:black;bottom:0px;height:250px;width:100%">
-    <div class="diRelFooter" style="position:relative;display:inline-block;margin-left:38%">
-        <img id="imgFooter1" width="400" style="position:absolute;display: block;margin-left: auto;margin-right: auto;" src="~/images/Footer/Footer_Map.png" />
-
-        <img id="imgFooter2" width="200" style="position:absolute;left:110px;top:20px;display: block;margin-left: auto;margin-right: auto;" src="~/images/Footer/Footer_LOGO.png" />
+﻿<footer class="footer">
+    <div class="footer-images-container">
+        <img class="footer-map-image" src="~/images/Footer/Footer_Map.png" />
+        <img class="footer-logo-image" src="~/images/Footer/Footer_LOGO.png" />
     </div>
-    
+
 </footer>
+
+<style>
+    footer.footer {
+        background-color: black;
+        bottom: 0px;
+        height: 250px;
+        width: 100%
+    }
+
+    .footer-images-container {
+        position: relative;
+        display: inline-block;
+        margin-left: 38%;
+        height: 100%;
+    }
+
+    .footer-map-image {
+        position: absolute;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 400px;
+    }
+
+    .footer-logo-image {
+        position: absolute;
+        left: 110px;
+        top: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 200px;
+    }
+
+    @@media (max-width: 576px) {
+        .footer-images-container {
+            margin-left: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        .footer-map-image {
+            width: 100%;
+        }
+
+        .footer-logo-image {
+            width: 50%;
+        }
+    }
+</style>
