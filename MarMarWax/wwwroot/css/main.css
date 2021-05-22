@@ -1076,6 +1076,7 @@ li.sale-noti > a {
     justify-content: flex-end;
     padding-left: 20px;
 }
+
 .wrap_header_mobile .dropdown-list li .expand-item-toggle .fa {
     font-size: 14px !important;
 }
@@ -1084,7 +1085,7 @@ li.sale-noti > a {
     border-top: 1px solid #212121;
     padding: 0;
     margin: 0;
-    transition: .7s;
+    transition: 0.7s;
     overflow: hidden;
 }
 
@@ -2521,4 +2522,52 @@ input.num-product::-webkit-inner-spin-button {
 
 .box {
     box-shadow: 0px 0px 2px #ccc;
+}
+
+/* home page */
+/* ---------------------------------------- */
+.quick-service-wrap {
+    direction: rtl;
+    display: flex;
+}
+
+.quick-service-wrap .icon-container i {
+    font-size: 35px;
+    color: #ba0000;
+}
+
+.quick-service-wrap .details-container {
+    margin-right: 1rem;
+}
+.quick-service-wrap .details-container h2 {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* product details */
+
+.product-details > h4,
+.product-details .product-detail-row {
+    text-align: right;
+    font-weight: bold;
+    font-size: 22px;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.product-details .product-detail-row.product-name {
+    border-bottom: 1px solid #e8e8e8;
+}
+.product-details .product-detail-row.product-name h3 {
+    color: #e65540;
+    font-size: 20px;
+}
+.product-details .product-detail-row .product-detail-label {
+    font-size: 13px;
+    margin-bottom: 0.5rem;
+    color: #888;
+}
+.product-details .product-detail-row .product-detail-item {
+    font-size: 18px;
 }
