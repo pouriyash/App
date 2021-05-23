@@ -9205,7 +9205,7 @@
 /* ------------------------------------ */
 .hov-img-zoom {
     display: block;
-    overflow: hidden;
+    /* overflow: hidden; */
     /*box-shadow:0px 0px 2px #ccc;*/
 }
 
@@ -9218,11 +9218,11 @@
     }
 
     .hov-img-zoom:hover img {
-        -webkit-transform: scale(1.1);
-        -moz-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-        -o-transform: scale(1.1);
-        transform: scale(1.1);
+        -webkit-transform: scale(1.05);
+        -moz-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        -o-transform: scale(1.05);
+        transform: scale(1.05);
     }
 
 

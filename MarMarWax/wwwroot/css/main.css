@@ -2532,7 +2532,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .quick-service-wrap .icon-container i {
-    font-size: 35px;
+    font-size: 35px !important;
     color: #ba0000;
 }
 
@@ -2544,6 +2544,31 @@ input.num-product::-webkit-inner-spin-button {
     font-weight: bold;
 }
 
+.banner-header {
+    position: relative;
+    text-align: right;
+    margin: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 1rem 0;
+}
+
+.banner-header::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: block;
+    width: 250px;
+    height: 2px;
+    border-radius: 1px;
+    background-color: #e65540;
+}
+@media (max-width: 576px) {
+    .banner-header {
+        font-size: 20px;
+    }
+}
 /* product details */
 
 .product-details > h4,
@@ -2570,4 +2595,46 @@ input.num-product::-webkit-inner-spin-button {
 }
 .product-details .product-detail-row .product-detail-item {
     font-size: 18px;
+}
+.product-image-wrapper {
+
+}
+@media (max-width: 576px) {
+
+.product-details .product-detail-row.product-name h3::before {
+    content: 'نام محصول : ';
+    display: inline-block;
+    font-size: 14px;
+    color: #888;
+}
+.product-details .product-detail-row .flex-m{
+    justify-content: space-evenly;
+    margin-bottom: 1rem;
+    font-size: 12px;
+}
+.product-details .product-detail-row img {
+    width: 60px;
+}
+    .product-image-wrapper {
+        order: -1;
+    }
+    .slick-wrapper {
+        flex-direction: column;
+    }
+.slick-wrapper .wrap-slick3-dots {
+    order: 1;
+    width: 100%;
+}
+.slick-wrapper .wrap-slick3-dots ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.slick-wrapper .wrap-slick3-dots ul li {
+    margin-bottom: 0;
+    margin-right: .5rem;
+}
+.slick3-dots .slick-active .slick3-dot-overlay {
+    border-width: 2px;;
+}
 }
